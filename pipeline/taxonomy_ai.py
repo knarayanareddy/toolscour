@@ -684,18 +684,117 @@ def classify_domain_and_subsystem(repo_name: str, description: str, topics: List
     return best_domain, best_subsystem
 
 
+# ---------------------------------------------------------------------------
+# ENTRY-SPECIFIC ELI5 GENERATION (deterministic, no LLM, no API cost)
+# Answers are composed from each repo's own metadata: its GitHub description,
+# artifact class, subsystem, stars, accelerators, quantization and license.
+# Variant choice is seeded by repo id (hashlib — stable across re-harvests),
+# so prose varies per entry but never churns between runs.
+# ---------------------------------------------------------------------------
+import hashlib as _hashlib
+
+def _seed(*parts) -> int:
+    raw = "|".join(str(p) for p in parts).encode("utf-8", "ignore")
+    return int.from_bytes(_hashlib.md5(raw).digest()[:8], "big")
+
+def _pick(pool: List[str], seed: int, salt: int = 0) -> str:
+    return pool[(seed + salt) % len(pool)]
+
+_ARTIFACT_VALUE = {
+    "Model / Weights": "ships trained capability you can serve or fine-tune instead of training from scratch",
+    "Runtime / Serving Engine": "turns raw model weights into fast, production-grade endpoints",
+    "Framework": "provides the orchestration layer that AI products are built on",
+    "Library / SDK": "gives you well-tested building blocks instead of hand-rolled glue code",
+    "Developer Tool / CLI": "automates the repetitive engineering work around AI systems",
+    "UI / Application": "wraps the underlying machinery in an interface people can actually use",
+    "Agent Skill Pack": "lets AI agents gain new capabilities by dropping in SKILL.md files — no changes to the agent itself",
+    "Curated List / Docs": "collects and curates the landscape so you can survey it in one place",
+    "Template / Starter": "gives you a working starting point instead of an empty directory",
+    "Application / Service": "bundles a complete, deployable capability out of the box",
+}
+
 def generate_beginner_context(name: str, domain: str, subsystem: str, language: str,
-                              accelerators: List[str], quantization: List[str]) -> Dict[str, Any]:
-    """Generates intuitive ELI5 contextual explanations for newcomers."""
-    accel_note = f" accelerated on {', '.join(accelerators[:2])}" if accelerators else ""
-    quant_note = f" Supports {', '.join(quantization[:3])} quantization." if quantization else ""
+                              accelerators: List[str], quantization: List[str],
+                              description: str = "", artifact: str = "Application / Service",
+                              stars: int = 0, license_name: str = "Unknown",
+                              repo_id: Any = 0) -> Dict[str, Any]:
+    """Generates intuitive ELI5 contextual explanations for newcomers.
+
+    Every field is derived from the repo's own signals, so entries read as
+    individuals rather than one template repeated 11k times.
+    """
+    seed = _seed(repo_id or 0, name or "", subsystem or "")
+    sub_l = (subsystem or "this domain").lower()
+
+    # --- what_it_does: prefer the project's own words (its GitHub description)
+    desc = (description or "").strip()
+    if len(desc) >= 20:
+        what = desc[0].upper() + desc[1:]
+        if not what.endswith((".", "!", "?")):
+            what += "."
+    else:
+        accel_note = f" accelerated on {', '.join(accelerators[:2])}" if accelerators else ""
+        what = _pick([
+            f"An open-source {language} project in the {domain} ecosystem, specialized for {subsystem}{accel_note}.",
+            f"A {language}-based {subsystem} project within the {domain} space{accel_note}.",
+            f"Part of the {domain} ecosystem: a {language} project focused on {subsystem}{accel_note}.",
+        ], seed)
+
+    # --- why_it_matters: artifact value + subsystem focus + proof of adoption + hardware
+    value = _ARTIFACT_VALUE.get(artifact, "bundles a complete, deployable capability out of the box")
+    focus = _pick(["focused specifically on", "with a sharp focus on", "specialized for", "zeroed in on"], seed, 1)
+    why = f"It {value}, {focus} {sub_l}."
+    if stars >= 100000:
+        why += f" With {stars // 1000}k+ stars it is one of the most trusted projects in the space."
+    elif stars >= 10000:
+        why += f" {stars // 1000}k+ stars of community trust back that claim."
+    elif stars >= 1000:
+        why += f" A {stars:,}-strong star count signals real adoption."
+    if accelerators:
+        why += f" It runs on {', '.join(accelerators[:2])}."
+    elif quantization:
+        why += f" It supports {', '.join(quantization[:2])} formats."
+
+    # --- when_to_use: need + ecosystem fit + hardware clause + license caveat
+    lead = _pick(["Reach for it when", "Choose it when", "It earns its place when", "Deploy it when"], seed, 2)
+    when = f"{lead} your stack needs {sub_l}"
+    clauses = []
+    if language and language.lower() != "other":
+        clauses.append(f"and your team already works in {language}")
+    if accelerators:
+        clauses.append(f"especially on {accelerators[0]} hardware")
+    if clauses:
+        when += ", " + ", ".join(clauses)
+    when += "."
+    lic_l = (license_name or "").lower()
+    lic_display = license_name if license_name not in ("", "Unknown", "NOASSERTION") else ""
+    if ("gpl" in lic_l and "lgpl" not in lic_l) or "agpl" in lic_l:
+        when += f" Review the {lic_display or 'copyleft'} terms before bundling it into proprietary products."
+    elif lic_display:
+        when += f" Its {lic_display} license makes it safe to build products on."
+
+    # --- key_superpowers: derived from real metadata, never canned
+    powers = []
+    if accelerators:
+        powers.append(f"Targets {', '.join(accelerators[:2])}")
+    if quantization:
+        powers.append(f"Supports {', '.join(quantization[:2])} quantization")
+    if artifact == "Agent Skill Pack":
+        powers.append("Portable SKILL.md capability packs")
+    if stars >= 5000:
+        powers.append(f"Battle-tested ({stars:,}★)")
+    if language and language.lower() != "other":
+        powers.append(f"Written in {language}")
+    if len(powers) < 3:
+        powers.append("Active open-source community")
+    powers = powers[:3]
 
     return {
-        "what_it_does": f"An open-source {language} project in the {domain} ecosystem, specialized for {subsystem}{accel_note}.{quant_note}",
-        "why_it_matters": f"It removes the hard engineering work of {subsystem.lower()} so teams can ship AI features without reinventing low-level primitives.",
-        "when_to_use": f"Use it when your stack needs reliable, high-performance {subsystem.lower()} with an active open-source community.",
-        "alternatives": ["Comparable open-source engines", "Managed cloud APIs", "Adjacent tools in the same domain"],
-        "key_superpowers": ["Purpose-built for modern AI workloads", "Active community & frequent releases", "Runs on your own hardware"],
+        "what_it_does": what,
+        "why_it_matters": why,
+        "when_to_use": when,
+        "alternatives": [f"Other {subsystem} projects in this catalog", "Managed cloud APIs", f"Adjacent tools in {domain.split(',')[0].strip()}"],
+        "key_superpowers": powers,
     }
 
 
@@ -730,7 +829,9 @@ def enrich_repository_record(raw_repo: Dict[str, Any]) -> Dict[str, Any]:
     maturity_intel = classify_maturity(stars, forks, pushed_at)
 
     beginner_intel = raw_repo.get("beginner_intel") or generate_beginner_context(
-        name, domain, subsystem, language, accelerators, quantization
+        name, domain, subsystem, language, accelerators, quantization,
+        description=description, artifact=artifact, stars=stars,
+        license_name=license_str, repo_id=raw_repo.get("id") or 0,
     )
 
     keywords = list(dict.fromkeys(

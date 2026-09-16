@@ -110,7 +110,36 @@ at the 98 cap). 🔬 *UX Researcher:* every selection change now moves the score
 
 ---
 
-## 6 · Deferred (worth revisiting later)
+## 6 · Content Quality Round (2026-09-16, user-reported)
+
+**"Do the ELI5 answers repeat across entries?" — Yes, measurably.** 🔬 *UX Researcher
+audit:* `why_it_matters` and `when_to_use` had exactly **57 unique values for 11,275
+repos** (one per subsystem); `what_it_does` had 912. The pipeline is deliberately
+LLM-free ($0, deterministic, re-harvestable), but the fallback generator ignored nearly
+all of each repo's own signal.
+
+**Fix — entry-specific, deterministic generation** (`taxonomy_ai.generate_beginner_context`):
+- `what_it_does` now leads with the **project's own GitHub description** (98.6% unique).
+- `why_it_matters` composes artifact-class value line + subsystem focus + adoption proof
+  (star-band clause) + hardware/quantization clause.
+- `when_to_use` composes need + language fit + hardware clause + license caveat
+  (copyleft repos get a review warning; SPDX `NOASSERTION` sanitized).
+- `key_superpowers` derived from real metadata (accelerators, quant formats, stars, language).
+- Variant choice seeded by `hashlib.md5(repo_id|name|subsystem)` — stable across weekly
+  re-harvests, never churns.
+
+**Measured result:** `what_it_does` 912 → **11,112** unique · `why_it_matters` 57 →
+**7,617** · `when_to_use` 57 → **3,556**. Hand-curated landmark entries (llama.cpp etc.)
+untouched.
+
+**Budget trade-off (📊 Platform Engineer):** unique hook text compresses worse than
+repeated templates — Tier-1 index grew 405.6 → **748.0 KB gzip** (hook trimmed to 88
+chars). Still 2.4× under the 1.8 MB ceiling; judged worth it — card descriptions were
+the most visible face of the templating.
+
+---
+
+## 7 · Deferred (worth revisiting later)
 
 - **Trend sparklines** (star growth over time) — needs a time-series harvest; the weekly
   cron could start recording snapshots now for future use.

@@ -93,7 +93,7 @@ def build_tiered_dataset(input_file: str, base_dir: str = "web/public"):
         quant_ids = [quant_enc.id(q) for q in (r.get("quantization") or [])]
 
         hook = (r.get("beginner_intel") or {}).get("what_it_does") or r.get("description") or ""
-        hook = hook[:110]
+        hook = hook[:88]
 
         compact_rows.append([
             r["id"],
