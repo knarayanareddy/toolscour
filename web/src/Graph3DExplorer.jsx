@@ -52,6 +52,12 @@ export default function Graph3DExplorer({ repos, onSelectRepo, selectedDomain })
   useEffect(() => { zoomRef.current = zoom; }, [zoom]);
   useEffect(() => { panRef.current = pan; }, [pan]);
 
+  // Keep the internal cluster filter in sync with the catalog-level domain
+  // selector (prop changes were previously ignored after mount).
+  useEffect(() => {
+    setFilterDomain(selectedDomain || 'all');
+  }, [selectedDomain]);
+
   // Distinct chromatic palettes & neon glow for the 10 AI domain sectors
   const DOMAIN_CONFIG = {
     "Foundation Models & Weights": { hex: "#3b5bdb", glow: "rgba(59, 91, 219, 0.5)", name: "Models & Weights" },

@@ -221,8 +221,6 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
       return { score: 0, grade: 'Empty', gradeColor: 'text-stone-500', selectedCount: 0, matrix: [], positiveSignals: [], frictions: [], runtimeHarmonies: [], items: [] };
     }
 
-    let positiveScore = 0;
-    let frictionScore = 0;
     const positiveSignals = [];
     const frictions = [];
     const matrix = [];
@@ -232,7 +230,7 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
         const a = selectedRepos[i].repo;
         const b = selectedRepos[j].repo;
 
-        let pairScore = 50;
+        let pairScore = 40;
         let pairStatus = 'Compatible';
         const pairNotes = [];
 
@@ -242,17 +240,15 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
 
         if (langA === langB && langA !== 'other') {
           pairScore += 25;
-          positiveScore += 15;
           pairNotes.push(`Native ${a.language} ecosystem: direct in-process binding without FFI overhead.`);
         } else if (
           (langA === 'python' && ['rust', 'c++', 'c', 'cuda'].includes(langB)) ||
           (langB === 'python' && ['rust', 'c++', 'c', 'cuda'].includes(langA))
         ) {
-          pairScore += 15;
-          positiveScore += 10;
+          pairScore += 18;
           pairNotes.push(`High-performance C-extension / PyO3 binding accelerates the Python layer.`);
         } else {
-          frictionScore += 5;
+          pairScore -= 10;
           pairNotes.push('IPC / Network protocol bridge required (HTTP, gRPC, or sockets).');
           frictions.push({
             pair: `${a.name} (${a.language}) ↔ ${b.name} (${b.language})`,
@@ -264,8 +260,7 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
         // 2. Shared accelerator hardware
         const sharedAcc = (a.accelerators || []).filter((x) => (b.accelerators || []).includes(x));
         if (sharedAcc.length > 0) {
-          pairScore += 22;
-          positiveScore += 20;
+          pairScore += 20;
           const note = `Co-accelerated on ${sharedAcc[0]} — both tools saturate the same hardware.`;
           pairNotes.push(note);
           positiveSignals.push({ pair: `${a.name} ↔ ${b.name}`, desc: note });
@@ -274,8 +269,7 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
         // 3. Shared engineering primitives
         const sharedPrims = (a.primitives || []).filter((p) => (b.primitives || []).includes(p));
         if (sharedPrims.length > 0) {
-          pairScore += 18;
-          positiveScore += 15;
+          pairScore += 15;
           const note = `Aligned on engineering primitive [${sharedPrims.join(', ')}].`;
           pairNotes.push(note);
           positiveSignals.push({ pair: `${a.name} ↔ ${b.name}`, desc: note });
@@ -284,19 +278,23 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
         // 4. Ecosystem compatibility (OpenAI API, HF, GGUF, LangChain...)
         const sharedCompat = (a.compatibility || []).filter((c) => (b.compatibility || []).includes(c));
         if (sharedCompat.length > 0) {
-          pairScore += 15;
-          positiveScore += 12;
+          pairScore += 12;
           pairNotes.push(`Shared interop surface: ${sharedCompat.join(', ')}.`);
         }
 
-        // 5. License reciprocity
+        // 5. Subsystem adjacency (same architectural neighborhood)
+        if (a.subsystem && a.subsystem === b.subsystem && a.subsystem !== 'General') {
+          pairScore += 8;
+          pairNotes.push(`Same subsystem (${a.subsystem}): shared data contracts and conventions.`);
+        }
+
+        // 6. License reciprocity
         const licA = (a.license || '').toLowerCase();
         const licB = (b.license || '').toLowerCase();
         const copyleftA = licA.includes('gpl') && !licA.includes('lgpl');
         const copyleftB = licB.includes('gpl') && !licB.includes('lgpl');
         if (copyleftA !== copyleftB && (copyleftA || copyleftB)) {
-          pairScore -= 15;
-          frictionScore += 15;
+          pairScore -= 20;
           frictions.push({
             pair: `${a.name} (${a.license}) ↔ ${b.name} (${b.license})`,
             type: 'License Reciprocity Asymmetry',
@@ -304,7 +302,7 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
           });
         }
 
-        pairScore = Math.max(10, Math.min(100, pairScore));
+        pairScore = Math.max(5, Math.min(100, pairScore));
         if (pairScore >= 75) pairStatus = 'High Synergy';
         else if (pairScore >= 50) pairStatus = 'Compatible';
         else pairStatus = 'Friction Warning';
@@ -317,10 +315,22 @@ export default function AIStackArchitect({ repos, onSelectRepo }) {
       }
     }
 
-    let totalScore = Math.round(Math.max(15, Math.min(98, 50 + positiveScore * 0.8 - frictionScore * 0.9)));
+    // Total = weighted mean of pair scores, biased toward the weakest link.
+    // (A chain is only as strong as its weakest integration seam.) This stays
+    // bounded regardless of stack size — no accumulation-driven saturation.
+    let totalScore;
+    if (matrix.length === 0) {
+      totalScore = 50; // single tool: no pairs to score yet
+    } else {
+      const scores = matrix.map((m) => m.score);
+      const mean = scores.reduce((s, v) => s + v, 0) / scores.length;
+      const weakest = Math.min(...scores);
+      totalScore = Math.round(Math.max(5, Math.min(99, 0.7 * mean + 0.3 * weakest)));
+    }
     let grade = 'Production Viable (Standard IPC)';
     let gradeColor = 'text-ion-400';
-    if (totalScore >= 80) { grade = 'High Architectural Synergy'; gradeColor = 'text-emerald-600'; }
+    if (matrix.length === 0) { grade = 'Add another tool to score synergies'; gradeColor = 'text-stone-500'; }
+    else if (totalScore >= 80) { grade = 'High Architectural Synergy'; gradeColor = 'text-emerald-600'; }
     else if (totalScore < 40) { grade = 'High Coupling / License Conflict'; gradeColor = 'text-rose-600'; }
     else if (totalScore < 60) { grade = 'Architectural Friction Detected'; gradeColor = 'text-star-700'; }
 
