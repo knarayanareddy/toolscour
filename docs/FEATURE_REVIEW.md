@@ -29,7 +29,7 @@ concrete persona need and reuses data already in the pipeline.
 | 1 | **Agent Skill Packs in the collection** | PM + Platform Eng | New artifact class `Agent Skill Pack` in `taxonomy_ai.py` (SKILL.md / agent-skills / claude-skills signals); REST harvest burst (`topic:agent-skills`, `topic:claude-skills`, `"SKILL.md"`, …); **630 skill packs** flagged across the corpus, incl. `anthropics/skills` (≈177k★) | ✅ Shipped |
 | 2 | **Skills toggle + SKILL stamp** | PM | Toolbar pill `SKILL PACKS · 630`; rotated passport-style `SKILL` stamp on cards; `SKILL PACK` chip in inspector | ✅ Shipped |
 | 3 | **Sort control** (STARS / RECENT / A–Z) | PM | Segmented mono control; Tier-1 rows gained `pushed_day` (epoch-day delta) so "recently pushed" costs 1 int per row | ✅ Shipped |
-| 4 | **Freshness signal** | PM + UX | Emerald activity dot + `Xd` label on cards pushed ≤30 days ago (computed from `pushed_day` at index-build time; re-harvest weekly cron keeps it honest) | ✅ Shipped |
+| 4 | **Freshness signal** | PM + UX | Emerald activity dot + `Xd` label on cards pushed ≤30 days ago (computed from `pushed_day` at index-build time; daily re-harvest cron keeps it honest) | ✅ Shipped |
 | 5 | **Random plate** | UX Researcher | `Dice5` button opens a random repo from the *current filtered set* — discovery respects your filters | ✅ Shipped |
 | 6 | **`/` search shortcut** | UX Researcher | Global keydown listener, ignored inside form controls, kbd hint rendered in the search field | ✅ Shipped |
 | 7 | **Same-neighborhood chips** | UX Researcher | Inspector modal lists the top-4 repos by stars in the same subsystem; clicking pivots the modal (deep shard already cached) | ✅ Shipped |
@@ -72,7 +72,7 @@ Considered and deliberately **not** built, with reasons:
 | Newsletter / email capture popup | Interrupts the core task; no mailing-list infra on static hosting |
 | Embedded chatbot assistant | Would need API keys in the client or a paid backend; search + inspector already answer "what is this?" |
 | Dark/light theme toggle | Paper Atlas *is* the identity; dark surfaces are sanctioned only inside the two 3D telescope canvases and terminal-ink blocks |
-| User-submitted tool form | Needs a form backend; the weekly cron harvester already ingests anything crossing 500★ |
+| User-submitted tool form | Needs a form backend; the daily cron harvester already ingests anything crossing 500★ |
 | 11th "Skills" domain | Blueprint fixes 10 sectors; skills are orthogonal packaging, handled by the artifact class instead |
 | Infinite scroll | "Load More" windowing keeps DOM bounded (11k cards); infinite scroll would tank scroll perf on the 60 FPS page |
 
@@ -125,7 +125,7 @@ all of each repo's own signal.
 - `when_to_use` composes need + language fit + hardware clause + license caveat
   (copyleft repos get a review warning; SPDX `NOASSERTION` sanitized).
 - `key_superpowers` derived from real metadata (accelerators, quant formats, stars, language).
-- Variant choice seeded by `hashlib.md5(repo_id|name|subsystem)` — stable across weekly
+- Variant choice seeded by `hashlib.md5(repo_id|name|subsystem)` — stable across daily
   re-harvests, never churns.
 
 **Measured result:** `what_it_does` 912 → **11,112** unique · `why_it_matters` 57 →
@@ -141,7 +141,7 @@ the most visible face of the templating.
 
 ## 7 · Deferred (worth revisiting later)
 
-- **Trend sparklines** (star growth over time) — needs a time-series harvest; the weekly
+- **Trend sparklines** (star growth over time) — needs a time-series harvest; the daily
   cron could start recording snapshots now for future use.
 - **"Alternatives" cross-links beyond subsystem** — the inspector already shows
   qualitative alternatives from `beginner_intel`; wiring them to real catalog entries

@@ -23,7 +23,7 @@ AI ToolScour harvests, classifies, and spatially maps the open-source AI ecosyst
 | **Agent Skill Packs** | First-class artifact class for SKILL.md skill collections (agentskills.io standard) — dedicated `SKILL` stamp + toggle filter |
 | **Sort & Freshness** | Sort by stars / recently pushed / A–Z; live activity dot flags repos pushed within 30 days |
 | **Discovery Tools** | Random-plate button, same-subsystem "neighborhood" chips in the inspector, `/` keyboard search shortcut, copy-entry-as-Markdown |
-| **$0 Hosting** | 100% static on GitHub Pages with a weekly cron re-harvest |
+| **$0 Hosting** | 100% static on GitHub Pages with a daily cron re-harvest |
 
 ---
 
@@ -32,7 +32,7 @@ AI ToolScour harvests, classifies, and spatially maps the open-source AI ecosyst
 ```
 toolscour/
 ├── .github/workflows/
-│   └── deploy.yml                 # GitHub Pages deployment + weekly cron harvest
+│   └── deploy.yml                 # GitHub Pages deployment + daily cron harvest (02:00 UTC)
 ├── docs/
 │   └── AI_TOOLS_METHODOLOGY_BLUEPRINT.md   # Full system specification
 ├── pipeline/

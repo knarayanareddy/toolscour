@@ -163,7 +163,7 @@ ai-toolscour/
 ├── .github/
 │   └── workflows/
 │       ├── deploy.yml            # Automatic GitHub Pages deployment
-│       └── refresh_cron.yml       # Weekly scheduled cron crawler
+│       └── refresh_cron.yml       # Daily scheduled cron crawler (02:00 UTC)
 ├── pipeline/
 │   ├── taxonomy_ai.py            # AI domain & hardware taxonomy classifier
 │   ├── harvest_ai_tools.py       # Multi-source scraper (GH GraphQL + HF API)

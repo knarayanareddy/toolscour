@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main, arena/* ]
   schedule:
-    # Weekly cron: Monday 02:00 UTC — re-harvest AI tools >= 500 stars & repack tiers
-    - cron: '0 2 * * 1'
+    # Daily cron: 02:00 UTC — re-harvest AI tools >= 500 stars & repack tiers
+    - cron: '0 2 * * *'
   workflow_dispatch:
 
 permissions:
