@@ -78,7 +78,39 @@ Considered and deliberately **not** built, with reasons:
 
 ---
 
-## 5 · Deferred (worth revisiting later)
+## 5 · Live Triage Round (2026-09-16, user-reported)
+
+Two defects reported from the live preview; four personas convened, both fixed (`7fadcec`).
+
+**Bug A — 3D Galaxy "Filter Cluster" inert.** 🔭 *3D Viz Engineer:* `Graph3DExplorer`
+seeded its internal `filterDomain` from the `selectedDomain` prop only at mount
+(`useState(selectedDomain)`); `setFilterDomain` was never called again, so catalog-level
+dropdown changes never reached the canvas. **Fix:** one-way sync `useEffect`.
+
+**Bug B — Compatibility frozen at 98/100, every pair "High Synergy (75%)".**
+📊 *Scoring Methodologist:* two arithmetic artifacts in `customPoolAnalysis`:
+1. The total was `50 + positiveScore×0.8` with `positiveScore` **accumulated per pair** —
+   a 4-tool stack has 6 pairs, so any Python-heavy selection exceeded the clamp at
+   `min(98, …)`. The metric measured *stack size*, not quality.
+2. Pairs started at base **50**; the dominant Python↔Python case added exactly **+25**
+   → precisely **75**, the floor of the "High Synergy" band. The IPC branch added to the
+   friction ledger but never subtracted from the pair score, so mismatches could not sink
+   below 50.
+
+**New metric** — bounded and discriminable: pair base 40; same-language +25,
+Python↔native +18, IPC bridge **−10**, shared accelerator +20, shared primitives +15,
+shared compat +12, subsystem adjacency +8, copyleft asymmetry −20. Total =
+`0.7×mean(pairs) + 0.3×min(pairs)` (weakest-link weighting; guarded for single tools).
+
+**Validation on real corpus:** deliberate vLLM/TGI/TensorRT-LLM serving stack → **82**
+(vLLM↔TensorRT-LLM shares CUDA: 97); langchain/chroma/llama_index RAG stack → **68**;
+300 random 4-tool stacks spread **15–68** with 40 distinct values (old formula clumped
+at the 98 cap). 🔬 *UX Researcher:* every selection change now moves the score.
+🎨 *Design gatekeeper:* grade tiers and colors unchanged.
+
+---
+
+## 6 · Deferred (worth revisiting later)
 
 - **Trend sparklines** (star growth over time) — needs a time-series harvest; the weekly
   cron could start recording snapshots now for future use.
