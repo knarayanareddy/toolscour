@@ -29,15 +29,38 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Harvest AI Tools (GitHub GraphQL + HF Hub) & Pack Tiered Shards
+      - name: Harvest AI Tools (GitHub GraphQL + HF Hub) & Refresh Catalog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 pipeline/harvest_ai_tools.py --pages 3
+          # New AI tools: newer-ecosystem topics + star windows, both behind the relevance gate
+          python3 -u pipeline/harvest_ai_tools.py --extended --pages 3
+          # New Agent Skill Packs: each must ship a SKILL.md of at least 200 bytes
+          python3 -u pipeline/harvest_ai_tools.py --skills --pages 3
+          # Existing records: current metadata, archived/deleted removal, fuller topics
+          python3 -u pipeline/harvest_ai_tools.py --refresh
+          python3 -u pipeline/harvest_ai_tools.py --fill-descriptions
+          python3 -u pipeline/harvest_ai_tools.py --prune-non-ai --report "$RUNNER_TEMP/pruned.tsv"
+
+      - name: Quality Gate & Pack Tiered Shards
+        run: |
           python3 -m unittest discover -s pipeline -p "test_*.py"
           python3 pipeline/validate_corpus.py
           python3 pipeline/shard_builder.py
           python3 pipeline/generate_stacks.py
+
+      - name: Persist refreshed catalog (scheduled runs only)
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "toolscour-bot"
+          git config user.email "toolscour-bot@users.noreply.github.com"
+          git add web/public
+          if git diff --cached --quiet; then
+            echo "No catalog changes today."
+          else
+            git commit -m "chore: daily catalog refresh ($(date -u +%F))"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

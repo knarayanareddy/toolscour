@@ -32,7 +32,7 @@ import sys
 import time
 import urllib.request
 import urllib.error
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 sys.path.append(os.path.dirname(__file__))
 from taxonomy_ai import classify_artifact, enrich_repository_record
@@ -253,11 +253,13 @@ def harvest_graphql(token: str, pages_per_query: int = 3, queries: Optional[List
     return harvested
 
 
-def repo_ships_skill_md(owner: str, name: str, token: str) -> Optional[bool]:
+MIN_SKILL_MD_BYTES = 200  # below this a SKILL.md cannot hold valid frontmatter plus instructions
+
+
+def skill_md_size(owner: str, name: str, token: str) -> Optional[int]:
     """
-    Ground-truth check for Agent Skill Packs: does the default branch contain a
-    SKILL.md file anywhere in its tree (agentskills.io layout)?
-    Returns True/False, or None when the tree cannot be read (rate limit, network).
+    Size in bytes of the smallest SKILL.md blob in the default branch tree.
+    0 when no SKILL.md exists; None when the tree cannot be read (rate limit, network).
     """
     url = f"https://api.github.com/repos/{owner}/{name}/git/trees/HEAD?recursive=1"
     req = urllib.request.Request(url, headers={
@@ -270,7 +272,15 @@ def repo_ships_skill_md(owner: str, name: str, token: str) -> Optional[bool]:
             tree = json.loads(resp.read().decode("utf-8")).get("tree", [])
     except Exception:
         return None
-    return any(e.get("path", "").lower().endswith("skill.md") and e.get("type") == "blob" for e in tree)
+    sizes = [int(e.get("size") or 0) for e in tree
+             if e.get("type") == "blob" and e.get("path", "").lower().endswith("skill.md")]
+    return min(sizes) if sizes else 0
+
+
+def repo_ships_skill_md(owner: str, name: str, token: str) -> Optional[bool]:
+    """True/False whether a SKILL.md exists in the tree; None when unreadable."""
+    size = skill_md_size(owner, name, token)
+    return None if size is None else size > 0
 
 
 def verify_skill_flags(records: List[Dict[str, Any]], token: str,
@@ -278,12 +288,11 @@ def verify_skill_flags(records: List[Dict[str, Any]], token: str,
     """
     Applies the SKILL.md ground-truth check to every skill-pack candidate, in place.
 
-    - `skill_verified: True`  -> repo tree contains a SKILL.md; artifact stays "Agent Skill Pack".
-    - `skill_verified: False` -> no SKILL.md; artifact is reclassified without the skill rule.
+    - `skill_verified: True`  -> a SKILL.md of at least MIN_SKILL_MD_BYTES exists; artifact stays "Agent Skill Pack".
+    - `skill_verified: False` -> no SKILL.md, or a stub smaller than MIN_SKILL_MD_BYTES; reclassified.
     - `skill_verified: None`  -> tree unreadable; reclassified now, retried on the next run.
-
-    A prior verdict stored on the existing corpus is reused, so the daily cron only
-    spends API calls on candidates it has never checked.
+    `skill_md_bytes` records the measured size. A prior verdict on the existing corpus is reused,
+    so the daily cron only spends API calls on candidates it has never checked.
     """
     if not token:
         # Without auth every tree read would fail and wrongly demote real skill packs.
@@ -293,25 +302,217 @@ def verify_skill_flags(records: List[Dict[str, Any]], token: str,
     checked = reused = 0
     for r in records:
         prior = prior_by_id.get(str(r.get("id")), {})
-        if prior.get("skill_verified") is True:
+        if prior.get("skill_verified") is True and prior.get("skill_md_bytes", 0) >= MIN_SKILL_MD_BYTES:
             # A SKILL.md was seen in the repo tree. A re-fetch can truncate topics (we only
-            # request the first 8), so a verified verdict outlives a non-skill classification.
+            # request the first 20), so a verified verdict outlives a non-skill classification.
             r["skill_verified"] = True
+            r["skill_md_bytes"] = prior["skill_md_bytes"]
             if r.get("artifact") != "Agent Skill Pack":
                 r["artifact"] = "Agent Skill Pack"
             reused += 1
             continue
         if r.get("artifact") != "Agent Skill Pack":
             continue
-        verdict = repo_ships_skill_md(r.get("owner", ""), r.get("name", ""), token)
+        size = skill_md_size(r.get("owner", ""), r.get("name", ""), token)
         checked += 1
-        r["skill_verified"] = verdict
-        if verdict is not True:
+        if size is None:
+            r["skill_verified"] = None
+        else:
+            r["skill_md_bytes"] = size
+            r["skill_verified"] = size >= MIN_SKILL_MD_BYTES
+        if r["skill_verified"] is not True:
             r["artifact"] = classify_artifact(r.get("name", ""), r.get("description", ""),
                                               r.get("topics") or [], allow_skill=False)
         time.sleep(0.1)
     confirmed = sum(1 for r in records if r.get("skill_verified") is True)
     print(f"🧩 SKILL.md verification: {checked} checked, {reused} reused, {confirmed} confirmed skill packs")
+
+
+REFRESH_FRAGMENT = """
+fragment RepoFields on Repository {
+  databaseId name owner { login } description stargazerCount forkCount
+  primaryLanguage { name } licenseInfo { spdxId name }
+  repositoryTopics(first: 20) { nodes { topic { name } } }
+  pushedAt isArchived
+}
+"""
+
+REFRESH_BATCH = 50
+UNKNOWN = object()  # batch could not be read; keep the existing record untouched
+
+
+def refresh_batch(pairs: List[Tuple[str, str]], token: str) -> Dict[Tuple[str, str], Any]:
+    """
+    Reads current metadata for up to 50 (owner, name) pairs in one GraphQL request.
+    Maps each pair to its node, None when GitHub reports NOT_FOUND, or UNKNOWN on transport failure.
+    """
+    aliases = []
+    for i, (owner, name) in enumerate(pairs):
+        aliases.append(f"r{i}: repository(owner: {json.dumps(owner)}, name: {json.dumps(name)}) {{ ...RepoFields }}")
+    query = "query {\n" + "\n".join(aliases) + "\n}\n" + REFRESH_FRAGMENT
+    data = None
+    for attempt in range(3):
+        try:
+            data = graphql_request(query, {}, token).get("data") or {}
+            break
+        except Exception as exc:  # 502/504 from GitHub, network blips
+            print(f"  refresh batch retry {attempt + 1}: {exc}")
+            time.sleep(3 * (attempt + 1))
+    if data is None:
+        return {pair: UNKNOWN for pair in pairs}
+    return {pair: data.get(f"r{i}") for i, pair in enumerate(pairs)}
+
+
+def apply_refresh(existing: Dict[str, Any], node: Any) -> Tuple[Optional[Dict[str, Any]], str]:
+    """
+    Decides what a refreshed GitHub record becomes. Returns (record, outcome):
+      'unknown'   -> keep existing untouched
+      'deleted'   -> repo no longer exists          (dropped)
+      'moved'     -> databaseId differs             (kept as-is, flagged for review)
+      'archived'  -> archived upstream              (dropped; the harvester skips these)
+      'below'     -> fell under the 500★ floor      (dropped)
+      'refreshed' -> re-enriched from current data
+    """
+    if node is UNKNOWN:
+        return existing, "unknown"
+    if node is None:
+        return None, "deleted"
+    if node.get("databaseId") != existing.get("id"):
+        return existing, "moved"
+    fresh = parse_node(node)
+    if fresh is None:
+        return None, "archived"
+    if (fresh.get("stars") or 0) < MIN_STARS:
+        return None, "below"
+    return fresh, "refreshed"
+
+
+def refresh_existing(records: List[Dict[str, Any]], token: str) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
+    """Refreshes every GitHub record in the corpus. Hub records are kept (see ensure_enriched)."""
+    gh = [r for r in records if r.get("source") != "huggingface"]
+    hub = [r for r in records if r.get("source") == "huggingface"]
+    pairs = [((r.get("owner") or ""), (r.get("name") or "")) for r in gh]
+    nodes: Dict[Tuple[str, str], Any] = {}
+    for start in range(0, len(pairs), REFRESH_BATCH):
+        chunk = pairs[start:start + REFRESH_BATCH]
+        nodes.update(refresh_batch(chunk, token))
+        print(f"  refreshed {min(start + REFRESH_BATCH, len(pairs))}/{len(pairs)}")
+        time.sleep(0.35)
+
+    out: List[Dict[str, Any]] = []
+    stats = {"refreshed": 0, "unknown": 0, "deleted": 0, "moved": 0, "archived": 0, "below": 0}
+    for r, pair in zip(gh, pairs):
+        rec, outcome = apply_refresh(r, nodes.get(pair, UNKNOWN))
+        stats[outcome] += 1
+        if rec is not None:
+            out.append(rec)
+    out.extend(ensure_enriched(r) for r in hub)
+    return out, stats
+
+
+def run_refresh(output: str, token: Optional[str]) -> None:
+    if not token:
+        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --refresh.")
+    with open(output, "r", encoding="utf-8") as f:
+        existing = json.load(f)
+    existing_by_id = {str(r["id"]): r for r in existing}
+    print(f"🔄 Refreshing {len(existing)} records against GitHub (topics up to 20, archive/deletion check)")
+    refreshed, stats = refresh_existing(existing, token)
+    verify_skill_flags(refreshed, token, prior_by_id=existing_by_id)
+    refreshed = sorted(refreshed, key=lambda x: x.get("stars", 0), reverse=True)
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(refreshed, f, separators=(",", ":"))
+    print(f"📋 Refresh outcomes: {stats}")
+    print(f"✅ Refresh complete: {len(refreshed)} records -> {output}")
+
+
+def run_prune_non_ai(output: str, report_path: str) -> None:
+    """
+    Maintenance: applies the same AI-relevance gate used for new additions to the existing
+    corpus. Hub records are AI by construction and are kept. Removed repos are listed in
+    report_path so the cut can be reviewed; the previous corpus stays in git history.
+    """
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    kept, removed = [], []
+    for r in records:
+        if r.get("source") == "huggingface" or passes_new_record_gate(r):
+            kept.append(r)
+        else:
+            removed.append(r)
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(kept, f, separators=(",", ":"))
+    removed.sort(key=lambda x: -x.get("stars", 0))
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# Repos removed by --prune-non-ai (failed the AI-relevance gate), by stars\n")
+        for r in removed:
+            f.write(f"{r.get('stars', 0)}\t{r.get('owner', '')}/{r.get('name', '')}\t{(r.get('description') or '')[:100]}\n")
+    print(f"🧹 Pruned {len(removed)} non-AI repos; kept {len(kept)}. Review list: {report_path}")
+
+
+def readme_summary(owner: str, name: str, token: str, limit: int = 200) -> Optional[str]:
+    """
+    First real prose sentence of a repo's README, used only when GitHub has no description.
+    Skips headings, badges, HTML, tables and rules; strips markdown links. None if nothing usable.
+    """
+    req = urllib.request.Request(
+        f"https://api.github.com/repos/{owner}/{name}/readme",
+        headers={"Authorization": f"Bearer {token}", "User-Agent": "AIToolScour/1.0",
+                 "Accept": "application/vnd.github.raw"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            text = resp.read().decode("utf-8", errors="replace")
+    except Exception:
+        return None
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if len(line) < 25 or line.startswith(("#", "![", "[!", "<", "|", "---", "```", "* ", "- ", "> ")):
+            continue
+        line = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", line)   # [text](url) -> text
+        line = re.sub(r"[*_`]+", "", line).strip()
+        if len(line) < 25:
+            continue
+        if len(line) > limit:
+            line = line[:limit].rsplit(" ", 1)[0].rstrip(".,;:") + "…"
+        return line
+    return None
+
+
+def fill_missing_descriptions(output: str, token: Optional[str]) -> None:
+    """
+    Maintenance: records GitHub has no description for get one from their README
+    (marked description_source=readme), then are re-enriched so the taxonomy sees the text.
+    """
+    if not token:
+        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --fill-descriptions.")
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    filled = missing = 0
+    for i, r in enumerate(records):
+        if r.get("source") == "huggingface" or (r.get("description") or "").strip():
+            continue
+        summary = readme_summary(r.get("owner", ""), r.get("name", ""), token)
+        time.sleep(0.2)
+        if not summary:
+            missing += 1
+            continue
+        raw = {
+            "id": r["id"], "name": r["name"], "owner": r.get("owner", ""), "description": summary,
+            "stars": r.get("stars", 0), "forks": r.get("forks", 0), "language": r.get("language"),
+            "license": r.get("license"), "topics": r.get("topics") or [], "pushed_at": r.get("pushed_at"),
+        }
+        enriched = enrich_repository_record(raw)
+        enriched["description_source"] = "readme"
+        for keep in ("skill_verified",):
+            if keep in r:
+                enriched[keep] = r[keep]
+        records[i] = enriched
+        filled += 1
+    verify_skill_flags(records, token, prior_by_id={str(r["id"]): r for r in records})
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(records, f, separators=(",", ":"))
+    print(f"📝 Descriptions filled from README: {filled}; no usable README text: {missing}")
 
 
 def harvest_huggingface(limit: int = 300) -> List[Dict[str, Any]]:
@@ -392,7 +593,14 @@ AI_RELEVANCE = re.compile(
     r"transformers?|embeddings?|vector|rag|graphrag|retrieval|inference|quantiz\w*|gguf|lora|"
     r"fine-?tun\w*|rlhf|whisper|tts|speech|text-to-\w+|vision-language|multimodal|multi-modal|"
     r"machine learning|deep learning|ml|mlx|pytorch|onnx|copilot|coding assistant|computer[- ]use|"
-    r"gui agent|world models?|ocr|reranker|genai|generative|foundation models?|voice|llm\w*)\b",
+    r"gui agent|world models?|ocr|reranker|genai|generative|foundation models?|voice|llm\w*|"
+    r"clip|alpaca|keras|tensorflow|opencv|computer vision|face recognition|face detection|"
+    r"object detection|image generation|image recognition|reinforcement learning|nlp|"
+    r"natural language|speech recognition|speech synthesis|machine translation|"
+    r"data labeling|data annotation|yolo|bert|gpt-?\d|dall-?e|stable-?diffusion|"
+    r"artificial intelligence|active learning|autonomous driving|self-driving|bayesian optimization|kolmogorov|"
+    r"transfer learning|prompt tuning|domain adaptation|recommender|collaborative filtering|face analysis|anomaly detection)\b"
+    r"|深度学习|机器学习|人工智能|神经网络|大模型|大语言模型|智能体|强化学习|计算机视觉|语音识别|语音合成|自然语言|生成式|数字人|AIGC",
     re.IGNORECASE,
 )
 
@@ -449,10 +657,27 @@ def main():
                         help="add the newer-ecosystem topic slices (AI_TOPIC_QUERIES_EXTENDED)")
     parser.add_argument("--verify-skills", action="store_true",
                         help="maintenance: re-verify SKILL.md for all existing skill packs (no search)")
+    parser.add_argument("--refresh", action="store_true",
+                        help="maintenance: re-read every existing GitHub record (topics, archive/deletion, floor)")
+    parser.add_argument("--fill-descriptions", action="store_true",
+                        help="maintenance: fill empty descriptions from each repo's README")
+    parser.add_argument("--prune-non-ai", action="store_true",
+                        help="maintenance: remove existing repos that fail the AI-relevance gate")
+    parser.add_argument("--report", type=str, default="docs/pruned_non_ai_repos.tsv",
+                        help="where --prune-non-ai writes the removed list")
     parser.add_argument("--output", type=str, default="web/public/repos.json")
     args = parser.parse_args()
 
     token = get_token()
+    if args.prune_non_ai:
+        run_prune_non_ai(args.output, args.report)
+        return
+    if args.refresh:
+        run_refresh(args.output, token)
+        return
+    if args.fill_descriptions:
+        fill_missing_descriptions(args.output, token)
+        return
     topics = [t.strip() for t in args.topics.split(",") if t.strip()] or None
     if args.skills:
         topics = SKILL_QUERIES

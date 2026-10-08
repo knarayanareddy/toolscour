@@ -1,6 +1,6 @@
 # AI ToolScour 🛰️
 
-**Interactive 3D spatial explorer & architecture intelligence platform for 12,000+ open-source AI tools, models, runtimes, agents, and skill packs.**
+**Interactive 3D spatial explorer & architecture intelligence platform for 9,000+ open-source AI tools, models, runtimes, agents, and skill packs.**
 
 AI ToolScour harvests, classifies, and spatially maps the open-source AI ecosystem — foundation models, inference engines, agent frameworks, vector stores, fine-tuning stacks, **Agent Skill Packs (SKILL.md collections)**, and more — into a zero-cost static experience: sub-5ms tokenized search, a 60 FPS 3D knowledge galaxy, and a synergetic stack architect that scores your AI pipeline for hardware, primitive, and license compatibility.
 
@@ -83,7 +83,10 @@ python3 pipeline/harvest_ai_tools.py --pages 3
 #    Targeted passes (same quality gates as the daily run):
 python3 pipeline/harvest_ai_tools.py --skills            # Agent Skill Packs, each verified for a SKILL.md
 python3 pipeline/harvest_ai_tools.py --extended          # newer-ecosystem topic slices (coding agents, gateways, multimodal…)
-python3 pipeline/harvest_ai_tools.py --verify-skills     # re-check SKILL.md for every existing skill pack (no search)
+python3 pipeline/harvest_ai_tools.py --verify-skills     # re-check SKILL.md (>=200 bytes) for every existing skill pack
+python3 pipeline/harvest_ai_tools.py --refresh           # re-read every record from GitHub; drop archived/deleted/sub-500★
+python3 pipeline/harvest_ai_tools.py --fill-descriptions # README first sentence for repos with no GitHub description
+python3 pipeline/harvest_ai_tools.py --prune-non-ai      # apply the AI-relevance gate to the existing corpus
 
 # 2. Quality gate + tests (fails on any ERROR; --strict also fails on warnings)
 python3 -m unittest discover -s pipeline -p "test_*.py"
@@ -102,7 +105,7 @@ npm run dev        # dev server on :5173
 npm run build      # production bundle -> web/dist
 ```
 
-The corpus (12,455 tools, 669 verified skill packs) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow refreshes the data on every push and every Monday at 02:00 UTC.
+The corpus (9,251 tools, 649 verified skill packs) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow runs daily at 02:00 UTC: it harvests, refreshes every record against GitHub (archived and deleted repos are dropped), applies the quality gate, and commits the refreshed catalog back to the branch.
 
 ---
 
