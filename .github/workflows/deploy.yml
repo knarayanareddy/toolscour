@@ -34,6 +34,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 pipeline/harvest_ai_tools.py --pages 3
+          python3 -m unittest discover -s pipeline -p "test_*.py"
+          python3 pipeline/validate_corpus.py
           python3 pipeline/shard_builder.py
           python3 pipeline/generate_stacks.py
 

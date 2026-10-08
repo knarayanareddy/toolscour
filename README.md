@@ -1,6 +1,6 @@
 # AI ToolScour 🛰️
 
-**Interactive 3D spatial explorer & architecture intelligence platform for 11,000+ open-source AI tools, models, runtimes, agents, and skill packs.**
+**Interactive 3D spatial explorer & architecture intelligence platform for 12,000+ open-source AI tools, models, runtimes, agents, and skill packs.**
 
 AI ToolScour harvests, classifies, and spatially maps the open-source AI ecosystem — foundation models, inference engines, agent frameworks, vector stores, fine-tuning stacks, **Agent Skill Packs (SKILL.md collections)**, and more — into a zero-cost static experience: sub-5ms tokenized search, a 60 FPS 3D knowledge galaxy, and a synergetic stack architect that scores your AI pipeline for hardware, primitive, and license compatibility.
 
@@ -39,7 +39,9 @@ toolscour/
 │   ├── taxonomy_ai.py             # 10-domain AI taxonomy, accelerators, quantization, license intel
 │   ├── harvest_ai_tools.py        # Multi-source harvester (GH GraphQL + HF Hub), >=500★ dedupe
 │   ├── shard_builder.py           # Tier 1 packed index + Tier 2 domain shards
-│   └── generate_stacks.py         # Synergetic AI stack blueprint generator
+│   ├── generate_stacks.py         # Synergetic AI stack blueprint generator
+│   ├── validate_corpus.py         # Quality gate: schema, enrichment, dedupe, placeholder intel
+│   └── test_pipeline.py           # Unit tests (stdlib unittest, no network)
 ├── web/
 │   ├── public/
 │   │   ├── catalog-packed.json    # Tier 1 dictionary-encoded index (sub-5ms search)
@@ -78,21 +80,29 @@ Fetch from any origin — GitHub Pages serves them with permissive static hostin
 ```bash
 # 1. Harvest live data (requires GITHUB_TOKEN / GH_TOKEN env var)
 python3 pipeline/harvest_ai_tools.py --pages 3
+#    Targeted passes (same quality gates as the daily run):
+python3 pipeline/harvest_ai_tools.py --skills            # Agent Skill Packs, each verified for a SKILL.md
+python3 pipeline/harvest_ai_tools.py --extended          # newer-ecosystem topic slices (coding agents, gateways, multimodal…)
+python3 pipeline/harvest_ai_tools.py --verify-skills     # re-check SKILL.md for every existing skill pack (no search)
 
-# 2. Pack the two-tier index
+# 2. Quality gate + tests (fails on any ERROR; --strict also fails on warnings)
+python3 -m unittest discover -s pipeline -p "test_*.py"
+python3 pipeline/validate_corpus.py --report
+
+# 3. Pack the two-tier index
 python3 pipeline/shard_builder.py
 
-# 3. Generate stack blueprints
+# 4. Generate stack blueprints
 python3 pipeline/generate_stacks.py
 
-# 4. Run the frontend
+# 5. Run the frontend
 cd web
 npm install
 npm run dev        # dev server on :5173
 npm run build      # production bundle -> web/dist
 ```
 
-The corpus (10,635 tools) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow refreshes the data on every push and every Monday at 02:00 UTC.
+The corpus (12,455 tools, 669 verified skill packs) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow refreshes the data on every push and every Monday at 02:00 UTC.
 
 ---
 
@@ -113,7 +123,7 @@ The corpus (10,635 tools) is committed (`web/public/`), so the frontend runs wit
 
 ## ⚙️ Metadata Schema (per record)
 
-Each tool ships with: `artifact` (10 classes incl. **Agent Skill Pack**), `domain`, `subsystem`, `accelerators[]`, `quantization[]`, `weights_available`, `primitives[]`, `compatibility[]`, `usecases[]`, `license_intel {tier, commercial, risk}`, `maturity`, `pushed_day` (freshness), `is_skill` flag, `beginner_intel {what_it_does, why_it_matters, when_to_use, alternatives, key_superpowers}`, and a `quickstart_code` snippet.
+Each tool ships with: `artifact` (10 classes incl. **Agent Skill Pack**), `domain`, `subsystem`, `accelerators[]`, `quantization[]`, `weights_available`, `primitives[]`, `compatibility[]`, `usecases[]`, `license_intel {tier, commercial, risk}`, `maturity`, `pushed_day` (freshness), `is_skill` flag, `skill_verified` (SKILL.md found in the repo tree), `beginner_intel {what_it_does, why_it_matters, when_to_use, alternatives, key_superpowers}`, and a `quickstart_code` snippet.
 
 ---
 

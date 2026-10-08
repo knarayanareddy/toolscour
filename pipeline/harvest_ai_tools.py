@@ -35,7 +35,7 @@ import urllib.error
 from typing import Any, Dict, List, Optional
 
 sys.path.append(os.path.dirname(__file__))
-from taxonomy_ai import enrich_repository_record
+from taxonomy_ai import classify_artifact, enrich_repository_record
 
 MIN_STARS = 500  # Blueprint §3: strict minimum stars threshold
 
@@ -81,6 +81,63 @@ AI_TOPIC_QUERIES = [
     "topic:cuda",
 ]
 
+# Newer ecosystems not covered by AI_TOPIC_QUERIES (coding agents, gateways,
+# multimodal, edge). Duplicates are harmless: merge is idempotent by repo id.
+AI_TOPIC_QUERIES_EXTENDED = [
+    "topic:coding-agent",
+    "topic:ai-coding-assistant",
+    "topic:claude-code",
+    "topic:mcp-server",
+    "topic:llm-gateway",
+    "topic:ai-gateway",
+    "topic:llm-evaluation",
+    "topic:llm-observability",
+    "topic:guardrails",
+    "topic:prompt-engineering",
+    "topic:voice-ai",
+    "topic:voice-cloning",
+    "topic:open-webui",
+    "topic:ollama",
+    "topic:llama-cpp",
+    "topic:vllm",
+    "topic:comfyui",
+    "topic:whisper",
+    "topic:graphrag",
+    "topic:reranker",
+    "topic:document-ai",
+    "topic:ocr",
+    "topic:multimodal",
+    "topic:vision-language-model",
+    "topic:computer-use",
+    "topic:browser-agent",
+    "topic:deep-research",
+    "topic:world-models",
+    "topic:vision-language-action",
+    "topic:tinyml",
+    "topic:webgpu",
+    "topic:mlx",
+    "topic:onnxruntime",
+    "topic:llm-agents",
+]
+
+# Agent Skill Packs (SKILL.md collections, agentskills.io standard).
+# Dedicated qualifiers pull in skill repos whose topics are missing or generic.
+SKILL_QUERIES = [
+    "topic:agent-skills",
+    "topic:agentskills",
+    "topic:claude-skills",
+    "topic:claude-code-skills",
+    "topic:codex-skills",
+    "topic:anthropic-skills",
+    "topic:gemini-skills",
+    "topic:skills stars:>=500 skill",
+    '"SKILL.md" in:readme',
+    '"agent skills" in:readme',
+    '"agent skills" in:description',
+    '"skills for Claude Code" in:description',
+    '"claude skills" in:description',
+]
+
 # Micro-star slice windows (Blueprint §3 acquisition agents)
 STAR_WINDOWS = [
     "stars:>30000",
@@ -110,6 +167,7 @@ query($queryString: String!, $cursor: String) {
         licenseInfo { spdxId name }
         repositoryTopics(first: 8) { nodes { topic { name } } }
         pushedAt
+        isArchived
       }
     }
   }
@@ -139,6 +197,9 @@ def graphql_request(query: str, variables: Dict[str, Any], token: str) -> Dict[s
 def parse_node(node: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     if not node or not node.get("databaseId"):
         return None
+    if node.get("isArchived"):
+        # Archived repos no longer receive fixes; don't surface them as live tools.
+        return None
     topics = [t["topic"]["name"] for t in node.get("repositoryTopics", {}).get("nodes", []) if t.get("topic")]
     lic = node.get("licenseInfo") or {}
     raw = {
@@ -156,12 +217,13 @@ def parse_node(node: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     return enrich_repository_record(raw)
 
 
-def harvest_graphql(token: str, pages_per_query: int = 3, queries: Optional[List[str]] = None) -> Dict[int, Dict]:
-    """Runs topic slices + star windows through GitHub GraphQL search."""
+def harvest_graphql(token: str, pages_per_query: int = 3, queries: Optional[List[str]] = None,
+                    include_windows: bool = True) -> Dict[int, Dict]:
+    """Runs topic slices (+ optional star windows) through GitHub GraphQL search."""
     harvested: Dict[int, Dict] = {}
     # Server-side stars floor keeps pages dense with qualifying repos
-    topic_queries = [f"{q} stars:>=500" for q in (queries or AI_TOPIC_QUERIES)]
-    windows = [f"{w} sort:stars-desc" for w in STAR_WINDOWS]
+    topic_queries = [q if "stars:" in q else f"{q} stars:>=500" for q in (queries or AI_TOPIC_QUERIES)]
+    windows = [f"{w} sort:stars-desc" for w in STAR_WINDOWS] if include_windows else []
     all_queries = topic_queries + windows
 
     for i, q in enumerate(all_queries, 1):
@@ -191,6 +253,67 @@ def harvest_graphql(token: str, pages_per_query: int = 3, queries: Optional[List
     return harvested
 
 
+def repo_ships_skill_md(owner: str, name: str, token: str) -> Optional[bool]:
+    """
+    Ground-truth check for Agent Skill Packs: does the default branch contain a
+    SKILL.md file anywhere in its tree (agentskills.io layout)?
+    Returns True/False, or None when the tree cannot be read (rate limit, network).
+    """
+    url = f"https://api.github.com/repos/{owner}/{name}/git/trees/HEAD?recursive=1"
+    req = urllib.request.Request(url, headers={
+        "Authorization": f"Bearer {token}",
+        "User-Agent": "AIToolScour/1.0",
+        "Accept": "application/vnd.github+json",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            tree = json.loads(resp.read().decode("utf-8")).get("tree", [])
+    except Exception:
+        return None
+    return any(e.get("path", "").lower().endswith("skill.md") and e.get("type") == "blob" for e in tree)
+
+
+def verify_skill_flags(records: List[Dict[str, Any]], token: str,
+                       prior_by_id: Optional[Dict[str, Dict[str, Any]]] = None) -> None:
+    """
+    Applies the SKILL.md ground-truth check to every skill-pack candidate, in place.
+
+    - `skill_verified: True`  -> repo tree contains a SKILL.md; artifact stays "Agent Skill Pack".
+    - `skill_verified: False` -> no SKILL.md; artifact is reclassified without the skill rule.
+    - `skill_verified: None`  -> tree unreadable; reclassified now, retried on the next run.
+
+    A prior verdict stored on the existing corpus is reused, so the daily cron only
+    spends API calls on candidates it has never checked.
+    """
+    if not token:
+        # Without auth every tree read would fail and wrongly demote real skill packs.
+        print("⚠️  No GitHub token: SKILL.md verification skipped; existing verdicts kept.")
+        return
+    prior_by_id = prior_by_id or {}
+    checked = reused = 0
+    for r in records:
+        prior = prior_by_id.get(str(r.get("id")), {})
+        if prior.get("skill_verified") is True:
+            # A SKILL.md was seen in the repo tree. A re-fetch can truncate topics (we only
+            # request the first 8), so a verified verdict outlives a non-skill classification.
+            r["skill_verified"] = True
+            if r.get("artifact") != "Agent Skill Pack":
+                r["artifact"] = "Agent Skill Pack"
+            reused += 1
+            continue
+        if r.get("artifact") != "Agent Skill Pack":
+            continue
+        verdict = repo_ships_skill_md(r.get("owner", ""), r.get("name", ""), token)
+        checked += 1
+        r["skill_verified"] = verdict
+        if verdict is not True:
+            r["artifact"] = classify_artifact(r.get("name", ""), r.get("description", ""),
+                                              r.get("topics") or [], allow_skill=False)
+        time.sleep(0.1)
+    confirmed = sum(1 for r in records if r.get("skill_verified") is True)
+    print(f"🧩 SKILL.md verification: {checked} checked, {reused} reused, {confirmed} confirmed skill packs")
+
+
 def harvest_huggingface(limit: int = 300) -> List[Dict[str, Any]]:
     """
     Best-effort Hugging Face Hub harvest: surfaces Hub-native tooling repos
@@ -210,7 +333,7 @@ def harvest_huggingface(limit: int = 300) -> List[Dict[str, Any]]:
                 continue
             pipeline_tag = m.get("pipeline_tag") or ""
             tags = m.get("tags") or []
-            results.append({
+            raw = {
                 "id": f"hf-{model_id.replace('/', '--')}",
                 "name": model_id.split("/")[-1],
                 "owner": model_id.split("/")[0],
@@ -223,11 +346,63 @@ def harvest_huggingface(limit: int = 300) -> List[Dict[str, Any]]:
                 "pushed_at": m.get("lastModified"),
                 "source": "huggingface",
                 "url": f"https://huggingface.co/{model_id}",
-            })
+            }
+            results.append(enrich_huggingface_record(raw))
         print(f"🤗 Hugging Face Hub: {len(results)} qualifying model artifacts")
     except Exception as exc:
         print(f"🤗 Hugging Face Hub unavailable, skipping: {exc}")
     return results
+
+
+def enrich_huggingface_record(raw: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Runs a Hub-native record through the same taxonomy enrichment as GitHub repos,
+    keeping its Hub URL and a Hub-appropriate quickstart (not a GitHub clone).
+    """
+    model_id = f"{raw['owner']}/{raw['name']}"
+    enriched = enrich_repository_record({
+        **raw,
+        "quickstart_code": f'pip install -U huggingface_hub\nhf download {model_id}',
+    })
+    enriched["source"] = "huggingface"
+    enriched["url"] = raw["url"]
+    return enriched
+
+
+def ensure_enriched(record: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Keeps Hub records on the current enrichment rules: backfills legacy records harvested
+    before enrichment existed, and re-derives the rest from their stored fields.
+    GitHub records are returned untouched.
+    """
+    if record.get("source") != "huggingface":
+        return record
+    raw = {k: v for k, v in record.items() if k in (
+        "id", "name", "owner", "description", "stars", "forks", "language",
+        "license", "topics", "pushed_at", "source", "url")}
+    return enrich_huggingface_record(raw)
+
+
+# Relevance gate for NEW additions only. Broad topic slices (webgpu, mlx, onnx...)
+# surface general-purpose repos (game engines, Android apps); a record must mention an
+# AI concept in its name, description or topics and carry a real description to be added.
+AI_RELEVANCE = re.compile(
+    r"\b(ai|llms?|gpt|chatgpt|openai|anthropic|claude|gemini|deepseek|qwen|llama|mistral|"
+    r"agents?|agentic|mcp|model context protocol|language models?|diffusion|comfyui|neural|"
+    r"transformers?|embeddings?|vector|rag|graphrag|retrieval|inference|quantiz\w*|gguf|lora|"
+    r"fine-?tun\w*|rlhf|whisper|tts|speech|text-to-\w+|vision-language|multimodal|multi-modal|"
+    r"machine learning|deep learning|ml|mlx|pytorch|onnx|copilot|coding assistant|computer[- ]use|"
+    r"gui agent|world models?|ocr|reranker|genai|generative|foundation models?|voice|llm\w*)\b",
+    re.IGNORECASE,
+)
+
+
+def passes_new_record_gate(record: Dict[str, Any]) -> bool:
+    """True when a not-yet-catalogued repo is AI-relevant and has a real description."""
+    if not (record.get("description") or "").strip():
+        return False
+    text = f"{record.get('name', '')} {record.get('description', '')} {' '.join(record.get('topics') or [])}"
+    return bool(AI_RELEVANCE.search(text))
 
 
 def normalize_and_dedupe(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -268,29 +443,81 @@ def main():
     parser.add_argument("--pages", type=int, default=3, help="pages per GraphQL query")
     parser.add_argument("--topics", type=str, default="", help="comma-separated override of topic queries")
     parser.add_argument("--no-hf", action="store_true", help="skip Hugging Face Hub harvest")
+    parser.add_argument("--skills", action="store_true",
+                        help="targeted pass: Agent Skill Pack (SKILL.md) discovery only, no star windows or HF")
+    parser.add_argument("--extended", action="store_true",
+                        help="add the newer-ecosystem topic slices (AI_TOPIC_QUERIES_EXTENDED)")
+    parser.add_argument("--verify-skills", action="store_true",
+                        help="maintenance: re-verify SKILL.md for all existing skill packs (no search)")
     parser.add_argument("--output", type=str, default="web/public/repos.json")
     args = parser.parse_args()
 
     token = get_token()
     topics = [t.strip() for t in args.topics.split(",") if t.strip()] or None
+    if args.skills:
+        topics = SKILL_QUERIES
+    elif args.extended:
+        topics = (topics or AI_TOPIC_QUERIES) + AI_TOPIC_QUERIES_EXTENDED
 
     print("🚀 AI ToolScour — Multi-Source Harvest (GitHub GraphQL + HF Hub)")
     print(f"   Minimum stars threshold: {MIN_STARS}")
 
     records: List[Dict[str, Any]] = []
-    if token:
-        gh_records = harvest_graphql(token, pages_per_query=args.pages, queries=topics)
+    if args.verify_skills:
+        pass
+    elif token:
+        gh_records = harvest_graphql(token, pages_per_query=args.pages, queries=topics,
+                                     include_windows=not args.skills)
         records.extend(gh_records.values())
         print(f"🐙 GitHub GraphQL: {len(gh_records)} repos >= {MIN_STARS} stars")
     else:
         print("⚠️  No GITHUB_TOKEN/GH_TOKEN found — skipping GitHub GraphQL harvest.")
 
-    if not args.no_hf:
+    if not args.no_hf and not args.skills and not args.verify_skills:
         records.extend(harvest_huggingface())
 
-    deduped = normalize_and_dedupe(records)
-    merged = merge_with_existing(deduped, args.output)
+    existing_by_id: Dict[str, Dict[str, Any]] = {}
+    if os.path.exists(args.output):
+        with open(args.output, "r", encoding="utf-8") as f:
+            existing_by_id = {str(r["id"]): r for r in json.load(f)}
 
+    if args.verify_skills:
+        # Maintenance pass: re-verify every skill pack already in the corpus (no search).
+        records = [dict(r) for r in existing_by_id.values()]
+        if not token:
+            raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --verify-skills.")
+        verify_skill_flags(records, token, prior_by_id={})
+        merged = sorted(records, key=lambda x: x.get("stars", 0), reverse=True)
+        records = []
+    else:
+        if args.skills:
+            # Search hits that merely mention "skills" are not skill packs: keep only
+            # classifier-confirmed candidates, then require a real SKILL.md in the tree.
+            before = len(records)
+            records = [r for r in records if r.get("artifact") == "Agent Skill Pack"]
+            print(f"🧩 Skill-pack filter: kept {len(records)} of {before} search hits")
+            verify_skill_flags(records, token, prior_by_id=existing_by_id)
+            records = [r for r in records if r.get("skill_verified") is True]
+
+        deduped = normalize_and_dedupe(records)
+        # Gate only brand-new repos; anything already catalogued keeps its existing entry.
+        known = set(existing_by_id)
+        fresh_rejected = 0
+        gated = []
+        for r in deduped:
+            if str(r.get("id")) in known:
+                gated.append(r)
+            elif r.get("skill_verified") is True or passes_new_record_gate(r):
+                gated.append(r)
+            else:
+                fresh_rejected += 1
+        print(f"🛡️  New-record gate: rejected {fresh_rejected} non-AI or undescribed repos")
+        merged = merge_with_existing(gated, args.output)
+        if not args.skills:
+            # Default harvest: unverified skill candidates are reclassified, never skipped.
+            verify_skill_flags(merged, token, prior_by_id=existing_by_id)
+
+    merged = [ensure_enriched(r) for r in merged]
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(merged, f, separators=(",", ":"))

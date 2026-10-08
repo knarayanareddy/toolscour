@@ -575,11 +575,15 @@ def detect_quantization(corpus: str) -> List[str]:
     return match_lexicon_rules(corpus, QUANTIZATION_RULES, max_matches=6)
 
 
-def classify_artifact(repo_name: str, description: str, topics: List[str]) -> str:
-    """Classifies repository artifact type."""
+def classify_artifact(repo_name: str, description: str, topics: List[str], allow_skill: bool = True) -> str:
+    """Classifies repository artifact type.
+
+    allow_skill=False is used once a skill-pack candidate fails SKILL.md verification,
+    so it falls back to its real artifact class instead of being labelled a skill pack.
+    """
     full_text = f"{repo_name} {description} {' '.join(topics)}".lower()
 
-    if is_skill_pack(repo_name, description, topics):
+    if allow_skill and is_skill_pack(repo_name, description, topics):
         return "Agent Skill Pack"
     if re.search(r"^awesome-|-awesome$", repo_name, re.IGNORECASE) or "awesome" in topics:
         return "Curated List / Docs"
@@ -618,6 +622,10 @@ SKILL_TEXT_PATTERNS = [
     re.compile(r"\bnpx\s+skills\b", re.IGNORECASE),
     re.compile(r"\bagentskills\.io\b", re.IGNORECASE),
     re.compile(r"\bplugin\s+marketplace\b", re.IGNORECASE),
+    # "a skill file for ...", "HTML-native design skill for Claude Code", "skills for AI agents"
+    re.compile(r"\bskill\s+file\b", re.IGNORECASE),
+    re.compile(r"\bskills?\s+for\s+(claude|codex|cursor|gemini|copilot|ai\s+agents?|coding\s+agents?)\b", re.IGNORECASE),
+    re.compile(r"\b(claude|codex|cursor)\s+(code\s+)?skills?\b", re.IGNORECASE),
 ]
 SKILL_PLATFORM_HINT = re.compile(
     r"\b(claude|anthropic|codex|cursor|gemini-cli|copilot|windsurf|opencode|goose)\b", re.IGNORECASE
@@ -863,13 +871,16 @@ def enrich_repository_record(raw_repo: Dict[str, Any]) -> Dict[str, Any]:
         "quickstart_code": raw_repo.get("quickstart_code") or f"git clone https://github.com/{owner}/{name}.git",
         "keywords": keywords,
         "topics": topics,
-        "url": f"https://github.com/{owner}/{name}" if owner else f"https://github.com/{name}",
+        # Respect a source-supplied URL (e.g. Hugging Face model pages); GitHub is the default.
+        "url": raw_repo.get("url") or (f"https://github.com/{owner}/{name}" if owner else f"https://github.com/{name}"),
         "pushed_at": pushed_at,
     }
 
     # Curated landmark overrides (flagship tools with deep hand-written intel)
+    # Landmarks are keyed by GitHub owner/name, so they must never leak onto a Hub record
+    # that merely shares a name (e.g. huggingface.co/ggerganov/whisper.cpp vs ggml-org/whisper.cpp).
     landmark = LANDMARK_INTEL.get(f"{(owner or '').lower()}/{(name or '').lower()}")
-    if landmark:
+    if landmark and "github.com/" in record["url"]:
         for field, value in landmark.items():
             record[field] = value
         # Recompute primitives against the (possibly overridden) corpus
