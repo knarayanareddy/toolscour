@@ -913,6 +913,157 @@ def run_alternatives(output: str) -> None:
     print(f"🔗 Alternatives: {before} generic lists found, {changed} replaced with catalog neighbours -> {output}")
 
 
+_README_FILES = ["README.md", "readme.md", "Readme.md", "README.rst", "README"]
+
+
+def first_prose_paragraph(markdown: str, min_len: int = 60, limit: int = 320) -> Optional[str]:
+    """
+    First real prose paragraph of a README: skips headings, badges, HTML, tables, code, lists,
+    quotes and rules; strips markdown links and emphasis; cut at a sentence end when possible.
+    """
+    para: List[str] = []
+    in_code = False
+    for raw in markdown.splitlines():
+        line = raw.strip()
+        if line.startswith("```") or line.startswith("~~~"):
+            in_code = not in_code
+            if para:
+                break
+            continue
+        if in_code:
+            continue
+        skip = (not line or line.startswith(("#", "![", "[![", "<", "|", "---", "===", "* ", "- ",
+                                            "+ ", "> ", "1.", "2.", "3.", "]:", "{%"))
+                or re.search(r'\b(src|href|alt|align|width|height)=["\']|</?\w+[^>]*>|https?://\S+\.(png|svg|jpg)', line))
+        if skip:
+            if para:
+                break
+            continue
+        line = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", line)          # images
+        line = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", line)     # links
+        line = re.sub(r"<[^>]+>", "", line)                            # inline html
+        line = re.sub(r"[*_`]+", "", line).strip()
+        if line:
+            para.append(line)
+    text = " ".join(para).strip()
+    if len(text) < min_len:
+        return None
+    if len(text) > limit:
+        cut = text[:limit]
+        end = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
+        text = cut[:end + 1] if end >= min_len else cut.rsplit(" ", 1)[0].rstrip(".,;:") + "…"
+    return text
+
+
+def refresh_readme_texts(pairs: List[Tuple[str, str]], token: str) -> Dict[Tuple[str, str], Optional[str]]:
+    """Reads README text for up to 50 repos per GraphQL request (first README filename that exists)."""
+    aliases = []
+    for i, (owner, name) in enumerate(pairs):
+        fields = " ".join(f'f{k}: object(expression: "HEAD:{fn}") {{ ... on Blob {{ text }} }}'
+                          for k, fn in enumerate(_README_FILES))
+        aliases.append(f"r{i}: repository(owner: {json.dumps(owner)}, name: {json.dumps(name)}) {{ {fields} }}")
+    query = "query {\n" + "\n".join(aliases) + "\n}"
+    data = None
+    for attempt in range(3):
+        try:
+            data = graphql_request(query, {}, token).get("data") or {}
+            break
+        except Exception as exc:
+            print(f"  readme batch retry {attempt + 1}: {exc}")
+            time.sleep(3 * (attempt + 1))
+    if data is None:
+        return {p: None for p in pairs}
+    out: Dict[Tuple[str, str], Optional[str]] = {}
+    for i, pair in enumerate(pairs):
+        node = data.get(f"r{i}") or {}
+        text = None
+        for k in range(len(_README_FILES)):
+            blob = node.get(f"f{k}")
+            if blob and blob.get("text"):
+                text = blob["text"]
+                break
+        out[pair] = text
+    return out
+
+
+CURATED_INTEL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "curated_intel.json")
+
+
+def load_curated_intel() -> Dict[str, Dict[str, Any]]:
+    """Hand-written intel keyed by lower-cased owner/name. Takes precedence over generated text."""
+    if not os.path.exists(CURATED_INTEL_FILE):
+        return {}
+    with open(CURATED_INTEL_FILE, "r", encoding="utf-8") as f:
+        return {k.lower(): v for k, v in json.load(f).items() if not k.startswith("_")}
+
+
+def run_curated_intel(output: str) -> None:
+    """Applies hand-written intel to matching records and marks them intel_source == 'curated'."""
+    curated = load_curated_intel()
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    applied = 0
+    for r in records:
+        entry = curated.get(f"{r.get('owner', '')}/{r.get('name', '')}".lower())
+        if not entry or not isinstance(r.get("beginner_intel"), dict):
+            continue
+        for field in ("what_it_does", "why_it_matters", "when_to_use", "alternatives", "key_superpowers"):
+            if field in entry:
+                r["beginner_intel"][field] = entry[field]
+        r["beginner_intel"]["intel_source"] = "curated"
+        applied += 1
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(records, f, separators=(",", ":"))
+    print(f"✍️  Curated intel: applied to {applied} of {len(curated)} entries -> {output}")
+
+
+def run_readme_intel(output: str, token: Optional[str]) -> None:
+    """
+    Replaces generated what_it_does with the repo's own first README paragraph. Hand-written
+    intel (LANDMARK_INTEL and records marked intel_source == 'curated') is never touched.
+    Every record gets beginner_intel.intel_source: 'curated' | 'readme' | 'generated'.
+    Repos with no usable paragraph keep their generated text.
+    """
+    if not token:
+        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --readme-intel.")
+    from taxonomy_ai import LANDMARK_INTEL  # hand-written landmark intel
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    targets = []
+    for r in records:
+        intel = r.get("beginner_intel")
+        if not isinstance(intel, dict):
+            continue
+        key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+        if key in LANDMARK_INTEL or key in load_curated_intel() or intel.get("intel_source") == "curated":
+            intel["intel_source"] = "curated"
+            continue
+        if r.get("source") == "huggingface":  # no GitHub README to read
+            intel["intel_source"] = "generated"
+            continue
+        targets.append(r)
+    pairs = [(r["owner"], r["name"]) for r in targets]
+    print(f"📖 README intel: reading {len(pairs)} repos")
+    texts: Dict[Tuple[str, str], Optional[str]] = {}
+    for i in range(0, len(pairs), 50):
+        texts.update(refresh_readme_texts(pairs[i:i + 50], token))
+        if (i // 50) % 20 == 0:
+            print(f"   {min(i + 50, len(pairs))}/{len(pairs)}")
+    replaced = 0
+    for r in targets:
+        intel = r["beginner_intel"]
+        para = first_prose_paragraph(texts.get((r["owner"], r["name"])) or "")
+        if para:
+            intel["what_it_does"] = para
+            intel["intel_source"] = "readme"
+            replaced += 1
+        else:
+            intel["intel_source"] = "generated"
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(records, f, separators=(",", ":"))
+    print(f"📖 README intel: {replaced} of {len(targets)} what_it_does replaced from the README -> {output}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="AI ToolScour multi-source harvester")
     parser.add_argument("--pages", type=int, default=3, help="pages per GraphQL query")
@@ -936,6 +1087,10 @@ def main():
                         help="targeted add: owner/name per line from this file (named AI repos search missed)")
     parser.add_argument("--awesome", type=str, default="",
                         help="discovery: GitHub repos linked from the awesome lists in this file (owner/name per line)")
+    parser.add_argument("--curated-intel", action="store_true",
+                        help="apply hand-written intel from pipeline/curated_intel.json")
+    parser.add_argument("--readme-intel", action="store_true",
+                        help="maintenance: replace generated what_it_does with the repo's first README paragraph")
     parser.add_argument("--alternatives", action="store_true",
                         help="maintenance: replace generic 'alternatives' with the most similar catalog repos")
     parser.add_argument("--output", type=str, default="web/public/repos.json")
@@ -953,6 +1108,12 @@ def main():
         return
     if args.alternatives:
         run_alternatives(args.output)
+        return
+    if args.readme_intel:
+        run_readme_intel(args.output, token)
+        return
+    if args.curated_intel:
+        run_curated_intel(args.output)
         return
     if args.refresh:
         run_refresh(args.output, token)

@@ -1,0 +1,289 @@
+{
+  "tensorflow/tensorflow": {
+    "what_it_does": "TensorFlow is an open-source machine learning framework from Google for building, training and deploying models, from research prototypes to production systems on servers, mobile and the browser.",
+    "why_it_matters": "It is one of the two foundational deep-learning frameworks, with a large ecosystem (Keras, TFLite, TF Serving) that many production ML systems still run on.",
+    "when_to_use": "When you are deploying to mobile or edge through TFLite, or maintaining an existing TensorFlow or Keras codebase.",
+    "alternatives": ["PyTorch", "JAX", "Keras", "ONNX Runtime"],
+    "key_superpowers": ["Keras high-level API", "TensorFlow Lite for mobile and edge", "TensorFlow Serving for production"]
+  },
+  "ollama/ollama": {
+    "what_it_does": "Ollama runs open-weight language models on your own machine. You pull a model with one command and it serves a local API that other tools can call.",
+    "why_it_matters": "It made local model serving a one-command task, and many agent frameworks and chat apps now default to talking to an Ollama endpoint.",
+    "when_to_use": "When you want a private, local model endpoint with minimal setup, for chat, coding assistants or testing an agent without a cloud API key.",
+    "alternatives": ["LM Studio", "llama.cpp", "vLLM", "LocalAI"],
+    "key_superpowers": ["One-command model pulls", "Local OpenAI-compatible API", "Runs on macOS, Linux and Windows"]
+  },
+  "langchain-ai/langchain": {
+    "what_it_does": "LangChain is a framework for building applications on top of language models. It provides components for prompts, model calls, retrieval, tools and chains of steps.",
+    "why_it_matters": "It is one of the most widely used LLM application frameworks, with integrations for most model providers and vector stores.",
+    "when_to_use": "When you want ready-made integrations and standard building blocks for a retrieval or tool-using LLM app, and are happy with a larger abstraction layer.",
+    "alternatives": ["LlamaIndex", "Haystack", "DSPy", "LangGraph"],
+    "key_superpowers": ["Hundreds of provider and vector store integrations", "Composable chains and retrievers", "Pairs with LangGraph for stateful agents"]
+  },
+  "langgenius/dify": {
+    "what_it_does": "Dify is an open-source platform for building LLM apps visually. It combines a workflow editor, a RAG pipeline, agents and model management in one self-hostable app.",
+    "why_it_matters": "It lets teams prototype and operate LLM apps without writing orchestration code, and it exposes apps as APIs.",
+    "when_to_use": "When non-engineers need to build or edit LLM workflows, or you want a self-hosted alternative to hosted app builders.",
+    "alternatives": ["Flowise", "n8n", "Langflow", "RAGFlow"],
+    "key_superpowers": ["Visual workflow editor", "Built-in RAG pipeline", "Publishes apps as APIs"]
+  },
+  "langflow-ai/langflow": {
+    "what_it_does": "Langflow is a visual builder for LLM agents and workflows. You connect components on a canvas, then run the flow or export it as an API.",
+    "why_it_matters": "It makes agent pipelines easy to inspect and iterate on visually, and flows can be served as endpoints.",
+    "when_to_use": "When you want to design and debug an agent or RAG flow on a canvas before moving it into code.",
+    "alternatives": ["Dify", "Flowise", "n8n", "LangGraph"],
+    "key_superpowers": ["Drag-and-drop component canvas", "Flows served as APIs", "Works with many model providers"]
+  },
+  "open-webui/open-webui": {
+    "what_it_does": "Open WebUI is a self-hosted chat interface for LLMs. It works with local models through Ollama and with OpenAI-compatible APIs, and adds features such as RAG over documents.",
+    "why_it_matters": "It is a widely used front end that gives a ChatGPT-style experience over local or self-hosted models.",
+    "when_to_use": "When you want a multi-user, self-hosted chat UI in front of Ollama or other OpenAI-compatible endpoints.",
+    "alternatives": ["LibreChat", "LobeChat", "AnythingLLM", "SillyTavern"],
+    "key_superpowers": ["Works with Ollama and OpenAI-compatible APIs", "Document RAG built in", "Multi-user accounts"]
+  },
+  "comfy-org/comfyui": {
+    "what_it_does": "ComfyUI is a node-based interface and backend for diffusion models. You build image and video generation pipelines as graphs of nodes.",
+    "why_it_matters": "It exposes the internals of Stable Diffusion-style pipelines, so advanced users can build and share complex workflows.",
+    "when_to_use": "When you need fine control over an image or video generation pipeline, or want to reuse shared node workflows.",
+    "alternatives": ["AUTOMATIC1111 Stable Diffusion WebUI", "InvokeAI", "Fooocus", "Diffusers"],
+    "key_superpowers": ["Graph-based workflows", "Large custom node ecosystem", "Runs image and video models"]
+  },
+  "automatic1111/stable-diffusion-webui": {
+    "what_it_does": "Stable Diffusion web UI is a browser interface for running Stable Diffusion image generation locally, with text-to-image, image-to-image, inpainting and extensions.",
+    "why_it_matters": "It was one of the first widely used local image generation front ends, and it has a large extension library.",
+    "when_to_use": "When you want a familiar form-based UI for local Stable Diffusion work and its extensions.",
+    "alternatives": ["ComfyUI", "InvokeAI", "Fooocus", "Diffusers"],
+    "key_superpowers": ["Text-to-image and image-to-image", "Inpainting and upscaling", "Large extension ecosystem"]
+  },
+  "huggingface/transformers": {
+    "what_it_does": "Transformers is Hugging Face's library of pretrained model architectures for text, vision, audio and multimodal tasks, with a common API for loading, fine-tuning and running them.",
+    "why_it_matters": "It is the standard way to load open models from the Hugging Face Hub and is a dependency of much of the open-model ecosystem.",
+    "when_to_use": "When you want to load, fine-tune or run an open model from the Hub using PyTorch, JAX or TensorFlow.",
+    "alternatives": ["llama.cpp", "vLLM", "PyTorch", "Diffusers"],
+    "key_superpowers": ["Unified API across model families", "Tens of thousands of Hub checkpoints", "Training and inference in one library"]
+  },
+  "vllm-project/vllm": {
+    "what_it_does": "vLLM is a high-throughput inference and serving engine for large language models. It uses paged attention and continuous batching to serve many requests efficiently on GPUs.",
+    "why_it_matters": "It is one of the standard choices for production LLM serving, with an OpenAI-compatible server.",
+    "when_to_use": "When you serve an open model to many concurrent users on GPU hardware and throughput matters.",
+    "alternatives": ["SGLang", "llama.cpp", "TensorRT-LLM", "Ollama"],
+    "key_superpowers": ["Paged attention for memory efficiency", "Continuous batching", "OpenAI-compatible server"]
+  },
+  "anthropics/claude-code": {
+    "what_it_does": "Claude Code is Anthropic's agentic coding tool for the terminal. It reads your codebase, edits files and runs commands on your behalf, with your approval for actions.",
+    "why_it_matters": "It is a widely used example of a terminal coding agent that works across a whole repository, not just single snippets.",
+    "when_to_use": "When you want an AI agent to make multi-file changes, run tests and work through a task in your existing repository.",
+    "alternatives": ["OpenAI Codex CLI", "Aider", "Gemini CLI", "OpenHands"],
+    "key_superpowers": ["Works across the whole repository", "Runs shell commands with permission prompts", "Terminal-native workflow"]
+  },
+  "openai/codex": {
+    "what_it_does": "Codex CLI is OpenAI's lightweight coding agent that runs in your terminal. It reads and edits code in your project and runs commands, with configurable approval modes.",
+    "why_it_matters": "It brings a coding agent into the terminal in a small open-source package.",
+    "when_to_use": "When you want a terminal coding agent with a lightweight install and configurable approval levels.",
+    "alternatives": ["Claude Code", "Aider", "Gemini CLI", "OpenHands"],
+    "key_superpowers": ["Terminal-based coding agent", "Configurable approval modes", "Open-source CLI"]
+  },
+  "browser-use/browser-use": {
+    "what_it_does": "Browser Use lets an LLM agent control a web browser to complete tasks such as navigating sites, filling forms and extracting data.",
+    "why_it_matters": "It is a popular open-source layer for giving agents browser control, with a model-agnostic design.",
+    "when_to_use": "When an agent must act on websites that have no API, for example to fill forms or collect data from pages.",
+    "alternatives": ["Stagehand", "Playwright MCP", "Skyvern", "Firecrawl"],
+    "key_superpowers": ["LLM-driven browser actions", "Works with multiple model providers", "Python library and CLI"]
+  },
+  "openai/whisper": {
+    "what_it_does": "Whisper is OpenAI's open-source speech recognition model. It transcribes and translates speech in many languages and runs locally.",
+    "why_it_matters": "It set a strong open baseline for multilingual speech recognition and spawned many faster derivatives.",
+    "when_to_use": "When you need offline transcription or multilingual speech-to-text without a cloud API.",
+    "alternatives": ["whisper.cpp", "faster-whisper", "WhisperX", "Vosk"],
+    "key_superpowers": ["Multilingual transcription and translation", "Runs offline", "Several model sizes"]
+  },
+  "google-gemini/gemini-cli": {
+    "what_it_does": "Gemini CLI is an open-source AI agent for the terminal from Google that uses Gemini models to help with coding and other tasks in your shell.",
+    "why_it_matters": "It is a widely used open-source terminal agent backed by a hosted frontier model.",
+    "when_to_use": "When you want a terminal agent for code and file tasks using Gemini models.",
+    "alternatives": ["Claude Code", "OpenAI Codex CLI", "Aider", "OpenHands"],
+    "key_superpowers": ["Open-source terminal agent", "Runs in your shell", "Backed by Gemini models"]
+  },
+  "rasbt/llms-from-scratch": {
+    "what_it_does": "LLMs-from-scratch is Sebastian Raschka's companion code for the book of the same name. It implements a GPT-style language model step by step in PyTorch.",
+    "why_it_matters": "It is one of the most used hands-on resources for understanding how transformer LLMs are built, with runnable code for each chapter.",
+    "when_to_use": "When you want to learn how an LLM works internally by building one yourself.",
+    "alternatives": ["nanoGPT", "llm.c", "Karpathy's Zero to Hero lectures", "Hugging Face LLM Course"],
+    "key_superpowers": ["Step-by-step PyTorch implementation", "Matches the book chapters", "Runnable notebooks"]
+  },
+  "pytorch/pytorch": {
+    "what_it_does": "PyTorch is an open-source deep-learning framework with tensor computation on GPUs and automatic differentiation for building and training neural networks.",
+    "why_it_matters": "It is the most widely used framework for AI research and a common base for production model training and inference.",
+    "when_to_use": "When you are building or training neural networks, or working with most open-model code on the Hub.",
+    "alternatives": ["TensorFlow", "JAX", "MXNet", "ONNX Runtime"],
+    "key_superpowers": ["Dynamic computation graphs", "GPU-accelerated tensors", "Large research ecosystem"]
+  },
+  "infiniflow/ragflow": {
+    "what_it_does": "RAGFlow is an open-source retrieval-augmented generation engine. It parses documents with layout-aware chunking, indexes them, and answers questions with cited sources.",
+    "why_it_matters": "It packages document parsing, retrieval and citations into one deployable engine, which saves teams building RAG from scratch.",
+    "when_to_use": "When you need a self-hosted document Q&A system with citations over PDFs and office files.",
+    "alternatives": ["Dify", "AnythingLLM", "PrivateGPT", "Haystack"],
+    "key_superpowers": ["Layout-aware document parsing", "Grounded answers with citations", "Self-hosted deployment"]
+  },
+  "opencv/opencv": {
+    "what_it_does": "OpenCV is an open-source computer vision library with image processing, video analysis, camera calibration and many classical and deep-learning-based algorithms.",
+    "why_it_matters": "It is the standard library for practical computer vision work across languages and platforms.",
+    "when_to_use": "When you need image or video processing, detection pipelines or camera tools in an application.",
+    "alternatives": ["scikit-image", "Kornia", "Pillow", "Ultralytics"],
+    "key_superpowers": ["Image and video processing", "Camera calibration and tracking", "Bindings for C++, Python and Java"]
+  },
+  "modelcontextprotocol/servers": {
+    "what_it_does": "This repository holds reference Model Context Protocol (MCP) servers that give AI assistants standard access to tools and data such as files, git and search.",
+    "why_it_matters": "It is the reference set of MCP servers that shows how to expose tools to any MCP-compatible client.",
+    "when_to_use": "When you want an assistant to reach a common data source through a ready MCP server, or to learn how to write one.",
+    "alternatives": ["awesome-mcp-servers", "Composio", "Smithery", "Zapier MCP"],
+    "key_superpowers": ["Reference implementations", "Works with any MCP client", "Covers files, git and search"]
+  },
+  "paddlepaddle/paddleocr": {
+    "what_it_does": "PaddleOCR is an open-source OCR and document-parsing toolkit that extracts text, tables and layout from images and PDFs into structured output.",
+    "why_it_matters": "It is one of the strongest open OCR toolkits, with multilingual models and document-parsing pipelines.",
+    "when_to_use": "When you need to turn scanned documents or images into text or structured data, including for multilingual content.",
+    "alternatives": ["Tesseract", "docTR", "MinerU", "Surya"],
+    "key_superpowers": ["Multilingual OCR", "Table and layout extraction", "Lightweight models"]
+  },
+  "openhands/openhands": {
+    "what_it_does": "OpenHands is an open-source platform for AI software-development agents. Agents write code, run commands and browse the web inside a sandbox.",
+    "why_it_matters": "It is a widely used open platform for running autonomous coding agents with a sandboxed environment.",
+    "when_to_use": "When you want an agent to attempt development tasks in an isolated sandbox rather than in your own shell.",
+    "alternatives": ["Claude Code", "OpenAI Codex CLI", "SWE-agent", "Aider"],
+    "key_superpowers": ["Sandboxed agent runtime", "Code, shell and browser actions", "Model-agnostic"]
+  },
+  "unclecode/crawl4ai": {
+    "what_it_does": "Crawl4AI is an open-source web crawler that converts pages into clean, LLM-ready Markdown, including JavaScript-rendered pages.",
+    "why_it_matters": "It fills a common gap in RAG and agent pipelines: turning messy web pages into text that a model can use.",
+    "when_to_use": "When you need to collect web content for retrieval or agent use and want self-hosted crawling.",
+    "alternatives": ["Firecrawl", "Scrapy", "Jina Reader", "Docling"],
+    "key_superpowers": ["Clean Markdown output", "JavaScript-rendered pages", "Self-hostable"]
+  },
+  "hiyouga/llamafactory": {
+    "what_it_does": "LLaMA-Factory is a toolkit for fine-tuning more than 100 large language and vision-language models, with a web UI and support for common methods such as LoRA and QLoRA.",
+    "why_it_matters": "It makes fine-tuning many open models practical through one tool, instead of a different script per model family.",
+    "when_to_use": "When you want to fine-tune an open model on your own data without writing training code from scratch.",
+    "alternatives": ["Unsloth", "Axolotl", "TRL", "torchtune"],
+    "key_superpowers": ["Supports 100+ models", "LoRA and QLoRA", "Web UI for training"]
+  },
+  "unslothai/unsloth": {
+    "what_it_does": "Unsloth is a library and local UI for fine-tuning and running LLMs and diffusion models, with optimized kernels that reduce training memory and time.",
+    "why_it_matters": "It lowers the hardware needed for fine-tuning open models, which makes single-GPU work practical.",
+    "when_to_use": "When you fine-tune a model on limited GPU memory and want a fast, low-memory path.",
+    "alternatives": ["LLaMA-Factory", "Axolotl", "TRL", "llama.cpp"],
+    "key_superpowers": ["Lower memory fine-tuning", "Local training UI", "Export to GGUF"]
+  },
+  "nomic-ai/gpt4all": {
+    "what_it_does": "GPT4All is a desktop application and library for running open-weight language models locally on consumer hardware, with a chat interface and local document search.",
+    "why_it_matters": "It is one of the earliest and most accessible ways for non-developers to run local models.",
+    "when_to_use": "When you want a simple desktop app to chat with a local model and query your own documents without setup.",
+    "alternatives": ["LM Studio", "Ollama", "Jan", "llama.cpp"],
+    "key_superpowers": ["Desktop app with no setup", "Runs on consumer hardware", "Local document chat"]
+  },
+  "opendatalab/mineru": {
+    "what_it_does": "MinerU converts PDFs and office documents into Markdown or JSON for LLM pipelines, keeping layout, tables and formulas.",
+    "why_it_matters": "It addresses the document-parsing step that RAG and agent systems often get wrong.",
+    "when_to_use": "When you need clean structured text from complex PDFs for retrieval or model input.",
+    "alternatives": ["Docling", "Marker", "PaddleOCR", "Unstructured"],
+    "key_superpowers": ["Layout, table and formula handling", "Markdown and JSON output", "Batch processing"]
+  },
+  "dair-ai/prompt-engineering-guide": {
+    "what_it_does": "The Prompt Engineering Guide is an open collection of guides, papers summaries, lessons and notebooks on prompting, context engineering, RAG and agents.",
+    "why_it_matters": "It is one of the most referenced free learning resources on prompting techniques.",
+    "when_to_use": "When you want to learn prompting techniques or find papers and examples on a specific method.",
+    "alternatives": ["OpenAI Cookbook", "Learn Prompting", "Anthropic prompt library", "Microsoft AI Agents for Beginners"],
+    "key_superpowers": ["Covers techniques with papers", "Notebooks and lessons", "Frequently updated"]
+  },
+  "mlabonne/llm-course": {
+    "what_it_does": "LLM Course is a free course with roadmaps and Colab notebooks for learning large language models, from fundamentals to deployment.",
+    "why_it_matters": "It is a widely used structured path for people moving into LLM engineering.",
+    "when_to_use": "When you want a guided, notebook-based route into LLMs with hands-on exercises.",
+    "alternatives": ["LLMs from Scratch", "fast.ai", "Karpathy's Zero to Hero", "Hugging Face LLM Course"],
+    "key_superpowers": ["Roadmap plus notebooks", "Free and open", "Covers fine-tuning and deployment"]
+  },
+  "microsoft/ai-agents-for-beginners": {
+    "what_it_does": "AI Agents for Beginners is a Microsoft course of 18 lessons with code samples, covering how to design and build AI agents.",
+    "why_it_matters": "It is a structured free introduction to agent design from a major vendor.",
+    "when_to_use": "When you are new to agents and want a guided course with code.",
+    "alternatives": ["Generative AI for Beginners", "OpenAI Cookbook", "LangGraph tutorials", "CrewAI docs"],
+    "key_superpowers": ["18 structured lessons", "Runnable code samples", "Covers agent design patterns"]
+  },
+  "microsoft/generative-ai-for-beginners": {
+    "what_it_does": "Generative AI for Beginners is a Microsoft course of 21 lessons with code samples, covering the basics of building apps on generative AI models.",
+    "why_it_matters": "It is a widely used structured introduction to generative AI for developers.",
+    "when_to_use": "When you want a guided introduction to generative AI app development with code.",
+    "alternatives": ["AI Agents for Beginners", "OpenAI Cookbook", "Hugging Face LLM Course", "LLM Course"],
+    "key_superpowers": ["21 structured lessons", "Runnable code samples", "Covers prompting and app building"]
+  },
+  "openai/openai-cookbook": {
+    "what_it_does": "The OpenAI Cookbook is a collection of example code and guides for using the OpenAI API for tasks such as embeddings, retrieval, function calling and evaluation.",
+    "why_it_matters": "It is a widely used set of practical, runnable recipes for API integration.",
+    "when_to_use": "When you want working examples for a specific OpenAI API feature.",
+    "alternatives": ["Anthropic Cookbook", "Prompt Engineering Guide", "LangChain docs", "Hugging Face Cookbook"],
+    "key_superpowers": ["Runnable recipes", "Covers embeddings, retrieval and function calling", "Maintained by OpenAI"]
+  },
+  "punkpeye/awesome-mcp-servers": {
+    "what_it_does": "A curated list of Model Context Protocol (MCP) servers that connect AI assistants to tools, data sources and services, organised by category.",
+    "why_it_matters": "It is the main discovery index for MCP servers, so it helps you find one before you build your own.",
+    "when_to_use": "When you are looking for an existing MCP server for a service or data source.",
+    "alternatives": ["modelcontextprotocol/servers", "wong2/awesome-mcp-servers", "Smithery", "Composio"],
+    "key_superpowers": ["Large categorised index", "Lists many third-party servers", "Actively updated"]
+  },
+  "tesseract-ocr/tesseract": {
+    "what_it_does": "Tesseract is an open-source OCR engine that recognises text in images across many languages. It is a command-line tool and a library.",
+    "why_it_matters": "It is a long-established open OCR engine and a common default in document pipelines.",
+    "when_to_use": "When you need text from scanned pages or images with a mature, widely supported engine.",
+    "alternatives": ["PaddleOCR", "EasyOCR", "docTR", "Surya"],
+    "key_superpowers": ["Mature and widely deployed", "Many languages", "Command-line and library use"]
+  },
+  "microsoft/markitdown": {
+    "what_it_does": "MarkItDown is a Python tool from Microsoft that converts files and office documents such as PDF, Word, Excel and PowerPoint into Markdown for LLM input.",
+    "why_it_matters": "It handles the document-to-text step that many LLM pipelines need, in one small tool.",
+    "when_to_use": "When you want to feed office documents or PDFs to a model as plain Markdown.",
+    "alternatives": ["MinerU", "Docling", "Marker", "Unstructured"],
+    "key_superpowers": ["Office and PDF input", "Markdown output", "Simple command-line and Python use"]
+  },
+  "significant-gravitas/autogpt": {
+    "what_it_does": "AutoGPT is an open-source project for building and running autonomous AI agents, with a visual builder and a platform for hosting agents.",
+    "why_it_matters": "It was an early and very visible project in the autonomous-agent wave of 2023.",
+    "when_to_use": "When you want to experiment with a long-running agent platform or study an early open agent design.",
+    "alternatives": ["OpenHands", "CrewAI", "LangGraph", "MetaGPT"],
+    "key_superpowers": ["Visual agent builder", "Hosted agent platform", "Large community"]
+  },
+  "n8n-io/n8n": {
+    "what_it_does": "n8n is a fair-code workflow automation platform. It connects hundreds of services with a visual builder and adds AI nodes for LLM and agent steps.",
+    "why_it_matters": "It lets teams combine AI steps with ordinary automation in one tool, and it can be self-hosted.",
+    "when_to_use": "When an AI step needs to sit inside a broader automation with many third-party integrations.",
+    "alternatives": ["Dify", "Flowise", "Zapier", "Make"],
+    "key_superpowers": ["Hundreds of integrations", "Visual builder with code nodes", "Self-hostable"]
+  },
+  "firecrawl/firecrawl": {
+    "what_it_does": "Firecrawl turns websites into clean Markdown or structured data through an API and an open-source server, for use by LLMs and agents.",
+    "why_it_matters": "It is a widely used way to get web content into a RAG or agent pipeline without building a crawler.",
+    "when_to_use": "When you need reliable web content for models at scale and prefer an API or a self-hosted server.",
+    "alternatives": ["Crawl4AI", "Jina Reader", "Scrapy", "Browser Use"],
+    "key_superpowers": ["Clean Markdown output", "API and self-hosted options", "Handles JavaScript pages"]
+  },
+  "tauricresearch/tradingagents": {
+    "what_it_does": "TradingAgents is a multi-agent framework that uses LLM agents with different roles, such as analysts, researchers and a trader, to reason about financial trading decisions.",
+    "why_it_matters": "It is a well-known example of role-based multi-agent design applied to finance.",
+    "when_to_use": "When you want to study or experiment with multi-agent LLM designs for financial analysis. It is a research framework, not financial advice.",
+    "alternatives": ["CrewAI", "AutoGen", "FinRobot", "MetaGPT"],
+    "key_superpowers": ["Role-based agent team", "Multi-step analysis", "Research-oriented design"]
+  },
+  "deepseek-ai/deepseek-r1": {
+    "what_it_does": "DeepSeek-R1 is an open-weight reasoning model that is trained to produce step-by-step reasoning before its answer. The repository holds the model card, papers and distilled variants.",
+    "why_it_matters": "It is a widely used open reasoning model that shows the approach can be replicated with open weights.",
+    "when_to_use": "When you need a reasoning-focused open model for maths, code or analysis tasks that you can run or fine-tune.",
+    "alternatives": ["Qwen3", "Llama 3", "Mistral", "gpt-oss"],
+    "key_superpowers": ["Open-weight reasoning", "Distilled smaller variants", "Permissive license"]
+  },
+  "deepseek-ai/deepseek-v3": {
+    "what_it_does": "DeepSeek-V3 is an open-weight mixture-of-experts language model. The repository holds the model card, technical report and inference instructions.",
+    "why_it_matters": "It is a large open model that competes with proprietary frontier models on many benchmarks.",
+    "when_to_use": "When you need a strong general-purpose open model and have the hardware or a hosted endpoint to run it.",
+    "alternatives": ["Qwen3", "Llama 3", "Mistral Large", "DeepSeek-R1"],
+    "key_superpowers": ["Mixture-of-experts architecture", "Open weights", "Strong general benchmarks"]
+  }
+}

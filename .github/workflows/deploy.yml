@@ -45,6 +45,9 @@ jobs:
           python3 -u pipeline/harvest_ai_tools.py --prune-non-ai --report "$RUNNER_TEMP/pruned.tsv"
           # Discovery from curated awesome lists (AI gate applied), then similar-tool lists
           python3 -u pipeline/harvest_ai_tools.py --awesome pipeline/awesome_sources.txt
+          # Intel: first README paragraph per repo (~20 min), then hand-written top-tier entries
+          python3 -u pipeline/harvest_ai_tools.py --readme-intel
+          python3 -u pipeline/harvest_ai_tools.py --curated-intel
           python3 -u pipeline/harvest_ai_tools.py --alternatives
 
       - name: Quality Gate & Pack Tiered Shards
