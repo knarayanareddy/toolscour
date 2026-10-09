@@ -127,3 +127,4 @@ Checked against README and repo contents:
 - `hacksider/Deep-Live-Cam`: Developer Tool was wrong. Set to Application / Service. The existing text matches the README disclaimer.
 - `usestrix/strix`: Application / Service is correct. No change.
 - `x1xhlol/system-prompts-and-models-of-ai-tools`: Model was wrong. Set to Curated List / Docs. The repo is a collection of extracted system prompts, the same class as the leaked-prompt collections skipped in batches 10 and 12. **Removal is not decided and needs a user decision.**
+- **Decision (user):** keep both leaked-prompt collections (`x1xhlol/...` and `jujumilk3/leaked-system-prompts`) as Curated List / Docs. Neither gets hand-written text.

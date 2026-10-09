@@ -943,5 +943,9 @@
  "x1xhlol/system-prompts-and-models-of-ai-tools": {
   "artifact": "Curated List / Docs",
   "reason": "README: a collection of system prompts from AI tools, not a model. Flagged for review: same class as leaked-prompt collections; removal not decided."
+ },
+ "jujumilk3/leaked-system-prompts": {
+  "artifact": "Curated List / Docs",
+  "reason": "README: a collection of leaked system prompts, not an app. Kept by user decision; no hand-written text."
  }
 }
