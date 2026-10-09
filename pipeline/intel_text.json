@@ -567,5 +567,429 @@
  "ggml-org/llama.cpp": {
   "why_it_matters": "It is the C/C++ runtime that runs Llama-class and most open-weight LLMs on your own hardware, using the GGUF quantized format.",
   "when_to_use": "When you want to run open-weight LLMs locally, from small devices to multi-GPU servers."
+ },
+ "wshobson/agents": {
+  "why_it_matters": "It is a plugin marketplace of agents, skills and commands that works across Claude Code, Codex CLI, Cursor, OpenCode and GitHub Copilot.",
+  "when_to_use": "When you want one set of agent plugins for several coding tools."
+ },
+ "github/awesome-copilot": {
+  "why_it_matters": "It is a community collection of custom agents, instructions, skills, hooks, workflows and plugins for GitHub Copilot.",
+  "when_to_use": "When you want ready-made Copilot configurations to adapt."
+ },
+ "mindsdb/mindshub": {
+  "why_it_matters": "It is an agent workspace for knowledge work and software development, built on open-source agent harnesses.",
+  "when_to_use": "When you want an agent workspace for research or coding tasks."
+ },
+ "deepseek-ai/awesome-deepseek-integration": {
+  "why_it_matters": "It is a list of popular software that integrates the DeepSeek API.",
+  "when_to_use": "When you want to connect DeepSeek to a tool you already use."
+ },
+ "suno-ai/bark": {
+  "why_it_matters": "It is a text-prompted generative audio model.",
+  "when_to_use": "When you want audio generated from text prompts."
+ },
+ "google/langextract": {
+  "why_it_matters": "It is a Python library that uses LLMs to extract structured information from unstructured text, with source grounding.",
+  "when_to_use": "When you need structured data pulled from documents with traceable sources."
+ },
+ "naptha/tesseract.js": {
+  "why_it_matters": "It is pure JavaScript OCR that reads text from images in more than 100 languages.",
+  "when_to_use": "When you need OCR inside JavaScript code."
+ },
+ "chatchat-space/langchain-chatchat": {
+  "why_it_matters": "It is a RAG and agent application built on LangChain, with ChatGLM, Qwen and Llama models.",
+  "when_to_use": "When you want a RAG and agent app built on LangChain with those models."
+ },
+ "stanfordnlp/dspy": {
+  "why_it_matters": "It is a framework for programming language models rather than prompting them.",
+  "when_to_use": "When you want to build LLM pipelines as code and optimize them."
+ },
+ "ashishpatel26/500-ai-agents-projects": {
+  "why_it_matters": "It is a curated collection of AI agent use cases across industries, with working implementations.",
+  "when_to_use": "When you want examples of agent projects to study."
+ },
+ "patchy631/ai-engineering-hub": {
+  "why_it_matters": "It provides in-depth tutorials on LLMs, RAG and real-world AI agent applications.",
+  "when_to_use": "When you want hands-on tutorials on those topics."
+ },
+ "microsoft/playwright-mcp": {
+  "why_it_matters": "It is an MCP server that gives agents browser automation through Playwright.",
+  "when_to_use": "When an agent needs to drive a browser."
+ },
+ "fengdu78/coursera-ml-andrewng-notes": {
+  "why_it_matters": "It is personal notes on Andrew Ng's machine learning course.",
+  "when_to_use": "When you want a condensed companion to that course."
+ },
+ "copilotkit/copilotkit": {
+  "why_it_matters": "It is a frontend stack for agents and generative UI for React, Angular and mobile, from the makers of the AG-UI protocol.",
+  "when_to_use": "When you want agent-driven user interfaces in a web or mobile app."
+ },
+ "myshell-ai/openvoice": {
+  "why_it_matters": "It is an instant voice cloning audio foundation model from MIT and MyShell.",
+  "when_to_use": "When you want to clone a voice quickly from a short sample."
+ },
+ "alexsjones/llmfit": {
+  "why_it_matters": "It finds which open-source LLMs your hardware can comfortably run, across many models and providers.",
+  "when_to_use": "When you want to pick a local model that fits your machine."
+ },
+ "tencentarc/gfpgan": {
+  "why_it_matters": "It develops practical algorithms for real-world face restoration.",
+  "when_to_use": "When you need to restore or enhance faces in damaged or low-quality photos."
+ },
+ "khoj-ai/khoj": {
+  "why_it_matters": "It is a self-hostable AI second brain that answers from the web or your docs, and can run custom agents on a schedule.",
+  "when_to_use": "When you want a private AI assistant over your own notes and documents."
+ },
+ "anthropics/claude-plugins-official": {
+  "why_it_matters": "It is an Anthropic-managed directory of high-quality Claude Code plugins.",
+  "when_to_use": "When you are looking for vetted Claude Code plugins."
+ },
+ "pdfmathtranslate/pdfmathtranslate": {
+  "why_it_matters": "It translates scientific PDF papers while preserving their formats.",
+  "when_to_use": "When you need a bilingual copy of a scientific paper."
+ },
+ "laion-ai/open-assistant": {
+  "why_it_matters": "It is a chat-based assistant project meant to give everyone access to a large language model.",
+  "when_to_use": "When you want an open-source chat assistant project to study or adapt."
+ },
+ "huggingface/pytorch-image-models": {
+  "why_it_matters": "It is a large collection of PyTorch image encoders and backbones, with training, evaluation, inference and export scripts.",
+  "when_to_use": "When you need a pretrained vision backbone, or want to train one."
+ },
+ "google-ai-edge/mediapipe": {
+  "why_it_matters": "It provides cross-platform, customizable ML solutions for live and streaming media.",
+  "when_to_use": "When you need on-device ML for video or audio streams."
+ },
+ "itzcrazykns/vane": {
+  "why_it_matters": "It is a privacy-focused AI answering engine that runs on your own hardware.",
+  "when_to_use": "When you want answers generated on your own hardware instead of a hosted service."
+ },
+ "songquanpeng/one-api": {
+  "why_it_matters": "It is an LLM API management and distribution system that supports many providers, including OpenAI, Azure, Claude, Gemini and DeepSeek.",
+  "when_to_use": "When you want one API gateway for several providers, with management features."
+ },
+ "xinntao/real-esrgan": {
+  "why_it_matters": "It develops practical algorithms for general image and video restoration.",
+  "when_to_use": "When you need to upscale or restore images or video."
+ },
+ "linshenkx/prompt-optimizer": {
+  "why_it_matters": "It is an AI prompt optimizer for writing better prompts and getting better AI results.",
+  "when_to_use": "When your prompts give weak results and you want help rewriting them."
+ },
+ "babysor/mockingbird": {
+  "why_it_matters": "It clones a voice from about five seconds of audio and generates speech in real time.",
+  "when_to_use": "When you want quick voice cloning from a short sample."
+ },
+ "sgl-project/sglang": {
+  "why_it_matters": "It is a high-performance serving framework for large language and multimodal models.",
+  "when_to_use": "When you need to serve LLMs with high throughput."
+ },
+ "hankcs/hanlp": {
+  "why_it_matters": "It is a production-grade multilingual NLP toolkit covering tokenization, part-of-speech tagging and named entity recognition, built on PyTorch and TensorFlow 2.",
+  "when_to_use": "When you need NLP pipelines for several languages in production."
+ },
+ "blakeblackshear/frigate": {
+  "why_it_matters": "It is a network video recorder with real-time local object detection for IP cameras.",
+  "when_to_use": "When you want camera object detection that runs locally."
+ },
+ "jax-ml/jax": {
+  "why_it_matters": "It provides composable transformations of Python and NumPy programs, including differentiation, vectorization and JIT compilation to GPU and TPU.",
+  "when_to_use": "When you need fast numerical code with automatic differentiation."
+ },
+ "microsoft/graphrag": {
+  "why_it_matters": "It is a modular graph-based retrieval-augmented generation system.",
+  "when_to_use": "When you want RAG that uses a knowledge graph built from your documents."
+ },
+ "jcodesmore/ai-website-cloner-template": {
+  "why_it_matters": "It gives an AI coding agent a URL and asks it to recreate the site as a clean Next.js app.",
+  "when_to_use": "When you want a starting point for rebuilding a site from its URL; check that you have the right to copy the site."
+ },
+ "lightpanda-io/browser": {
+  "why_it_matters": "It is a headless browser designed for AI and automation, written in Zig.",
+  "when_to_use": "When automation needs a lighter browser than Chromium. The README claims it is lighter and faster than Chromium."
+ },
+ "dayuanjiang/next-ai-draw-io": {
+  "why_it_matters": "It is a Next.js app that adds AI to draw.io diagrams, so you can create and edit them with AI help.",
+  "when_to_use": "When you want to create draw.io diagrams with AI help."
+ },
+ "esengine/deepseek-reasonix": {
+  "why_it_matters": "It is a coding agent for complex software engineering tasks.",
+  "when_to_use": "When a coding task is complex and needs a multi-step agent."
+ },
+ "xingangpan/draggan": {
+  "why_it_matters": "It is the official code for DragGAN, a SIGGRAPH 2023 paper.",
+  "when_to_use": "When you want to reproduce the DragGAN method."
+ },
+ "langfuse/langfuse": {
+  "why_it_matters": "It is open-source observability and evaluation for LLM and agent applications, for tracing, evaluating and improving them.",
+  "when_to_use": "When you need traces and evaluations for an LLM application."
+ },
+ "agentscope-ai/qwenpaw": {
+  "why_it_matters": "It is a personal AI assistant that installs and runs on your own machine or in the cloud, with multi-channel support.",
+  "when_to_use": "When you want a self-hosted personal assistant."
+ },
+ "lyogavin/airllm": {
+  "why_it_matters": "It runs 70B-parameter model inference on a single 4GB GPU, according to its description.",
+  "when_to_use": "When you have limited GPU memory and want to run a very large model."
+ },
+ "voltagent/awesome-agent-skills": {
+  "why_it_matters": "It is a curated collection of more than 1,000 agent skills from official teams and the community, compatible with Claude Code.",
+  "when_to_use": "When you are looking for an existing skill rather than writing one."
+ },
+ "qdrant/qdrant": {
+  "why_it_matters": "It is a vector similarity search engine and vector database for AI applications at scale.",
+  "when_to_use": "When you need production vector search."
+ },
+ "ocrmypdf/ocrmypdf": {
+  "why_it_matters": "It adds an OCR text layer to scanned PDFs, so they become searchable.",
+  "when_to_use": "When you need searchable copies of scanned documents."
+ },
+ "huggingface/diffusers": {
+  "why_it_matters": "It provides diffusion models for image, video and audio generation in PyTorch.",
+  "when_to_use": "When you want to run or train diffusion models in Python."
+ },
+ "hkuds/lightrag": {
+  "why_it_matters": "It is a simple, fast retrieval-augmented generation system, published at EMNLP 2025.",
+  "when_to_use": "When you need RAG over your own documents with a small codebase."
+ },
+ "2noise/chattts": {
+  "why_it_matters": "It is a generative speech model built for daily dialogue.",
+  "when_to_use": "When you want conversational-style speech output from a TTS model."
+ },
+ "yeachan-heo/oh-my-claudecode": {
+  "why_it_matters": "It provides teams-first multi-agent orchestration for Claude Code.",
+  "when_to_use": "When you want several Claude Code agents coordinated as a team."
+ },
+ "the-vibe-company/quivr": {
+  "why_it_matters": "It is an open-source engine that turns continuous content streams into search and monitoring, with durable ingestion.",
+  "when_to_use": "When you need search and monitoring over a stream of content."
+ },
+ "floodsung/deep-learning-papers-reading-roadmap": {
+  "why_it_matters": "It is a reading roadmap of deep learning papers for newcomers, including which paper to read first.",
+  "when_to_use": "When you are new to deep learning and want an ordered reading list."
+ },
+ "lm-sys/fastchat": {
+  "why_it_matters": "It is an open platform for training, serving and evaluating LLM chatbots, and the release repo for Vicuna and Chatbot Arena.",
+  "when_to_use": "When you want to train, serve or evaluate chat models in one toolkit."
+ },
+ "bytedance/ui-tars-desktop": {
+  "why_it_matters": "It is an open-source multimodal AI agent stack that connects AI models with agent infrastructure.",
+  "when_to_use": "When you want a desktop agent stack built on multimodal models."
+ },
+ "rssnext/folo": {
+  "why_it_matters": "It is an RSS reader with AI features.",
+  "when_to_use": "When you want to read feeds with AI assistance."
+ },
+ "vectifyai/pageindex": {
+  "why_it_matters": "It builds a document index for reasoning-based RAG, aimed at long and complex documents where vector retrieval can be inaccurate.",
+  "when_to_use": "When your documents are long and vector retrieval is not accurate enough."
+ },
+ "openbmb/voxcpm": {
+  "why_it_matters": "It is tokenizer-free TTS for multilingual speech, with creative voice design and voice cloning.",
+  "when_to_use": "When you need multilingual TTS, voice design or voice cloning."
+ },
+ "bvlc/caffe": {
+  "why_it_matters": "It is a fast, modular open framework for deep learning.",
+  "when_to_use": "When you need a Caffe-based deep learning framework."
+ },
+ "cmu-perceptual-computing-lab/openpose": {
+  "why_it_matters": "It is a real-time multi-person keypoint detection library for body, face, hands and feet.",
+  "when_to_use": "When you need pose estimation from images or video."
+ },
+ "openbmb/chatdev": {
+  "why_it_matters": "It is a platform for developing software through LLM-powered multi-agent collaboration.",
+  "when_to_use": "When you want agents to develop software together."
+ },
+ "openai/clip": {
+  "why_it_matters": "It learns to predict the most relevant text snippet for an image, through contrastive language-image pretraining.",
+  "when_to_use": "When you need to match images with text descriptions."
+ },
+ "datawhalechina/happy-llm": {
+  "why_it_matters": "It is a from-scratch guide to building a large language model, as a Jupyter Notebook project.",
+  "when_to_use": "When you want to learn how an LLM is built step by step."
+ },
+ "sillytavern/sillytavern": {
+  "why_it_matters": "It is an LLM frontend for power users.",
+  "when_to_use": "When you want an advanced interface for chatting with LLMs."
+ },
+ "virgiliojr94/book-to-skill": {
+  "why_it_matters": "It turns a technical book PDF into a Claude Code skill to study and reference while you work.",
+  "when_to_use": "When you want a book's content available inside Claude Code."
+ },
+ "lllyasviel/controlnet": {
+  "why_it_matters": "It adds control to diffusion models, and the README says ControlNet 1.1 has been released.",
+  "when_to_use": "When you want to guide diffusion image generation with extra conditions."
+ },
+ "freestylefly/awesome-gpt-image-2": {
+  "why_it_matters": "It is a library of more than 530 prompt cases and reusable skills for GPT Image 2 and 2.5.",
+  "when_to_use": "When you want example prompts for GPT image generation."
+ },
+ "mukul975/anthropic-cybersecurity-skills": {
+  "why_it_matters": "It is a set of structured cybersecurity skills for AI agents, mapped to frameworks including MITRE ATT&CK and NIST CSF 2.0.",
+  "when_to_use": "When an agent needs security knowledge organised by those frameworks."
+ },
+ "explosion/spacy": {
+  "why_it_matters": "It is an industrial-strength NLP library for Python and Cython.",
+  "when_to_use": "When you need production NLP pipelines in Python."
+ },
+ "mli/paper-reading": {
+  "why_it_matters": "It gives close, paragraph-by-paragraph readings of classic and new deep learning papers.",
+  "when_to_use": "When you want an annotated walkthrough of a paper."
+ },
+ "tabbyml/tabby": {
+  "why_it_matters": "It is a self-hosted AI coding assistant.",
+  "when_to_use": "When you want code completion that runs on your own infrastructure."
+ },
+ "twigpine/openclaude": {
+  "why_it_matters": "It is an open-source coding-agent CLI that works with cloud and local model providers.",
+  "when_to_use": "When you want a terminal coding agent that is not tied to one provider."
+ },
+ "lutzroeder/netron": {
+  "why_it_matters": "It is a viewer for neural network, deep learning and machine learning models.",
+  "when_to_use": "When you want to inspect a model's structure."
+ },
+ "github/github-mcp-server": {
+  "why_it_matters": "It is GitHub's official MCP server, which connects AI tools directly to GitHub's platform.",
+  "when_to_use": "When an agent needs to work with GitHub repositories."
+ },
+ "vercel-labs/skills": {
+  "why_it_matters": "It is an open agent skills tool, run with npx skills.",
+  "when_to_use": "When you want to install or manage agent skills from the command line."
+ },
+ "alibaba/nacos": {
+  "why_it_matters": "It is a platform for dynamic service discovery, configuration and service management.",
+  "when_to_use": "When applications need service discovery and configuration, including AI cloud services."
+ },
+ "mckaywrigley/chatbot-ui": {
+  "why_it_matters": "It is an AI chat interface for any model.",
+  "when_to_use": "When you want a chat front end that works with many models."
+ },
+ "huggingface/agents-course": {
+  "why_it_matters": "It is Hugging Face's agents course, in repository form.",
+  "when_to_use": "When you want to study AI agents through that course."
+ },
+ "cjpais/handy": {
+  "why_it_matters": "It is a free, open-source, extensible speech-to-text app that works completely offline.",
+  "when_to_use": "When you need dictation or transcription without sending audio to a server."
+ },
+ "open-mmlab/mmdetection": {
+  "why_it_matters": "It is OpenMMLab's detection toolbox and benchmark.",
+  "when_to_use": "When you need object detection models and benchmarks in one toolbox."
+ },
+ "fishaudio/fish-speech": {
+  "why_it_matters": "It is an open-source text-to-speech system.",
+  "when_to_use": "When you want an open-source TTS model."
+ },
+ "eriklindernoren/ml-from-scratch": {
+  "why_it_matters": "It has bare-bones NumPy implementations of machine learning models and algorithms.",
+  "when_to_use": "When you want to see how classic ML algorithms work internally."
+ },
+ "zeroclaw-labs/zeroclaw": {
+  "why_it_matters": "It is a small, fast autonomous AI personal assistant runtime, shipped as a single Rust binary.",
+  "when_to_use": "When you want a lightweight, self-hosted personal agent."
+ },
+ "agentscope-ai/agentscope": {
+  "why_it_matters": "It is a framework for building and running agents that you can see, understand and trust.",
+  "when_to_use": "When you want an agent framework with that aim."
+ },
+ "tencent/weknora": {
+  "why_it_matters": "It is an LLM-powered knowledge framework that turns documents into queryable RAG and agent-based reasoning.",
+  "when_to_use": "When an organisation needs document understanding and retrieval."
+ },
+ "yunjey/pytorch-tutorial": {
+  "why_it_matters": "It is PyTorch tutorial code for deep learning researchers.",
+  "when_to_use": "When you want to learn PyTorch from code examples."
+ },
+ "davila7/claude-code-templates": {
+  "why_it_matters": "It is a CLI for configuring and monitoring Claude Code.",
+  "when_to_use": "When you want to set up or monitor Claude Code."
+ },
+ "datawhalechina/self-llm": {
+  "why_it_matters": "It is a Chinese-language guide to fine-tuning and deploying open-source LLMs and multimodal models on Linux.",
+  "when_to_use": "When you want Chinese tutorials on running open models."
+ },
+ "onyx-dot-app/onyx": {
+  "why_it_matters": "It is an open-source AI platform for chatting with many LLMs, and a knowledge and context layer for teams and agents.",
+  "when_to_use": "When a team wants a self-hosted chat and knowledge layer."
+ },
+ "vercel-labs/agent-skills": {
+  "why_it_matters": "It is Vercel's collection of agent skills, which are packaged instructions and scripts that extend agent capabilities.",
+  "when_to_use": "When you want Vercel's ready-made skills for an agent."
+ },
+ "tashfeenahmed/freellmapi": {
+  "why_it_matters": "It is one OpenAI-compatible endpoint that routes to 34 free LLM providers and 635 free model endpoints, according to its description.",
+  "when_to_use": "When you want free model access through one API for testing."
+ },
+ "tirth8205/code-review-graph": {
+  "why_it_matters": "It is a local, persistent code graph for MCP and CLI that maps your codebase for AI coding tools.",
+  "when_to_use": "When coding tools need a map of a large codebase."
+ },
+ "openai/openai-python": {
+  "why_it_matters": "It is the official Python library for the OpenAI API.",
+  "when_to_use": "When your Python code calls OpenAI models."
+ },
+ "topoteretes/cognee": {
+  "why_it_matters": "It is an open-source AI memory platform that gives agents persistent long-term memory.",
+  "when_to_use": "When agents need memory that lasts across sessions."
+ },
+ "iofficeai/officecli": {
+  "why_it_matters": "It is a CLI that lets AI agents read, edit and automate Word, Excel and PowerPoint files.",
+  "when_to_use": "When an agent must work with Office documents."
+ },
+ "scrapegraphai/scrapegraph-ai": {
+  "why_it_matters": "It is a Python scraper based on AI.",
+  "when_to_use": "When you want AI-driven web scraping."
+ },
+ "stanford-oval/storm": {
+  "why_it_matters": "It is an LLM-powered system that researches a topic and generates a full-length report with citations.",
+  "when_to_use": "When you want a cited long-form report on a topic."
+ },
+ "getzep/graphiti": {
+  "why_it_matters": "It builds real-time knowledge graphs for AI agents.",
+  "when_to_use": "When agents need a graph of facts that is updated in real time."
+ },
+ "zackriya-solutions/meetily": {
+  "why_it_matters": "It is a privacy-first AI meeting assistant with live transcription and speaker diarization.",
+  "when_to_use": "When you want local meeting transcription that keeps audio private."
+ },
+ "lightning-ai/pytorch-lightning": {
+  "why_it_matters": "It is a deep learning framework for pretraining and finetuning AI models, on one GPU or many.",
+  "when_to_use": "When you want structured training code for PyTorch models at scale."
+ },
+ "amai-gmbh/ai-expert-roadmap": {
+  "why_it_matters": "It is a roadmap of paths and technologies for becoming an AI expert, shown as charts.",
+  "when_to_use": "When you want a visual learning path; the description dates it to 2022."
+ },
+ "googleworkspace/cli": {
+  "why_it_matters": "It is one command-line tool for Google Workspace, built for humans and AI agents.",
+  "when_to_use": "When you want an agent or script to work with Gmail, Drive and Calendar."
+ },
+ "supermemoryai/supermemory": {
+  "why_it_matters": "It is a memory and context engine for AI that can run fully locally, with a memory API.",
+  "when_to_use": "When an AI app needs persistent memory."
+ },
+ "karpathy/llm.c": {
+  "why_it_matters": "It trains LLMs in simple, pure C and CUDA, with no PyTorch dependency.",
+  "when_to_use": "When you want to see LLM training with minimal code."
+ },
+ "nanocoai/nanoclaw": {
+  "why_it_matters": "It is a lightweight OpenClaw alternative that runs agents in containers for security and connects to chat apps.",
+  "when_to_use": "When you want an assistant whose agents are isolated in containers."
+ },
+ "garrytan/gbrain": {
+  "why_it_matters": "It gives an agent a memory you control, storing explicit facts with their sources.",
+  "when_to_use": "When your agent needs a memory whose facts you can trace."
+ },
+ "78/xiaozhi-esp32": {
+  "why_it_matters": "It is an MCP-based chatbot.",
+  "when_to_use": "When you want a chatbot built around MCP."
+ },
+ "eugeneyan/applied-ml": {
+  "why_it_matters": "It is a curated list of papers and tech blogs from companies describing how they do ML in production.",
+  "when_to_use": "When you want real-world production ML case studies."
+ },
+ "iofficeai/aionui": {
+  "why_it_matters": "It is an open-source cowork app for running CLI coding agents, including Claude Code, Codex and OpenCode.",
+  "when_to_use": "When you want one interface for several CLI agents."
  }
 }

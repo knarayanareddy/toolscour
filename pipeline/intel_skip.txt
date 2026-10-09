@@ -41,3 +41,29 @@ hkuds/deeptutor                       # description is a slogan only
 sharex/sharex                         # screenshot tool, not an AI tool
 drawdb-io/drawdb                      # database diagram editor, not an AI tool
 novuhq/novu                           # notification infrastructure, not an AI tool
+
+# Batch 4 skips
+photoprism/photoprism                 # description is a slogan only
+zhaoxuya520/reverse-skill             # security-tooling router; purpose not verifiable as an AI tool from description
+google/google-research                # monorepo index; description is a name only
+google-research/google-research       # monorepo index; description is a name only
+pbatard/rufus                         # USB formatting utility, not an AI tool
+dokploy/dokploy                       # PaaS, not an AI tool
+mouredev/hello-python                 # Python course, not an AI tool
+medusajs/medusa                       # commerce platform, not an AI tool
+thealgorithms/c-plus-plus             # algorithms collection, not an AI tool
+can1357/oh-my-pi                      # description is a slogan only
+hkuds/vibe-trading                    # description is a slogan only; README is a changelog
+ashishpatel26/500-ai-machine-learning-deep-learning-computer-vision-nlp-projects-with-code  # duplicate of 500-AI-Agents list; name only
+1panel-dev/1panel                     # server panel; AI is secondary to its purpose
+
+# Batch 4b skips
+tqdm/tqdm                             # progress bar library, not an AI tool
+xitu/gold-miner                       # translation community, not an AI tool
+signoz/signoz                         # observability platform, not an AI tool
+fincept-corporation/fincepterminal    # finance app, not an AI tool
+nandhakishorm/laya                    # description not understandable enough to state a purpose
+p-e-w/heretic                         # purpose is removing safety alignment from models; not written up
+cloakhq/cloakbrowser                  # purpose is bot-detection evasion; not written up
+feder-cr/invisible_dots               # purpose is anti-bot evasion; not written up
+pythagora-io/gpt-pilot                # README opens with an incident report; purpose not verifiable
