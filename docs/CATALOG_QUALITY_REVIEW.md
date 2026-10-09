@@ -152,3 +152,10 @@ Checked against README and repo contents:
 - 58 entries and 37 artifact fixes. Hand-written text now covers 985 records (the file has one metadata key).
 - 11 skipped with reasons in `pipeline/intel_skip.txt`: marketplace automation and a proxy that reuses consumer AI accounts (terms risk), an unverified performance claim, slogan-only or jargon-only descriptions, non-AI tools (status page, data pipelines, Postgres, check-in scripts, a programming study site).
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 17
+
+- 56 entries and 31 artifact fixes. Hand-written text now covers about 1,040 records.
+- 15 skipped with reasons in `pipeline/intel_skip.txt`: non-AI tools (mesh firmware, OpenCV bindings, a database, voice chat, ASCII art, a DataFrame library, Python examples), a jokey description, an unverified "world model" claim, a feature-list-only description, and a translator with no stated AI role.
+- Process fix: batch 16's skip block was never appended, and batch 15 lost two entries in a cleanup. Both are restored, and every skip, text and fix key now matches a catalog repo.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.

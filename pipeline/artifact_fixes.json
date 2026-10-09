@@ -1559,5 +1559,129 @@
  "openspg/kag": {
   "artifact": "Framework",
   "reason": "Description: a reasoning and retrieval framework."
+ },
+ "microsoft/typechat": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "maximhq/bifrost": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an AI gateway."
+ },
+ "mvig-sjtu/alphapose": {
+  "artifact": "Application / Service",
+  "reason": "Description: a pose tracking system."
+ },
+ "lastmile-ai/mcp-agent": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for agents."
+ },
+ "bitsandbytes-foundation/bitsandbytes": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "aladdinpersson/machine-learning-collection": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a resource collection."
+ },
+ "optimalscale/lmflow": {
+  "artifact": "Framework",
+  "reason": "Description: a toolkit."
+ },
+ "morvanzhou/pytorch-tutorial": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "idosal/git-mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: a remote MCP server."
+ },
+ "datawhalechina/agent-learning-hub": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a learning hub."
+ },
+ "automazeio/ccpm": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: a skill system for agents."
+ },
+ "lucidrains/imagen-pytorch": {
+  "artifact": "Model / Weights",
+  "reason": "Description: an implementation of an image model."
+ },
+ "miromindai/mirothinker": {
+  "artifact": "Application / Service",
+  "reason": "Description: a research agent."
+ },
+ "xpixelgroup/basicsr": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a toolbox."
+ },
+ "ztjhz/betterchatgpt": {
+  "artifact": "Application / Service",
+  "reason": "Description: a UI app."
+ },
+ "makazhanalpamys/soup": {
+  "artifact": "Framework",
+  "reason": "Description: a fine-tuning tool."
+ },
+ "py-why/dowhy": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "nebuly-ai/optimate": {
+  "artifact": "Library / SDK",
+  "reason": "Description: libraries."
+ },
+ "zilliztech/deep-searcher": {
+  "artifact": "Application / Service",
+  "reason": "Description: a research tool."
+ },
+ "cursortouch/windows-mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: an MCP server."
+ },
+ "n4ze3m/page-assist": {
+  "artifact": "Application / Service",
+  "reason": "Description: a browser assistant."
+ },
+ "utkuozbulak/pytorch-cnn-visualizations": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a PyTorch implementation."
+ },
+ "carson-katri/dream-textures": {
+  "artifact": "Application / Service",
+  "reason": "Description: a Blender add-on."
+ },
+ "zilliztech/gptcache": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a cache library."
+ },
+ "opendcai/dataflow": {
+  "artifact": "Framework",
+  "reason": "Description: a framework."
+ },
+ "jessevig/bertviz": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a visualisation library."
+ },
+ "ai4finance-foundation/finrobot": {
+  "artifact": "Framework",
+  "reason": "Description: an agent platform."
+ },
+ "getstream/vision-agents": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for agents."
+ },
+ "microsoft/mastering-github-copilot-for-paired-programming": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a course."
+ },
+ "automl/auto-sklearn": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an AutoML library."
+ },
+ "hatchet-dev/hatchet": {
+  "artifact": "Framework",
+  "reason": "Description: an orchestration engine."
  }
 }

@@ -3939,5 +3939,229 @@
  "project-monai/monai": {
   "why_it_matters": "It is an AI toolkit for healthcare imaging.",
   "when_to_use": "When you build medical imaging models."
+ },
+ "openspg/kag": {
+  "why_it_matters": "It is a reasoning and retrieval framework that follows logical forms, built on the OpenSPG engine.",
+  "when_to_use": "When answers must follow a knowledge graph's structure."
+ },
+ "jingyaogong/minimind-v": {
+  "why_it_matters": "It trains a small 65M-parameter vision-language model from scratch, in about 2 hours.",
+  "when_to_use": "When you want to learn how a VLM is built, at a small scale."
+ },
+ "microsoft/typechat": {
+  "why_it_matters": "It is a library for building natural language interfaces that are typed.",
+  "when_to_use": "When you want an LLM to return data that matches a schema."
+ },
+ "maximhq/bifrost": {
+  "why_it_matters": "It is an enterprise AI gateway with adaptive load balancing and clustering.",
+  "when_to_use": "When you route traffic across several model providers at scale."
+ },
+ "hkustdial/supervisor-skills": {
+  "why_it_matters": "It turns a supervisor's research experience into callable AI skills, from idea to paper submission.",
+  "when_to_use": "When you want help planning and writing a research project."
+ },
+ "mvig-sjtu/alphapose": {
+  "why_it_matters": "It is a real-time, multi-person full-body pose estimation and tracking system.",
+  "when_to_use": "When you need to track human poses in video."
+ },
+ "superradcompany/microsandbox": {
+  "why_it_matters": "It is a local-first microVM runtime and library, easy and fast to program.",
+  "when_to_use": "When an agent needs an isolated machine to run code."
+ },
+ "smtg-ai/claude-squad": {
+  "why_it_matters": "It manages several AI terminal agents, such as Claude Code, Codex and OpenCode.",
+  "when_to_use": "When you run several coding agents at the same time."
+ },
+ "vahidk/effectivetensorflow": {
+  "why_it_matters": "It is a collection of TensorFlow tutorials and best practices.",
+  "when_to_use": "When you want practical TensorFlow habits."
+ },
+ "lastmile-ai/mcp-agent": {
+  "why_it_matters": "It builds effective agents with the Model Context Protocol and simple workflow patterns.",
+  "when_to_use": "When you build MCP-based agents in code."
+ },
+ "openbmb/xagent": {
+  "why_it_matters": "It is an autonomous LLM agent for complex task solving.",
+  "when_to_use": "When a task needs many steps the agent must plan itself."
+ },
+ "netease-youdao/emotivoice": {
+  "why_it_matters": "It is a multi-voice text-to-speech engine that can be controlled by prompts.",
+  "when_to_use": "When you want speech with chosen voices and emotion."
+ },
+ "bitsandbytes-foundation/bitsandbytes": {
+  "why_it_matters": "It makes large language models accessible through k-bit quantisation in PyTorch.",
+  "when_to_use": "When a model does not fit in GPU memory and you need to quantise it."
+ },
+ "aaswordman/operit": {
+  "why_it_matters": "It is an Android AI agent and chat app.",
+  "when_to_use": "When you want an agent on your Android phone."
+ },
+ "aladdinpersson/machine-learning-collection": {
+  "why_it_matters": "It is a resource collection for learning machine learning and deep learning.",
+  "when_to_use": "When you want worked examples to study."
+ },
+ "optimalscale/lmflow": {
+  "why_it_matters": "It is a toolkit for fine-tuning and running large foundation models.",
+  "when_to_use": "When you fine-tune a large model with a ready toolkit."
+ },
+ "morvanzhou/pytorch-tutorial": {
+  "why_it_matters": "It has PyTorch tutorials in Chinese, for building neural networks step by step.",
+  "when_to_use": "When you learn PyTorch in Chinese."
+ },
+ "idosal/git-mcp": {
+  "why_it_matters": "It is a free, remote MCP server that gives an agent access to a GitHub repository's docs.",
+  "when_to_use": "When an agent should answer from a project's own documentation."
+ },
+ "datawhalechina/agent-learning-hub": {
+  "why_it_matters": "It is a collection of Chinese learning paths and resources for AI agents.",
+  "when_to_use": "When you learn AI agents in Chinese."
+ },
+ "google-labs-code/stitch-skills": {
+  "why_it_matters": "It is a library of agent skills that work with the Stitch MCP server.",
+  "when_to_use": "When you use Stitch with an agent and want ready skills."
+ },
+ "tencent/browserskill": {
+  "why_it_matters": "It lets AI agents use your real, logged-in browser without interrupting your work.",
+  "when_to_use": "When an agent needs your existing sessions; keep it to sites you are allowed to automate."
+ },
+ "lucidrains/imagen-pytorch": {
+  "why_it_matters": "It is a PyTorch implementation of Google's Imagen text-to-image model.",
+  "when_to_use": "When you want to study or train a cascaded diffusion image model."
+ },
+ "miromindai/mirothinker": {
+  "why_it_matters": "It is a deep research agent for complex research and prediction tasks.",
+  "when_to_use": "When a question needs many steps of research."
+ },
+ "automazeio/ccpm": {
+  "why_it_matters": "It is a project management skill system for agents, using GitHub Issues and Git worktrees.",
+  "when_to_use": "When an agent should work from GitHub issues and parallel branches."
+ },
+ "xpixelgroup/basicsr": {
+  "why_it_matters": "It is an open-source toolbox for image and video restoration, such as super-resolution and denoising.",
+  "when_to_use": "When you need to upscale, denoise or deblur images or video."
+ },
+ "nl8590687/asrt_speechrecognition": {
+  "why_it_matters": "It is a deep learning Chinese speech recognition system.",
+  "when_to_use": "When you need Chinese speech-to-text."
+ },
+ "ztjhz/betterchatgpt": {
+  "why_it_matters": "It is a customisable UI for ChatGPT on web, Windows, macOS and Linux.",
+  "when_to_use": "When you want a nicer ChatGPT client."
+ },
+ "makazhanalpamys/soup": {
+  "why_it_matters": "It fine-tunes LLMs from a single YAML file, and streams layers so large models fit small GPUs.",
+  "when_to_use": "When you fine-tune a large model on a modest GPU."
+ },
+ "exadel-inc/compreface": {
+  "why_it_matters": "It is a free, open-source face recognition system.",
+  "when_to_use": "When you need face recognition you run yourself."
+ },
+ "py-why/dowhy": {
+  "why_it_matters": "It is a Python library for causal inference, with explicit modelling and tests.",
+  "when_to_use": "When you need to estimate cause and effect, not just correlation."
+ },
+ "nebuly-ai/optimate": {
+  "why_it_matters": "It is a set of libraries for optimising AI model performance.",
+  "when_to_use": "When you want faster or smaller models."
+ },
+ "zilliztech/deep-searcher": {
+  "why_it_matters": "It is an open-source deep research tool for searching and reasoning over private data.",
+  "when_to_use": "When you need research answers from your own documents."
+ },
+ "isaac-sim/isaaclab": {
+  "why_it_matters": "It is a unified framework for robot learning, with multi-physics and renderer support.",
+  "when_to_use": "When you train robot policies in simulation."
+ },
+ "cursortouch/windows-mcp": {
+  "why_it_matters": "It is an MCP server that gives an agent computer use on Windows.",
+  "when_to_use": "When an agent needs to operate a Windows desktop."
+ },
+ "jnmetacode/superpowers-zh": {
+  "why_it_matters": "It is a Chinese edition of the superpowers skills for Claude Code and Copilot CLI, with extra original skills.",
+  "when_to_use": "When you want Chinese-language skills for coding agents."
+ },
+ "n4ze3m/page-assist": {
+  "why_it_matters": "It uses your locally running AI models to help while you browse.",
+  "when_to_use": "When you want a private AI helper in the browser."
+ },
+ "ai-dynamo/dynamo": {
+  "why_it_matters": "It is a datacenter-scale distributed inference serving framework.",
+  "when_to_use": "When you serve large models across many GPUs."
+ },
+ "utkuozbulak/pytorch-cnn-visualizations": {
+  "why_it_matters": "It is a PyTorch implementation of CNN visualisation techniques.",
+  "when_to_use": "When you want to see what a CNN responds to."
+ },
+ "k8sgpt-ai/k8sgpt": {
+  "why_it_matters": "It scans Kubernetes clusters and explains problems in plain language, with AI.",
+  "when_to_use": "When you troubleshoot a cluster and want plain-language causes."
+ },
+ "chenliu-1996/figures4papers": {
+  "why_it_matters": "It has Python scripts for making publication-quality figures for AI conferences.",
+  "when_to_use": "When you prepare figures for a paper."
+ },
+ "carson-katri/dream-textures": {
+  "why_it_matters": "It brings Stable Diffusion into Blender.",
+  "when_to_use": "When you want to generate textures or images inside Blender."
+ },
+ "intitni/copilotforxcode": {
+  "why_it_matters": "It is a source editor extension that adds Copilot, Codeium and ChatGPT to Xcode.",
+  "when_to_use": "When you write Swift or Objective-C in Xcode and want AI help."
+ },
+ "zilliztech/gptcache": {
+  "why_it_matters": "It is a semantic cache for LLMs, integrated with LangChain and LlamaIndex.",
+  "when_to_use": "When repeated or similar questions drive up LLM cost."
+ },
+ "humanloop/awesome-chatgpt": {
+  "why_it_matters": "It is a curated list of tools, demos and docs for ChatGPT and GPT-3.",
+  "when_to_use": "When you want an older, broad list of ChatGPT resources."
+ },
+ "opendcai/dataflow": {
+  "why_it_matters": "It is a data preparation framework with LLM-based operators and pipelines.",
+  "when_to_use": "When you clean or prepare data with LLMs."
+ },
+ "jessevig/bertviz": {
+  "why_it_matters": "It visualises attention in transformer models.",
+  "when_to_use": "When you want to see what attention heads are doing."
+ },
+ "ai4finance-foundation/finrobot": {
+  "why_it_matters": "It is an open-source AI agent platform for financial applications, using LLMs.",
+  "when_to_use": "When you research financial analysis with agents; not investment advice."
+ },
+ "getstream/vision-agents": {
+  "why_it_matters": "It builds voice and vision agents with any model or video provider.",
+  "when_to_use": "When you build real-time agents that see and hear."
+ },
+ "jamez-bondos/awesome-gpt4o-images": {
+  "why_it_matters": "It is a curated collection of images and prompts made with GPT-4o and gpt-image-1.",
+  "when_to_use": "When you want example prompts for those image models."
+ },
+ "microsoft/mastering-github-copilot-for-paired-programming": {
+  "why_it_matters": "It is a multi-module course on using GitHub Copilot for pair programming.",
+  "when_to_use": "When you learn Copilot in a structured course."
+ },
+ "priorlabs/tabpfn": {
+  "why_it_matters": "It is a foundation model for tabular data.",
+  "when_to_use": "When you have a small tabular dataset and want a strong model quickly."
+ },
+ "automl/auto-sklearn": {
+  "why_it_matters": "It is automated machine learning built on scikit-learn.",
+  "when_to_use": "When you want an automated search over scikit-learn models."
+ },
+ "vercel-labs/deepsec": {
+  "why_it_matters": "It is a security harness that looks for vulnerabilities in your codebase, using coding agents.",
+  "when_to_use": "When you want an automated security review of your own code."
+ },
+ "internlm/lmdeploy": {
+  "why_it_matters": "It is a toolkit for compressing, deploying and serving LLMs.",
+  "when_to_use": "When you serve a model efficiently in production."
+ },
+ "nadermx/backgroundremover": {
+  "why_it_matters": "It removes backgrounds from images and video using AI, with a simple command.",
+  "when_to_use": "When you need a subject cut out from an image or clip."
+ },
+ "hatchet-dev/hatchet": {
+  "why_it_matters": "It is an orchestration engine for background tasks, AI agents and durable workflows.",
+  "when_to_use": "When agent or background jobs must survive failures and retries."
  }
 }

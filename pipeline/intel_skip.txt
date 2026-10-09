@@ -204,3 +204,33 @@ friuns2/blackfriday-gpts-prompts          # list of free GPTs; free-mirror class
 trailhq/graft                              # description is marketing only
 ripperhe/bob                               # translation and OCR app; AI role not stated
 mengxi-ream/read-frog                      # language app; AI role not stated
+
+# Top-2000 batch 15 skips (added late: databend, paradedb)
+databendlabs/databend                      # database, not an AI tool
+paradedb/paradedb                          # Postgres database, not an AI tool
+
+# Top-2000 batch 16 skips (appended late)
+shaxiu/XianyuAutoAgent                     # automates a second-hand marketplace's customer chat; platform terms risk, not written up
+openstatushq/openstatus                    # status page tool, not an AI tool
+evomap/evolver                             # description is jargon only
+lencx/Noi                                  # description is a slogan only
+fareedkhan-dev/kimi-k3-in-c                # unverified performance claim in description; not written up
+justlovemaki/AIClient2API                  # proxy reusing consumer AI accounts; terms risk, not written up
+mage-ai/mage-ai                            # data pipeline tool, not AI-specific
+liyupi/codefather                          # general programming study site, not an AI tool
+ewenwan/MVision                            # Chinese robotics vision list; description only lists topics
+sitoi/dailycheckin                         # check-in scripts for many sites, not an AI tool
+
+# Top-2000 batch 17 skips
+harnessmd/munder-difflin                # jokey description; not clearly a tool
+firerpa/lamda                           # device control platform; AI role not stated
+meshtastic/firmware                     # mesh radio firmware, not an AI tool
+bytedeco/javacv                         # Java bindings for OpenCV and FFmpeg, not AI-specific
+vietnh1009/ascii-generator              # image-to-text art, not an AI tool
+mariadb/server                          # database, not an AI tool
+mumble-voip/mumble                      # voice chat software, not an AI tool
+jackzhenguo/python-small-examples       # general Python examples, not AI-specific
+yaoapp/yao                              # description is a list of features only; not clearly an AI tool
+stranslate/stranslate                   # translation and OCR app; AI role not stated
+deeplethe/utopia                        # unverified 'world model' claim in description; not written up
+vaexio/vaex                             # DataFrame library, not an AI tool
