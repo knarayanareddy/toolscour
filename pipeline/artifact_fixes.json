@@ -923,5 +923,25 @@
  "zalandoresearch/fashion-mnist": {
   "artifact": "Curated List / Docs",
   "reason": "Description: a dataset."
+ },
+ "mattpocock/skills": {
+  "artifact": "Agent Skill Pack",
+  "reason": "README: agent skills used for engineering work; repo has SKILL.md files under skills/."
+ },
+ "garrytan/gstack": {
+  "artifact": "Agent Skill Pack",
+  "reason": "README: a Claude Code setup of role tools; repo ships SKILL.md files for each."
+ },
+ "juliusbrussee/caveman": {
+  "artifact": "Agent Skill Pack",
+  "reason": "README: a skill for coding agents; repo has SKILL.md under plugins/caveman/skills/."
+ },
+ "hacksider/deep-live-cam": {
+  "artifact": "Application / Service",
+  "reason": "README: a real-time face swap application with a GUI, not a CLI tool."
+ },
+ "x1xhlol/system-prompts-and-models-of-ai-tools": {
+  "artifact": "Curated List / Docs",
+  "reason": "README: a collection of system prompts from AI tools, not a model. Flagged for review: same class as leaked-prompt collections; removal not decided."
  }
 }

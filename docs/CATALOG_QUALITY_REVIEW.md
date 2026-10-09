@@ -119,3 +119,11 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 - 59 entries and 32 artifact fixes. Hand-written text now covers 752 records.
 - 8 skipped with reasons in `pipeline/intel_skip.txt`: extracted system prompts and a jailbreak collection (both in the leaked-prompt class), a subscription-sharing relay (terms risk), a sentence-fragment description, and four non-AI databases or sites.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Pending label check: six repos
+
+Checked against README and repo contents:
+- `mattpocock/skills`, `garrytan/gstack`, `JuliusBrussee/caveman`: Runtime was wrong. Set to Agent Skill Pack; each repo ships SKILL.md files.
+- `hacksider/Deep-Live-Cam`: Developer Tool was wrong. Set to Application / Service. The existing text matches the README disclaimer.
+- `usestrix/strix`: Application / Service is correct. No change.
+- `x1xhlol/system-prompts-and-models-of-ai-tools`: Model was wrong. Set to Curated List / Docs. The repo is a collection of extracted system prompts, the same class as the leaked-prompt collections skipped in batches 10 and 12. **Removal is not decided and needs a user decision.**
