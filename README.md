@@ -85,6 +85,8 @@ python3 pipeline/harvest_ai_tools.py --skills            # Agent Skill Packs, ea
 python3 pipeline/harvest_ai_tools.py --extended          # newer-ecosystem topic slices (coding agents, gateways, multimodal…)
 python3 pipeline/harvest_ai_tools.py --verify-skills     # re-check SKILL.md (>=200 bytes) for every existing skill pack
 python3 pipeline/harvest_ai_tools.py --seeds pipeline/seed_repos.txt  # add curated named AI repos (same checks)
+python3 pipeline/harvest_ai_tools.py --awesome pipeline/awesome_sources.txt  # discover repos linked from curated awesome lists
+python3 pipeline/harvest_ai_tools.py --alternatives      # replace template 'alternatives' with similar catalog tools
 python3 pipeline/harvest_ai_tools.py --refresh           # re-read every record from GitHub; drop archived/deleted/sub-500★
 python3 pipeline/harvest_ai_tools.py --fill-descriptions # README first sentence for repos with no GitHub description
 python3 pipeline/harvest_ai_tools.py --prune-non-ai      # apply the AI-relevance gate to the existing corpus
@@ -106,7 +108,7 @@ npm run dev        # dev server on :5173
 npm run build      # production bundle -> web/dist
 ```
 
-The corpus (9,289 tools, 649 verified skill packs) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow runs daily at 02:00 UTC: it harvests, refreshes every record against GitHub (archived and deleted repos are dropped), applies the quality gate, and commits the refreshed catalog back to the branch.
+The corpus (9,487 tools, 649 verified skill packs) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow runs daily at 02:00 UTC: it harvests, refreshes every record against GitHub (archived and deleted repos are dropped), applies the quality gate, and commits the refreshed catalog back to the branch.
 
 ---
 

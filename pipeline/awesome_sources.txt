@@ -1,0 +1,15 @@
+# Curated "awesome" lists of AI projects. The harvester reads each list's README and adds the
+# GitHub repos it links to, through the same checks as a search hit (star floor, archive check,
+# AI-relevance gate). Used by: python3 pipeline/harvest_ai_tools.py --awesome pipeline/awesome_sources.txt
+Hannibal046/Awesome-LLM
+e2b-dev/awesome-ai-agents
+steven2358/awesome-generative-ai
+punkpeye/awesome-mcp-servers
+wong2/awesome-mcp-servers
+jamesmurdza/awesome-ai-devtools
+kyrolabs/awesome-langchain
+Shubhamsaboo/awesome-llm-apps
+eugeneyan/open-llms
+tensorchord/Awesome-LLMOps
+visenger/awesome-mlops
+dair-ai/Prompt-Engineering-Guide

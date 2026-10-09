@@ -326,5 +326,27 @@ class SeedListTests(unittest.TestCase):
         self.assertEqual(len(lowered), len(set(lowered)), "duplicate seed entries")
 
 
+class AlternativesTests(unittest.TestCase):
+    def _rec(self, rid, name, topics, subsystem="Local Inference", stars=1000, alts=None):
+        return {"id": rid, "name": name, "owner": "o", "stars": stars, "topics": topics,
+                "subsystem": subsystem,
+                "beginner_intel": {"alternatives": alts or ["Other Local Inference projects in this catalog",
+                                                             "Managed cloud APIs", "Adjacent tools in X"]}}
+
+    def test_generic_list_replaced_with_topic_neighbours(self):
+        recs = [self._rec(1, "a", ["llm", "gguf"]), self._rec(2, "b", ["llm", "gguf"], stars=900),
+                self._rec(3, "c", ["llm"], stars=800), self._rec(4, "d", ["cooking"], "Other", 700)]
+        harvest.derive_alternatives(recs)
+        self.assertEqual(recs[0]["beginner_intel"]["alternatives"][0], "b")
+        self.assertNotIn("a", recs[0]["beginner_intel"]["alternatives"])
+        self.assertFalse(harvest.is_generic_alternatives(recs[0]["beginner_intel"]["alternatives"]))
+
+    def test_hand_written_alternatives_are_kept(self):
+        hand = ["Ollama", "LM Studio", "vLLM", "MLX"]
+        recs = [self._rec(1, "a", ["llm"], alts=hand), self._rec(2, "b", ["llm"])]
+        harvest.derive_alternatives(recs)
+        self.assertEqual(recs[0]["beginner_intel"]["alternatives"], hand)
+
+
 if __name__ == "__main__":
     unittest.main()

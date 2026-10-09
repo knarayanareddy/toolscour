@@ -659,30 +659,53 @@ def merge_with_existing(fresh: List[Dict[str, Any]], index_file: str) -> List[Di
     return sorted(merged.values(), key=lambda x: x.get("stars", 0), reverse=True)
 
 
-def run_seeds(output: str, seeds_path: str, token: Optional[str]) -> None:
+# Topics that only AI projects carry. Infrastructure topics (kubernetes, monitoring) do not qualify.
+STRONG_AI_TOPICS = {"ai", "llm", "llms", "llm-inference", "genai", "chatgpt", "gpt", "openai", "anthropic",
+                    "machine-learning", "deep-learning", "ai-agents", "agents", "agentic", "rag",
+                    "large-language-models", "generative-ai", "neural-network", "transformers"}
+
+
+def passes_discovery_gate(record: Dict[str, Any]) -> bool:
     """
-    Targeted add of known AI repos listed one per line as owner/name. Search only finds
-    repos that carry a queried topic or fall in a star window, so a well-known project
-    can be missed (renamed, untagged). Each seed goes through the same checks as a search
-    hit except the AI-relevance gate (the list is curated): exists on GitHub, >= MIN_STARS,
-    not archived, enrichment.
-    Repos already catalogued are skipped; use --refresh to update those.
+    Stricter gate for repos found by discovery (not hand-picked): the AI term must appear in the
+    name or description, not only in topics (topics alone admitted Kubernetes and Redis tools),
+    and awesome-* link lists are not tools.
     """
-    if not token:
-        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --seeds.")
-    with open(seeds_path, "r", encoding="utf-8") as f:
-        pairs = []
-        for line in f:
-            line = line.strip()
-            if line and not line.startswith("#") and "/" in line:
-                owner, name = line.split("/", 1)
-                pairs.append((owner.strip(), name.strip()))
+    if not passes_new_record_gate(record):
+        return False
+    if (record.get("name") or "").lower().startswith("awesome"):
+        return False
+    if AI_RELEVANCE.search(f"{record.get('name', '')} {record.get('description', '')}"):
+        return True
+    return any(t in STRONG_AI_TOPICS for t in (record.get("topics") or []))
+
+
+EXCLUSIONS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "discovery_exclusions.txt")
+
+
+def load_exclusions() -> set:
+    if not os.path.exists(EXCLUSIONS_FILE):
+        return set()
+    with open(EXCLUSIONS_FILE, "r", encoding="utf-8") as f:
+        return {l.strip().lower() for l in f if l.strip() and not l.startswith("#")}
+
+
+def ingest_pairs(output: str, pairs: List[Tuple[str, str]], token: str, curated: bool,
+                 label: str) -> None:
+    """
+    Adds named repos to the corpus. Every candidate must exist, be >= MIN_STARS, not be
+    archived, and not already be catalogued (matched by GitHub database id). Curated seeds
+    skip the AI-relevance gate because a person chose them; discovered candidates
+    (from awesome lists) must pass it. Empty descriptions are filled from the README.
+    """
     with open(output, "r", encoding="utf-8") as f:
         existing = json.load(f)
     known = {str(r["id"]) for r in existing}
-    print(f"🌱 Seeds: {len(pairs)} named repos from {seeds_path}")
-    added, skipped = [], {"known": 0, "not_found": 0, "unreadable": 0, "archived": 0,
-                          "below_floor": 0}
+    pairs = list(dict.fromkeys(pairs))
+    print(f"🌱 {label}: {len(pairs)} candidate repos")
+    added = []
+    skipped = {"known": 0, "not_found": 0, "unreadable": 0, "archived": 0,
+               "below_floor": 0, "not_ai": 0}
     for i in range(0, len(pairs), 50):
         batch = pairs[i:i + 50]
         nodes = refresh_batch(batch, token)
@@ -694,12 +717,9 @@ def run_seeds(output: str, seeds_path: str, token: Optional[str]) -> None:
             if not node:
                 skipped["not_found"] += 1
                 continue
-            if node.get("isArchived"):
-                skipped["archived"] += 1
-                continue
             rec = parse_node(node)
-            if rec is None:
-                skipped["not_found"] += 1
+            if rec is None:  # parse_node drops archived repos
+                skipped["archived"] += 1
                 continue
             if str(rec["id"]) in known:
                 skipped["known"] += 1
@@ -707,8 +727,12 @@ def run_seeds(output: str, seeds_path: str, token: Optional[str]) -> None:
             if rec.get("stars", 0) < MIN_STARS:
                 skipped["below_floor"] += 1
                 continue
-            # The seed list is curated by hand, so the search-oriented AI gate is not applied.
-            # Entries with no GitHub description take their first README sentence instead.
+            if not curated and f"{rec['owner']}/{rec['name']}".lower() in load_exclusions():
+                skipped["not_ai"] += 1
+                continue
+            if not curated and not passes_discovery_gate(rec):
+                skipped["not_ai"] += 1
+                continue
             if not (rec.get("description") or "").strip():
                 rec["description"] = readme_summary(rec["owner"], rec["name"], token) or ""
             added.append(ensure_enriched(rec))
@@ -716,10 +740,177 @@ def run_seeds(output: str, seeds_path: str, token: Optional[str]) -> None:
     merged = sorted(existing + added, key=lambda x: x.get("stars", 0), reverse=True)
     with open(output, "w", encoding="utf-8") as f:
         json.dump(merged, f, separators=(",", ":"))
-    print(f"📋 Seed outcomes: added {len(added)}, skipped {skipped}")
-    for r in added:
+    print(f"📋 {label} outcomes: added {len(added)}, skipped {skipped}")
+    for r in added[:60]:
         print(f"   + {r.get('stars', 0):>6}  {r.get('owner')}/{r.get('name')}")
-    print(f"✅ Seeds complete: {len(merged)} records -> {output}")
+    if len(added) > 60:
+        print(f"   ... and {len(added) - 60} more")
+    print(f"✅ {label} complete: {len(merged)} records -> {output}")
+
+
+def read_pairs(path: str) -> List[Tuple[str, str]]:
+    pairs = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and line.count("/") == 1:
+                owner, name = line.split("/", 1)
+                pairs.append((owner.strip(), name.strip()))
+    return pairs
+
+
+def run_seeds(output: str, seeds_path: str, token: Optional[str]) -> None:
+    """Targeted add of curated AI repos (owner/name per line). See ingest_pairs for the rules."""
+    if not token:
+        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --seeds.")
+    ingest_pairs(output, read_pairs(seeds_path), token, curated=True, label="Seeds")
+
+
+# Reserved GitHub path segments that look like owner/name in links but are not repos.
+_NOT_REPO_OWNERS = {"topics", "sponsors", "orgs", "marketplace", "features", "collections",
+                    "apps", "about", "login", "settings", "search", "trending", "explore",
+                    "issues", "pulls", "blog", "enterprise", "pricing", "readme", "wiki",
+                    "users", "organizations", "site", "security", "events", "customer-stories"}
+_GITHUB_LINK = re.compile(r"github\.com/([A-Za-z0-9][A-Za-z0-9-]{0,38})/([A-Za-z0-9._-]+)")
+
+
+def fetch_readme_text(owner: str, name: str, token: str) -> Optional[str]:
+    req = urllib.request.Request(
+        f"https://api.github.com/repos/{owner}/{name}/readme",
+        headers={"Authorization": f"Bearer {token}", "User-Agent": "AIToolScour/1.0",
+                 "Accept": "application/vnd.github.raw"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return resp.read().decode("utf-8", errors="replace")
+    except Exception:
+        return None
+
+
+def extract_repo_links(markdown: str) -> List[Tuple[str, str]]:
+    found = []
+    for owner, name in _GITHUB_LINK.findall(markdown):
+        if owner.lower() in _NOT_REPO_OWNERS:
+            continue
+        name = name.rstrip(".").removesuffix(".git")
+        if name.lower() in {"", "issues", "pulls"}:
+            continue
+        found.append((owner, name))
+    return found
+
+
+def run_awesome(output: str, sources_path: str, token: Optional[str]) -> None:
+    """
+    Discovery from curated awesome lists: reads each list's README, extracts the GitHub repos
+    it links to, and adds the ones that pass the same checks as a search hit (including the
+    AI-relevance gate, since list links are not hand-picked per repo).
+    """
+    if not token:
+        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --awesome.")
+    sources = read_pairs(sources_path)
+    candidates: List[Tuple[str, str]] = []
+    for owner, name in sources:
+        text = fetch_readme_text(owner, name, token)
+        if text is None:
+            print(f"   ⚠️  could not read {owner}/{name}")
+            continue
+        links = extract_repo_links(text)
+        print(f"   {owner}/{name}: {len(links)} repo links")
+        candidates.extend(links)
+    own = {f"{o}/{n}".lower() for o, n in sources}
+    candidates = [c for c in dict.fromkeys(candidates) if f"{c[0]}/{c[1]}".lower() not in own]
+    ingest_pairs(output, candidates, token, curated=False, label="Awesome discovery")
+
+
+_GENERIC_ALT = re.compile(r"^(Other .+ projects in this catalog|Adjacent tools in .+|Managed cloud APIs|"
+                          r"Comparable open-source engines)$")
+
+
+def is_generic_alternatives(alts: Any) -> bool:
+    return isinstance(alts, list) and any(isinstance(a, str) and _GENERIC_ALT.match(a) for a in alts)
+
+
+_AMBIGUOUS_NAMES = {"agents", "agent", "sdk", "core", "api", "examples", "docs", "server",
+                     "servers", "app", "cli", "tools", "ui", "web", "models", "awesome"}
+
+
+def derive_alternatives(records: List[Dict[str, Any]], per_record: int = 4) -> int:
+    """
+    Replaces generic alternatives with the most similar catalog repos. Similarity is the sum of
+    shared-topic weights (rare topics count more; topics on more than 400 repos are ignored as
+    too generic) plus a bonus for the same subsystem. Hand-written alternatives are left alone.
+    Returns the number of records changed.
+    """
+    import math
+    df: Dict[str, int] = {}
+    for r in records:
+        for t in set(r.get("topics") or []):
+            df[t] = df.get(t, 0) + 1
+    index: Dict[str, List[int]] = {}
+    for i, r in enumerate(records):
+        for t in set(r.get("topics") or []):
+            if 1 < df[t] <= 400:
+                index.setdefault(t, []).append(i)
+    by_subsystem: Dict[Any, List[int]] = {}
+    for i in sorted(range(len(records)), key=lambda k: -records[k].get("stars", 0)):
+        by_subsystem.setdefault(records[i].get("subsystem"), []).append(i)
+    changed = 0
+    for i, r in enumerate(records):
+        intel = r.get("beginner_intel")
+        if not isinstance(intel, dict) or not is_generic_alternatives(intel.get("alternatives")):
+            continue
+        scores: Dict[int, float] = {}
+        for t in set(r.get("topics") or []):
+            if t in index:
+                w = 1.0 / math.log(2 + df[t])
+                for j in index[t]:
+                    if j != i:
+                        scores[j] = scores.get(j, 0.0) + w
+        for j in list(scores):
+            if records[j].get("subsystem") == r.get("subsystem"):
+                scores[j] += 1.0
+        ranked = sorted(scores, key=lambda j: (-scores[j], -records[j].get("stars", 0)))
+        picks: List[str] = []
+        seen = set()
+        for j in ranked:
+            name = records[j].get("name") or ""
+            if name.lower() in _AMBIGUOUS_NAMES:  # "agents", "sdk": show the owner too
+                name = f"{records[j].get('owner')}/{name}"
+            if not name or name.lower() in seen or name.lower() == (r.get("name") or "").lower():
+                continue
+            seen.add(name.lower())
+            picks.append(name)
+            if len(picks) == per_record:
+                break
+        if len(picks) < per_record:
+            # No usable topics (or too few): fall back to the most-starred repos in the same subsystem.
+            same = by_subsystem.get(r.get("subsystem"), [])
+            for j in same:
+                if j == i:
+                    continue
+                name = records[j].get("name") or ""
+                if name.lower() in _AMBIGUOUS_NAMES:
+                    name = f"{records[j].get('owner')}/{name}"
+                if not name or name.lower() in seen or name.lower() == (r.get("name") or "").lower():
+                    continue
+                seen.add(name.lower())
+                picks.append(name)
+                if len(picks) == per_record:
+                    break
+        if len(picks) >= 2:  # too few real neighbours: keep the template rather than invent a list
+            intel["alternatives"] = picks
+            changed += 1
+    return changed
+
+
+def run_alternatives(output: str) -> None:
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    before = sum(1 for r in records if is_generic_alternatives((r.get("beginner_intel") or {}).get("alternatives")))
+    changed = derive_alternatives(records)
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(records, f, separators=(",", ":"))
+    print(f"🔗 Alternatives: {before} generic lists found, {changed} replaced with catalog neighbours -> {output}")
 
 
 def main():
@@ -743,6 +934,10 @@ def main():
                         help="where --prune-non-ai writes the removed list")
     parser.add_argument("--seeds", type=str, default="",
                         help="targeted add: owner/name per line from this file (named AI repos search missed)")
+    parser.add_argument("--awesome", type=str, default="",
+                        help="discovery: GitHub repos linked from the awesome lists in this file (owner/name per line)")
+    parser.add_argument("--alternatives", action="store_true",
+                        help="maintenance: replace generic 'alternatives' with the most similar catalog repos")
     parser.add_argument("--output", type=str, default="web/public/repos.json")
     args = parser.parse_args()
 
@@ -752,6 +947,12 @@ def main():
         return
     if args.seeds:
         run_seeds(args.output, args.seeds, token)
+        return
+    if args.awesome:
+        run_awesome(args.output, args.awesome, token)
+        return
+    if args.alternatives:
+        run_alternatives(args.output)
         return
     if args.refresh:
         run_refresh(args.output, token)
