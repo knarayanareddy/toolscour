@@ -8,15 +8,15 @@ Scope: catalog entries (`web/public/repos.json`) and the pipeline that produces 
 
 | | Before (`8307c25`) | After | Notes |
 | --- | --- | --- | --- |
-| Catalog records | 11,965 | **9,487** | 8,768 kept from the base; 719 added since (see §3) |
+| Catalog records | 11,965 | **9,481** | 8,768 kept from the base; 713 added since (see §3) |
 | Hugging Face records | 304 | 304 | Not re-harvested (sandbox cannot reach huggingface.co) |
 | Agent Skill Packs | 614 (none checked against the repo) | **649**, every one confirmed to ship a `SKILL.md` ≥ 200 bytes | 95 new; 42 candidates rejected (41 stubs under 200 bytes, plus 1 unreadable) |
 | Validator errors | 1,520 | **0** | `validate_corpus.py` |
 | Validator warnings | 69 empty descriptions | **0** | README fallback and the prune removed them |
 | Archived / deleted / sub-500★ records | present | **0** | 584 archived, 11 deleted, 6 below floor removed by `--refresh` |
-| Automated tests | none | **37 unit tests**, run in the deploy workflow | |
+| Automated tests | none | **39 unit tests**, run in the deploy workflow | |
 | Intel source (`beginner_intel.intel_source`) | not recorded | **45 curated** (hand-written), **6,227 README** (first README paragraph), **3,215 generated** (incl. 304 Hub records) | |
-| Tier-1 index (gzip) | 788.6 KB | **689.1 KB** (budget 1.8 MB) | `catalog-stats.json` |
+| Tier-1 index (gzip) | 788.6 KB | **688.6 KB** (budget 1.8 MB) | `catalog-stats.json` |
 | Web build | passing | **passing** | `npm run build` |
 
 ---
@@ -45,8 +45,8 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 | 16 | **Cron ran only the default harvest.** | `deploy.yml` | ✅ The cron now runs `--extended`, `--skills`, `--refresh`, `--fill-descriptions` and `--prune-non-ai`. |
 | 17 | **`build-your-own-x` misclassified** (a Markdown tutorial, 551k★, filed under Foundation Models). | Corpus audit | ✅ Removed by the AI-relevance gate. It is absent from the corpus. |
 | 25 | **Top-tier intel was templated.** The 100 most-starred repos had only generated text. | Corpus audit | ⚠️ Partly fixed. 41 hand-written entries in `pipeline/curated_intel.json` (`what_it_does`, `why_it_matters`, `when_to_use`, alternatives, superpowers), applied by `--curated-intel`. Not written for the rest of the top 100: several are not AI tools (see below) or are repos whose purpose I could not verify without reading them. |
-| 26 | **Non-AI repos in the top 100 by stars.** The gate passed them because 'AI' appears in a description or topic. Examples: `Snailclimb/JavaGuide`, `Asabeneh/30-Days-Of-Python`, `thedaviddias/Front-End-Checklist`, `supabase/supabase`, `shadcn-ui/ui`, `Stirling-PDF`. | Top-100 review | ❌ Open. Not removed: removal is a policy decision. Recommend a reviewed exclusion list like `discovery_exclusions.txt`. |
-| 27 | **Broken and misfiled entries in the top 100.** `DeepSeek-V3` and `DeepSeek-R1` descriptions were raw HTML badge markup (README intel now replaces the text). `ollama` is filed as 'Model / Weights'. `mattpocock/skills` is filed as 'Runtime / Serving Engine'. | Top-100 review | ⚠️ README intel fixes the text. The artifact labels are still open: the classifier needs tuning. |
+| 26 | **Non-AI repos in the top 100 by stars.** The gate passed them because 'AI' appears in a description or topic. | Top-100 review | ✅ Fixed. Six removed (`Snailclimb/JavaGuide`, `shadcn-ui/ui`, `supabase/supabase`, `Stirling-Tools/Stirling-PDF`, `Asabeneh/30-Days-Of-Python`, `thedaviddias/Front-End-Checklist`), listed in `pipeline/discovery_exclusions.txt` and `docs/pruned_non_ai_repos.tsv`. `--prune-non-ai` now honours the exclusion list. |
+| 27 | **Broken and misfiled entries in the top 100.** `DeepSeek-V3` and `DeepSeek-R1` descriptions were raw HTML badge markup. `ollama`, `dify`, `langflow` and `unsloth` were filed as 'Model / Weights'. `mattpocock/skills` is filed as 'Runtime / Serving Engine'. | Top-100 review | ⚠️ Partly fixed. README intel replaces the HTML text. Four artifact labels corrected through `curated_intel.json` (`artifact` override). `mattpocock/skills` is still open: it is an unverified skill candidate and its class needs a check against its SKILL.md. |
 | 18 | **Generated beginner intel is templated.** Every generated record carried the same `alternatives` list ("Other … projects in this catalog", "Managed cloud APIs", "Adjacent tools in …"), and `key_superpowers` repeated across records. | Corpus audit | ⚠️ Partly fixed. `--alternatives` replaces the template with real catalog neighbours (shared topics weighted by rarity, plus same subsystem; falls back to the top-starred repos in the subsystem when a repo has no topics). 0 template lists remain. `what_it_does` now comes from the README for 6,227 repos (`--readme-intel`). `why_it_matters`, `when_to_use` and `key_superpowers` are still generated for the non-curated records. |
 | 19 | **Hugging Face was not re-harvested or refreshed.** | `huggingface.co` TLS EOF from the sandbox | ❌ Open here. The daily cron can refresh it from GitHub Actions, where the network is expected to work. Not verified. |
 | 20 | **Recall gap for named AI projects.** Search only finds repos that carry a queried topic or fall in a star window. A probe of 38 well-known AI tools found 6 missing, including ComfyUI (renamed to `Comfy-Org/ComfyUI`), `cline/cline`, `lm-sys/FastChat` and `stanfordnlp/dspy`. | Probe of named projects | ✅ Fixed for curated names. `--seeds pipeline/seed_repos.txt` adds 164 named AI repos through the same checks (exists, ≥500★, not archived, enriched); 38 were new. Recall for repos that no seed names and no search finds is still unmeasured. |
@@ -76,5 +76,5 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 4. **Similar-tool lists are topic-based.** A few neighbours are weak (for example generic repos that share one common topic). They are a catalog similarity, not a hand-written comparison.
 5. **Skill-pack quality.** Verification confirms a `SKILL.md` exists with at least 200 bytes. It does not judge quality. Reviewers may still want to prune weak packs.
 6. **Generated why/when text.** `why_it_matters` and `when_to_use` are still generated for about 9,400 records. Only the 45 curated entries have hand-written versions.
-7. **Non-AI and misfiled top-tier entries** (findings 26 and 27) need a review decision.
+7. **Top-tier intel coverage.** 41 hand-written entries cover about 40 of the top 100. The rest keep README text, because I could not describe them accurately without reading them. `mattpocock/skills` class is open (finding 27).
 8. **Maintainer tooling.** `pipeline/test_pipeline.py` and `pipeline/validate_corpus.py` are maintainer tools. They can be removed if unwanted; the deploy workflow depends on them.

@@ -1,0 +1,7 @@
+
+Snailclimb/JavaGuide
+Asabeneh/30-Days-Of-Python
+thedaviddias/Front-End-Checklist
+supabase/supabase
+shadcn-ui/ui
+Stirling-Tools/Stirling-PDF

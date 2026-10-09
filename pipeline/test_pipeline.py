@@ -348,5 +348,25 @@ class AlternativesTests(unittest.TestCase):
         self.assertEqual(recs[0]["beginner_intel"]["alternatives"], hand)
 
 
+class CuratedFilesTests(unittest.TestCase):
+    def test_curated_intel_keys_are_owner_name_and_entries_complete(self):
+        import json as _json
+        path = os.path.join(os.path.dirname(__file__), "curated_intel.json")
+        data = _json.load(open(path, encoding="utf-8"))
+        self.assertGreater(len(data), 0)
+        for key, entry in data.items():
+            self.assertEqual(key, key.lower(), key)
+            self.assertEqual(key.count("/"), 1, key)
+            if "what_it_does" in entry:  # artifact-only corrections need no intel text
+                for field in ("why_it_matters", "when_to_use", "alternatives", "key_superpowers"):
+                    self.assertIn(field, entry, f"{key} missing {field}")
+
+    def test_exclusions_are_owner_name_and_lowercase_loadable(self):
+        keys = harvest.load_exclusions()
+        self.assertIn("snailclimb/javaguide", keys)
+        for k in keys:
+            self.assertEqual(k.count("/"), 1, k)
+
+
 if __name__ == "__main__":
     unittest.main()

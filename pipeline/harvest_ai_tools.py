@@ -449,7 +449,9 @@ def run_prune_non_ai(output: str, report_path: str) -> None:
     kept, removed = [], []
     for r in records:
         key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
-        if r.get("source") == "huggingface" or key in curated or passes_new_record_gate(r):
+        if key in load_exclusions():
+            removed.append(r)
+        elif r.get("source") == "huggingface" or key in curated or passes_new_record_gate(r):
             kept.append(r)
         else:
             removed.append(r)
@@ -1010,6 +1012,8 @@ def run_curated_intel(output: str) -> None:
         for field in ("what_it_does", "why_it_matters", "when_to_use", "alternatives", "key_superpowers"):
             if field in entry:
                 r["beginner_intel"][field] = entry[field]
+        if "artifact" in entry:  # corrects a misfiled class; the entry must justify it
+            r["artifact"] = entry["artifact"]
         r["beginner_intel"]["intel_source"] = "curated"
         applied += 1
     with open(output, "w", encoding="utf-8") as f:
