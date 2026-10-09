@@ -191,3 +191,19 @@ oceanbase/oceanbase                    # database, not an AI tool
 astrid-runtime/astrid                  # operating system; description is a slogan only
 opencv/opencv_contrib                  # computer vision modules, not AI-specific
 louisshark/chatgpt_system_prompt        # collection of GPT system prompts; same class as leaked-prompt collections; label only, no text
+
+# Top-2000 batch 15 skips
+evolution-foundation/evolution-api         # WhatsApp integration API, not an AI tool
+unicity-sphere/sphere                      # Web3 wallet, not an AI tool
+apache/seatunnel                           # data integration tool, not AI-specific
+xonsh/xonsh                                # shell, AI role not stated
+ronitsingh10/finetune                      # macOS audio app, not an AI tool
+olistic/warriorjs                          # programming game, not an AI tool
+goplus/xgo                                 # programming language, not an AI tool
+mnfst/awesome-free-llm-apis                # list of free API keys; not published
+databendlabs/databend                      # database, not an AI tool
+usekaneo/kaneo                             # project management, not an AI tool
+friuns2/blackfriday-gpts-prompts          # list of free GPTs; free-mirror class
+trailhq/graft                              # description is marketing only
+ripperhe/bob                               # translation and OCR app; AI role not stated
+mengxi-ream/read-frog                      # language app; AI role not stated

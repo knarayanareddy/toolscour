@@ -1267,5 +1267,145 @@
  "apify/apify-mcp-server": {
   "artifact": "Application / Service",
   "reason": "Description: an MCP server."
+ },
+ "openrlhf/openrlhf": {
+  "artifact": "Framework",
+  "reason": "Description: an RL framework."
+ },
+ "sktime/sktime": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a machine learning library."
+ },
+ "epistasislab/tpot": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an AutoML library."
+ },
+ "openmined/pysyft": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for private data science."
+ },
+ "yzhao062/pyod": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Python library."
+ },
+ "espnet/espnet": {
+  "artifact": "Framework",
+  "reason": "Description: a speech toolkit."
+ },
+ "wonderwhy-er/desktopcommandermcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: an MCP server app."
+ },
+ "open-mmlab/mmsegmentation": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a toolbox."
+ },
+ "microsoft/ufo": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop agent system."
+ },
+ "brightmart/nlp_chinese_corpus": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a corpus dataset."
+ },
+ "huggingface/accelerate": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "microsoft/computervision-recipes": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: recipes and documentation."
+ },
+ "pycaret/pycaret": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Python AutoML library."
+ },
+ "tiiny-ai/powerinfer": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a serving system."
+ },
+ "alirezadir/aimlinterviews": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a guide."
+ },
+ "awslabs/mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: MCP servers."
+ },
+ "tmc/langchaingo": {
+  "artifact": "Framework",
+  "reason": "Description: a framework."
+ },
+ "roboflow/notebooks": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "arogozhnikov/einops": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a tensor library."
+ },
+ "xorbitsai/inference": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference server."
+ },
+ "yaofanguk/video-subtitle-extractor": {
+  "artifact": "Application / Service",
+  "reason": "Description: a GUI tool."
+ },
+ "tflearn/tflearn": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "sloria/textblob": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a text processing library."
+ },
+ "peterl1n/robustvideomatting": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a video matting model."
+ },
+ "morvanzhou/reinforcement-learning-with-tensorflow": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "spring-projects/spring-ai": {
+  "artifact": "Framework",
+  "reason": "Description: an application framework."
+ },
+ "nvidia/garak": {
+  "artifact": "Application / Service",
+  "reason": "Description: a vulnerability scanner."
+ },
+ "replicate/cog": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a packaging tool."
+ },
+ "qwenaudio/sensevoice": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a speech model."
+ },
+ "oneflow-inc/oneflow": {
+  "artifact": "Framework",
+  "reason": "Description: a deep learning framework."
+ },
+ "modelcontextprotocol/modelcontextprotocol": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a specification."
+ },
+ "yzhao062/anomaly-detection-resources": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a resource list."
+ },
+ "thysrael/horizon": {
+  "artifact": "Application / Service",
+  "reason": "Description: a news radar app."
+ },
+ "unit8co/darts": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a forecasting library."
+ },
+ "nasiko-labs/nasiko": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an agent runtime."
  }
 }

@@ -3487,5 +3487,225 @@
  "microsoft/magentic-ui": {
   "why_it_matters": "It is an experimental agent that works across the browser and the local file system.",
   "when_to_use": "When you want an agent to act in your browser and files."
+ },
+ "drivendataorg/cookiecutter-data-science": {
+  "why_it_matters": "It is a standard project layout for data science work, which you copy and adapt.",
+  "when_to_use": "When you start a data project and want a consistent structure."
+ },
+ "openrlhf/openrlhf": {
+  "why_it_matters": "It is a scalable agentic RL framework built on Ray, for PPO and related methods.",
+  "when_to_use": "When you train large models with RLHF on several GPUs."
+ },
+ "sktime/sktime": {
+  "why_it_matters": "It is a unified framework for machine learning with time series.",
+  "when_to_use": "When you forecast or classify time series with a common interface."
+ },
+ "epistasislab/tpot": {
+  "why_it_matters": "It is an AutoML tool that optimises machine learning pipelines with genetic programming.",
+  "when_to_use": "When you want an automated search for a good tabular pipeline."
+ },
+ "openmined/pysyft": {
+  "why_it_matters": "It lets you do data science on data that stays on someone else's server.",
+  "when_to_use": "When data cannot leave its owner and you still need to analyse it."
+ },
+ "yzhao062/pyod": {
+  "why_it_matters": "It is a Python library for anomaly detection across tabular, time series, graph, text and image data.",
+  "when_to_use": "When you look for outliers in your data."
+ },
+ "youmind-openlab/awesome-gpt-image-2": {
+  "why_it_matters": "It is a large, regularly updated library of GPT Image 2 prompts with previews.",
+  "when_to_use": "When you want example prompts for that image model."
+ },
+ "agents365-ai/drawio-skill": {
+  "why_it_matters": "It is an agent skill that turns descriptions, code and specifications into draw.io diagrams.",
+  "when_to_use": "When you want an editable diagram generated from text or code."
+ },
+ "espnet/espnet": {
+  "why_it_matters": "It is an end-to-end speech processing toolkit.",
+  "when_to_use": "When you build speech recognition or speech synthesis systems."
+ },
+ "google-deepmind/sonnet": {
+  "why_it_matters": "It is a TensorFlow library for building neural networks.",
+  "when_to_use": "When you maintain TensorFlow code built on Sonnet."
+ },
+ "wonderwhy-er/desktopcommandermcp": {
+  "why_it_matters": "It is an MCP server that gives Claude terminal control, file search and diffs.",
+  "when_to_use": "When you want Claude to run commands and edit files on your machine."
+ },
+ "open-mmlab/mmsegmentation": {
+  "why_it_matters": "It is a toolbox and benchmark for semantic segmentation.",
+  "when_to_use": "When you train or compare segmentation models."
+ },
+ "microsoft/ufo": {
+  "why_it_matters": "It is a multi-agent system that controls Windows desktops with natural language.",
+  "when_to_use": "When you want an agent to operate Windows applications."
+ },
+ "cloudflare/moltworker": {
+  "why_it_matters": "It runs OpenClaw on Cloudflare Workers.",
+  "when_to_use": "When you want to host OpenClaw without your own server."
+ },
+ "brightmart/nlp_chinese_corpus": {
+  "why_it_matters": "It is a large-scale Chinese corpus for natural language processing.",
+  "when_to_use": "When you pretrain or evaluate Chinese language models."
+ },
+ "huggingface/accelerate": {
+  "why_it_matters": "It launches, trains and runs PyTorch models on almost any device or distributed setup.",
+  "when_to_use": "When you want the same training script to run on one GPU or many."
+ },
+ "microsoft/computervision-recipes": {
+  "why_it_matters": "It has best practices, code samples and documentation for computer vision.",
+  "when_to_use": "When you start a computer vision project with tested recipes."
+ },
+ "xuebinqin/u-2-net": {
+  "why_it_matters": "It is the code for U2-Net, a deep network for salient object detection.",
+  "when_to_use": "When you need salient object or background removal."
+ },
+ "pycaret/pycaret": {
+  "why_it_matters": "It is a low-code AutoML library for Python.",
+  "when_to_use": "When you want to compare and deploy models quickly."
+ },
+ "tiiny-ai/powerinfer": {
+  "why_it_matters": "It is a fast LLM serving system for local deployment.",
+  "when_to_use": "When you run large models on a local machine with limited memory."
+ },
+ "onnx/models": {
+  "why_it_matters": "It is a collection of pretrained models in the ONNX format.",
+  "when_to_use": "When you need a pretrained model that runs in ONNX runtimes."
+ },
+ "jadore801120/attention-is-all-you-need-pytorch": {
+  "why_it_matters": "It is a PyTorch implementation of the Transformer from 'Attention Is All You Need'.",
+  "when_to_use": "When you want to study the original Transformer code."
+ },
+ "agricidaniel/claude-ads": {
+  "why_it_matters": "It is a paid-media skill for Claude Code, covering 12 ad platforms.",
+  "when_to_use": "When you want Claude to audit or plan paid campaigns."
+ },
+ "alirezadir/aimlinterviews": {
+  "why_it_matters": "It is a guide to machine learning and AI technical interviews.",
+  "when_to_use": "When you prepare for ML interviews."
+ },
+ "awslabs/mcp": {
+  "why_it_matters": "It has open-source MCP servers for AWS services.",
+  "when_to_use": "When an agent needs to call AWS services."
+ },
+ "hugoblox/kit": {
+  "why_it_matters": "It is a template that builds a site from a description, stored as Markdown.",
+  "when_to_use": "When you want a Markdown-based website you own."
+ },
+ "roboflow/rf-detr": {
+  "why_it_matters": "It is a real-time object detection and segmentation model architecture.",
+  "when_to_use": "When you need fast detection or segmentation."
+ },
+ "tmc/langchaingo": {
+  "why_it_matters": "It is LangChain for Go, for writing LLM programs in Go.",
+  "when_to_use": "When your backend is in Go and calls LLMs."
+ },
+ "roboflow/notebooks": {
+  "why_it_matters": "It has tutorials on state-of-the-art computer vision models and techniques.",
+  "when_to_use": "When you want a runnable example for a vision model."
+ },
+ "frankbria/ralph-claude-code": {
+  "why_it_matters": "It is an autonomous development loop for Claude Code, with exit detection.",
+  "when_to_use": "When you want Claude Code to run a long task without supervision."
+ },
+ "lightricks/ltx-2": {
+  "why_it_matters": "It is the official inference and LoRA training package for the LTX-2 audio and video model.",
+  "when_to_use": "When you generate or fine-tune audio-video content."
+ },
+ "arogozhnikov/einops": {
+  "why_it_matters": "It provides readable and reliable tensor operations for PyTorch, JAX and others.",
+  "when_to_use": "When tensor reshaping is hard to read and you want clearer code."
+ },
+ "xorbitsai/inference": {
+  "why_it_matters": "It runs open-source LLMs behind an interface you can swap in for GPT with one line.",
+  "when_to_use": "When you want a local or private model behind an OpenAI-style API."
+ },
+ "droidrun/mobilerun": {
+  "why_it_matters": "It automates mobile devices with natural-language commands, using any LLM.",
+  "when_to_use": "When you want an agent to operate an Android or iOS device."
+ },
+ "tigerless-labs/autoharness": {
+  "why_it_matters": "It is a self-learning skill layer for Claude Code that distils skills from your work.",
+  "when_to_use": "When you want Claude Code to learn reusable skills from its own sessions."
+ },
+ "yaofanguk/video-subtitle-extractor": {
+  "why_it_matters": "It extracts hard-coded subtitles from video into SRT files, using local text recognition.",
+  "when_to_use": "When a video has burned-in subtitles and you need the text."
+ },
+ "tflearn/tflearn": {
+  "why_it_matters": "It is a deep learning library with a higher-level API for TensorFlow.",
+  "when_to_use": "When you want a simpler API over TensorFlow."
+ },
+ "thysrael/horizon": {
+  "why_it_matters": "It is an AI-powered news radar that generates daily briefings in English and Chinese.",
+  "when_to_use": "When you want a daily digest of news on topics you choose."
+ },
+ "ntegrals/openbrowser": {
+  "why_it_matters": "It is an autonomous toolkit that lets AI agents browse the web.",
+  "when_to_use": "When an agent needs to browse and act on web pages."
+ },
+ "sloria/textblob": {
+  "why_it_matters": "It is a simple Python library for text processing, including sentiment and part-of-speech tagging.",
+  "when_to_use": "When you need quick text analysis without a heavy setup."
+ },
+ "peterl1n/robustvideomatting": {
+  "why_it_matters": "It is robust video matting, which separates a person from the background in video.",
+  "when_to_use": "When you need background removal for video."
+ },
+ "modem-dev/hunk": {
+  "why_it_matters": "It is a review-first terminal diff viewer for agentic coders.",
+  "when_to_use": "When you review changes that an agent made in your repository."
+ },
+ "unit8co/darts": {
+  "why_it_matters": "It is a Python library for forecasting and anomaly detection on time series.",
+  "when_to_use": "When you forecast time series with a simple interface."
+ },
+ "morvanzhou/reinforcement-learning-with-tensorflow": {
+  "why_it_matters": "It has simple reinforcement learning tutorials, with Chinese explanations.",
+  "when_to_use": "When you learn RL from short TensorFlow examples."
+ },
+ "spring-projects/spring-ai": {
+  "why_it_matters": "It is an application framework for AI engineering in Java.",
+  "when_to_use": "When your application is in Java and needs LLM features."
+ },
+ "nasiko-labs/nasiko": {
+  "why_it_matters": "It is an open runtime for AI agents.",
+  "when_to_use": "When you want to host and run agents yourself."
+ },
+ "nvidia/garak": {
+  "why_it_matters": "It is a scanner for LLM vulnerabilities.",
+  "when_to_use": "When you test a model for weaknesses before release."
+ },
+ "higress-group/higress": {
+  "why_it_matters": "It is an AI-native API gateway.",
+  "when_to_use": "When you need one gateway for APIs and model traffic."
+ },
+ "blinkdl/chatrwkv": {
+  "why_it_matters": "It is ChatGPT-style chat powered by the RWKV RNN language model.",
+  "when_to_use": "When you want an open, RNN-based chat model."
+ },
+ "replicate/cog": {
+  "why_it_matters": "It packages machine learning models as containers.",
+  "when_to_use": "When you want to ship a model with a reproducible environment."
+ },
+ "qwenaudio/sensevoice": {
+  "why_it_matters": "It is the SenseVoice speech model for Mandarin, Cantonese, English, Japanese and Korean.",
+  "when_to_use": "When you need speech recognition in those languages."
+ },
+ "oneflow-inc/oneflow": {
+  "why_it_matters": "It is a deep learning framework designed to be user-friendly, scalable and efficient.",
+  "when_to_use": "When you want an alternative deep learning framework."
+ },
+ "pacifio/atlas": {
+  "why_it_matters": "It is source control for agents, tracking changes from several coding agents.",
+  "when_to_use": "When several agents change one codebase and you need to trace their work."
+ },
+ "yzhao062/anomaly-detection-resources": {
+  "why_it_matters": "It is a list of anomaly detection books, papers, videos and toolboxes.",
+  "when_to_use": "When you want reading material on anomaly detection."
+ },
+ "modelcontextprotocol/modelcontextprotocol": {
+  "why_it_matters": "It is the specification and documentation for the Model Context Protocol.",
+  "when_to_use": "When you implement or check MCP behaviour against the spec."
  }
 }

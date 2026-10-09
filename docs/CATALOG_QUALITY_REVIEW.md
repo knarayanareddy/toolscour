@@ -140,3 +140,9 @@ Checked against README and repo contents:
 - 60 entries and 43 artifact fixes. Hand-written text now covers 872 records. (The file has one metadata key, so it shows 873.)
 - 11 skipped with reasons in `pipeline/intel_skip.txt`: non-AI tools (DOM-to-image, OpenFrameworks, OpenCV contrib, a WeChat scheduler, OceanBase), slogan-only descriptions (Electric, claurst, gsd-core, Astrid), and a stock data toolkit with no clear AI role. `chatgpt_system_prompt` is labelled only, with no text, under the same user decision as the other prompt collections.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 15
+
+- 55 entries and 35 artifact fixes. Hand-written text now covers 927 records (the file has one metadata key).
+- 15 skipped with reasons in `pipeline/intel_skip.txt`: non-AI tools (WhatsApp API, Web3 wallet, data integration, shell, programming language, project management, database, a macOS audio app, a programming game), a list of free API keys, a list of free GPTs (free-mirror class), a marketing-only description, and two apps where the AI role is not stated.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
