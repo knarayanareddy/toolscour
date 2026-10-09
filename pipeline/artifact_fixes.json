@@ -275,5 +275,237 @@
  "promtengineer/localgpt": {
   "artifact": "Application / Service",
   "reason": "Description: a document chat application that runs locally."
+ },
+ "guidance-ai/guidance": {
+  "artifact": "Framework",
+  "reason": "Description: a programming paradigm for steering LLMs."
+ },
+ "coze-dev/coze-studio": {
+  "artifact": "Framework",
+  "reason": "Description: an agent development platform."
+ },
+ "huggingface/peft": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library for parameter-efficient fine-tuning."
+ },
+ "onnx/onnx": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an open standard, used as a library."
+ },
+ "livekit/livekit": {
+  "artifact": "Framework",
+  "reason": "Description: an end-to-end realtime platform."
+ },
+ "zergtant/pytorch-handbook": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an open book with tutorials."
+ },
+ "jnmetacode/agency-agents-zh": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a set of expert role descriptions."
+ },
+ "modelscope/funasr": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a speech recognition toolkit."
+ },
+ "swe-agent/swe-agent": {
+  "artifact": "Application / Service",
+  "reason": "Description: an agent that attempts to fix GitHub issues."
+ },
+ "pydantic/pydantic-ai": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for building agents."
+ },
+ "dzhng/deep-research": {
+  "artifact": "Application / Service",
+  "reason": "Description: an AI research assistant."
+ },
+ "unity-technologies/ml-agents": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a toolkit."
+ },
+ "stitionai/devika": {
+  "artifact": "Application / Service",
+  "reason": "Description: an agentic software engineer application."
+ },
+ "walkinglabs/learn-harness-engineering": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "avaiga/taipy": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for building data and AI web apps."
+ },
+ "stas00/ml-engineering": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an open book of methodologies."
+ },
+ "danielmiessler/lifeos": {
+  "artifact": "Framework",
+  "reason": "Description: an AI harness."
+ },
+ "liyupi/ai-guide": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a knowledge hub and guides."
+ },
+ "stefan-jansen/machine-learning-for-trading": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: the code for a book."
+ },
+ "huggingface/trl": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library for training LMs with RL."
+ },
+ "datawhalechina/easy-vibe": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a course."
+ },
+ "nari-labs/dia": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a TTS model."
+ },
+ "shusentang/dive-into-dl-pytorch": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a book's code translated to PyTorch."
+ },
+ "nndl/nndl": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a textbook with resources."
+ },
+ "ai4finance-foundation/fingpt": {
+  "artifact": "Model / Weights",
+  "reason": "Description: open-source financial LLMs."
+ },
+ "mlc-ai/web-llm": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a high-performance in-browser LLM inference engine."
+ },
+ "tensorflow/tfjs": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a JavaScript library."
+ },
+ "huanshere/videolingo": {
+  "artifact": "Application / Service",
+  "reason": "Description: a subtitle and dubbing workflow app."
+ },
+ "nvidia-nemo/speech": {
+  "artifact": "Framework",
+  "reason": "Description: a generative AI framework."
+ },
+ "meta-llama/llama-cookbook": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a guide to building with Llama."
+ },
+ "microsoft/airsim": {
+  "artifact": "Application / Service",
+  "reason": "Description: an open-source simulator."
+ },
+ "emcie-co/parlant": {
+  "artifact": "Framework",
+  "reason": "Description: an interaction control harness for agents."
+ },
+ "langchain-ai/langchainjs": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for building LLM applications."
+ },
+ "asyncfuncai/deepwiki-open": {
+  "artifact": "Application / Service",
+  "reason": "Description: an AI wiki generator app."
+ },
+ "nvidia/megatron-lm": {
+  "artifact": "Framework",
+  "reason": "Description: a training framework for transformers at scale."
+ },
+ "justadudewhohacks/face-api.js": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a JavaScript API."
+ },
+ "infrasys-ai/aisystem": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a knowledge base of AI systems topics."
+ },
+ "pytorch/vision": {
+  "artifact": "Library / SDK",
+  "reason": "Description: datasets, transforms and models for PyTorch."
+ },
+ "camel-ai/camel": {
+  "artifact": "Framework",
+  "reason": "Description: a multi-agent framework."
+ },
+ "canner/wrenai": {
+  "artifact": "Application / Service",
+  "reason": "Description: a GenBI application."
+ },
+ "rocketride-org/rocketride-server": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an AI pipeline engine."
+ },
+ "googlecloudplatform/generative-ai": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: sample code and notebooks."
+ },
+ "img2threejs/img2threejs": {
+  "artifact": "Application / Service",
+  "reason": "Description: a tool that generates Three.js code from images."
+ },
+ "dair-ai/ml-youtube-courses": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an index of courses."
+ },
+ "microsoft/mcp-for-beginners": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a curriculum."
+ },
+ "tradecatlabs/vibe-coding-cn": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "mikoto10032/deeplearning": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "nlp-love/ml-nlp": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: study notes on ML and NLP interview topics."
+ },
+ "mrdbourke/pytorch-deep-learning": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: course materials."
+ },
+ "mathfoundationrl/book-mathematical-foundation-of-reinforcement-learning": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a book homepage."
+ },
+ "lightgbm-org/lightgbm": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a gradient boosting library."
+ },
+ "microsoft/agent-lightning": {
+  "artifact": "Framework",
+  "reason": "Description: a trainer for AI agents."
+ },
+ "ufund-me/qbot": {
+  "artifact": "Framework",
+  "reason": "Description: an AI-powered quant research platform."
+ },
+ "nesquena/hermes-webui": {
+  "artifact": "UI / Application",
+  "reason": "Description: a web interface."
+ },
+ "google/magika": {
+  "artifact": "Application / Service",
+  "reason": "Description: a file type detection tool, a model-based application."
+ },
+ "tloen/alpaca-lora": {
+  "artifact": "Application / Service",
+  "reason": "Description: a method and code for instruction tuning."
+ },
+ "microsoft/skillopt": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: optimiser for agent skills."
+ },
+ "earthtojake/text-to-cad": {
+  "artifact": "Application / Service",
+  "reason": "Description: gives an agent CAD capabilities; the repo is a tool, not a skill pack."
  }
 }

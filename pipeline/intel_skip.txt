@@ -99,3 +99,28 @@ bendlang/bend                         # description is a claim with no verifiabl
 fosrl/pangolin                        # networking platform, not an AI tool
 guillaumemeyer/watermarks-remover     # purpose is removing AI provenance marks; not written up
 docmost/docmost                       # wiki software, not an AI tool
+
+# Top-2000 batch 7 skips
+elder-plinius/l1b3rt4s                # jailbreak prompt collection
+liLittleCat/awesome-free-chatgpt      # list of unofficial free ChatGPT mirrors; not written up
+lilittlecat/awesome-free-chatgpt      # list of unofficial free ChatGPT mirrors; not written up
+evil0ctal/douyin_tiktok_download_api  # downloads watermark-free videos from platforms; not written up
+morluto/rea                           # reverse-engineering skill pack; not written up
+hummingbot/hummingbot                 # trading bot, not an AI tool
+hypit-ai/hypit                        # clones viral videos; not written up
+davideuler/architecture.of.internet-product  # not an AI tool
+dailydotdev/daily                     # news feed site, not an AI tool
+nikivdev/code                         # description is an install instruction only
+bee-san/ciphey                        # decryption tool, not an AI tool
+
+# Top-2000 batch 8 skips
+screenpipe/screenpipe                 # continuous recording of computer work; purpose and privacy scope not written up
+bbfamily/abu                          # quant trading system; AI role not verifiable from description
+jlcodes99/cockpit-tools               # account manager for IDEs; not written up
+nukeop/nuclear                        # music player, not an AI tool
+alyssaxuu/screenity                   # screen recorder, not an AI tool
+iii-hq/iii                            # description is a slogan only
+teambit/bit                           # build system, not an AI tool
+larksuite/cli                         # Lark CLI, not an AI tool
+gztchan/awesome-design                # design resource list, not an AI tool
+apache/apisix                         # API gateway, not an AI tool

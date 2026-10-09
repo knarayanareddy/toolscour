@@ -86,3 +86,11 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 - `pipeline/artifact_fixes.json` holds corrected `artifact` labels, each with a reason. It is applied by `--intel-text`.
 - Known bug, not yet fixed globally: `taxonomy_ai.classify_artifact` matches short keywords as substrings (for example `ui` in "build" and `cli` in "client"). A word-boundary version changes 3,007 labels across the corpus, and the changes are not uniformly better (for example Stable Diffusion would move from Model / Weights to Application / Service). Fixing it needs a reviewed rule set, not a bulk swap.
 - Records outside the top 2,000 keep their keyword-derived labels, and some of them are likely wrong.
+
+
+### Hand-written top-2,000 text: batches 7 and 8
+
+- Batch 7: 57 entries and 25 artifact fixes. Batch 8: 55 entries and 33 artifact fixes. Hand-written text now covers 515 records.
+- Each entry is written from the repo's own description and README. Skipped repos are listed in `pipeline/intel_skip.txt` with reasons.
+- Checks after batch 8: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip (budget 1.8 MB), web build passes.
+- Open: about 1,320 of the top 2,000 still lack hand-written text. Some top-tier `what_it_does` values are broken.
