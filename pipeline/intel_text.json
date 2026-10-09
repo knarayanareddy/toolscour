@@ -2059,5 +2059,253 @@
  "tradecatlabs/vibe-coding-cn": {
   "why_it_matters": "It is a Chinese tutorial on vibe coding, covering AI pair programming workflows, prompts, skills and context management.",
   "when_to_use": "When you want Chinese guidance on AI pair programming."
+ },
+ "agricidaniel/claude-seo": {
+  "why_it_matters": "It is a universal SEO skill for Claude Code, with 26 sub-skills and 19 sub-agents for technical and content SEO.",
+  "when_to_use": "When you want Claude Code to run SEO audits and content work."
+ },
+ "earthtojake/text-to-cad": {
+  "why_it_matters": "It gives an agent CAD capabilities, so it can produce CAD models from text.",
+  "when_to_use": "When you want an agent to create or edit CAD models."
+ },
+ "browser-use/browser-harness": {
+  "why_it_matters": "It connects an LLM to your real browser through one edit point, and self-heals when tasks break.",
+  "when_to_use": "When you want an agent to complete browser tasks in your own browser."
+ },
+ "ujjwalkarn/machine-learning-tutorials": {
+  "why_it_matters": "It is a curated collection of machine learning and deep learning tutorials, articles and resources.",
+  "when_to_use": "When you want reading material on ML and deep learning."
+ },
+ "transformeroptimus/superagi": {
+  "why_it_matters": "It is a dev-first open-source framework for autonomous AI agents.",
+  "when_to_use": "When you want to build autonomous agents in a self-hosted framework."
+ },
+ "qwenlm/qwen-agent": {
+  "why_it_matters": "It is an agent framework built on Qwen 3 and later, with function calling and MCP support.",
+  "when_to_use": "When you build agents on Qwen models."
+ },
+ "memorilabs/memori": {
+  "why_it_matters": "It is agent-native memory infrastructure that works with any LLM.",
+  "when_to_use": "When your agents need persistent memory across sessions."
+ },
+ "wanshuiyin/auto-claude-code-research-in-sleep": {
+  "why_it_matters": "It is a set of Markdown-only skills for autonomous ML research with Claude Code.",
+  "when_to_use": "When you want an agent to run ML research tasks while you are away."
+ },
+ "lidge-jun/opencodex": {
+  "why_it_matters": "It is a universal provider proxy that lets OpenAI Codex and Claude Code use other LLMs.",
+  "when_to_use": "When you want Codex or Claude Code to use a non-default model provider."
+ },
+ "cft0808/edict": {
+  "why_it_matters": "It is a multi-agent orchestration system that uses nine specialised AI agents organised by government-department roles.",
+  "when_to_use": "When you want to study or run a structured multi-agent workflow."
+ },
+ "coder/coder": {
+  "why_it_matters": "It provides secure environments for developers and their AI agents.",
+  "when_to_use": "When you want to host developer and agent workspaces yourself."
+ },
+ "cvat-ai/cvat": {
+  "why_it_matters": "It is a data annotation platform for image, video, audio and 3D datasets.",
+  "when_to_use": "When you need to label training data at team scale."
+ },
+ "weaviate/weaviate": {
+  "why_it_matters": "It is an open-source vector database that stores objects and vectors together.",
+  "when_to_use": "When you need vector search over your own data."
+ },
+ "composio-community/awesome-codex-skills": {
+  "why_it_matters": "It is a curated list of practical Codex skills for automating workflows.",
+  "when_to_use": "When you want examples of Codex skills to reuse."
+ },
+ "datawhalechina/leedl-tutorial": {
+  "why_it_matters": "It is a Chinese deep learning tutorial by Hung-yi Lee, with a PDF download.",
+  "when_to_use": "When you want a Chinese course on deep learning."
+ },
+ "hbai-ltd/toonflow-app": {
+  "why_it_matters": "It is an open-source AI creation platform with an infinite canvas, AI agents and visual workflows for image, video and short-drama creation.",
+  "when_to_use": "When you produce AI images, video or storyboards and want local deployment."
+ },
+ "bharathgs/awesome-pytorch-list": {
+  "why_it_matters": "It is a list of PyTorch models, implementations and other resources on GitHub.",
+  "when_to_use": "When you look for a PyTorch implementation of a model."
+ },
+ "xbtlin/ai-berkshire": {
+  "why_it_matters": "It is a value-investing research framework for Claude Code and Codex, built on four investors' methods and multi-agent research.",
+  "when_to_use": "When you want an AI-assisted value investing research workflow."
+ },
+ "udecode/plate": {
+  "why_it_matters": "It is a rich-text editor with AI features and shadcn/ui components.",
+  "when_to_use": "When you need a React editor with AI writing features."
+ },
+ "owainlewis/awesome-artificial-intelligence": {
+  "why_it_matters": "It is a curated list of AI courses, books, lectures and papers.",
+  "when_to_use": "When you want a starting list of AI learning resources."
+ },
+ "googleapis/mcp-toolbox": {
+  "why_it_matters": "It is an open-source MCP server for databases.",
+  "when_to_use": "When you want AI agents to query databases through MCP."
+ },
+ "lukas-blecher/latex-ocr": {
+  "why_it_matters": "It converts images of equations into LaTeX code, using a ViT model.",
+  "when_to_use": "When you need to turn a picture of a formula into LaTeX."
+ },
+ "memvid/memvid": {
+  "why_it_matters": "It is a memory layer for AI agents that stores data in a single-file, serverless format instead of a RAG pipeline.",
+  "when_to_use": "When you want simple agent memory without running a vector database."
+ },
+ "stackblitz/bolt.new": {
+  "why_it_matters": "It lets you prompt, run, edit and deploy full-stack web applications in the browser.",
+  "when_to_use": "When you want to build and deploy a web app from a prompt."
+ },
+ "emilwallner/screenshot-to-code": {
+  "why_it_matters": "It is a neural network that turns a design mock-up into a static website.",
+  "when_to_use": "When you want a first-draft site from a screenshot."
+ },
+ "ai-shifu/chatall": {
+  "why_it_matters": "It lets you chat with several AI models at once, including ChatGPT, Claude and Gemini.",
+  "when_to_use": "When you want to compare answers from several chatbots side by side."
+ },
+ "triggerdotdev/trigger.dev": {
+  "why_it_matters": "It is a platform for building and deploying durable AI agents and workflows.",
+  "when_to_use": "When your agents or background jobs need reliable retries and long runs."
+ },
+ "piskvorky/gensim": {
+  "why_it_matters": "It is a library for topic modelling and document similarity.",
+  "when_to_use": "When you need topic models or document similarity on text corpora."
+ },
+ "steven-tey/novel": {
+  "why_it_matters": "It is a Notion-style WYSIWYG editor with AI autocompletion.",
+  "when_to_use": "When you want a writing editor with AI suggestions in a web app."
+ },
+ "ag-ui-protocol/ag-ui": {
+  "why_it_matters": "It is the Agent-User Interaction Protocol, which connects agents to frontend applications.",
+  "when_to_use": "When you connect an agent to a user-facing app."
+ },
+ "huggingface/transformers.js": {
+  "why_it_matters": "It runs Hugging Face Transformers models directly in the browser or Node.js.",
+  "when_to_use": "When you want ML inference in JavaScript without a server."
+ },
+ "modsetter/surfsense": {
+  "why_it_matters": "It is a privacy-focused, air-gappable open-source alternative to NotebookLM.",
+  "when_to_use": "When you want a private research assistant over your own documents."
+ },
+ "tianxingchen/embodied-ai-guide": {
+  "why_it_matters": "It is a Chinese technical guide to embodied AI.",
+  "when_to_use": "When you want a Chinese overview of embodied AI."
+ },
+ "dagger/dagger": {
+  "why_it_matters": "It is an automation engine to build, test and ship any codebase, running locally or in CI.",
+  "when_to_use": "When you want the same pipeline on a laptop and in CI."
+ },
+ "ddbourgin/numpy-ml": {
+  "why_it_matters": "It implements machine learning algorithms from scratch in NumPy.",
+  "when_to_use": "When you want to read or learn how ML algorithms work."
+ },
+ "pipecat-ai/pipecat": {
+  "why_it_matters": "It is an open-source framework for voice agents and realtime multimodal AI.",
+  "when_to_use": "When you build voice assistants that talk in real time."
+ },
+ "wkentaro/labelme": {
+  "why_it_matters": "It is an image annotation tool written in Python, with polygon, rectangle, point and other shapes.",
+  "when_to_use": "When you need to label images by hand."
+ },
+ "alibaba/mnn": {
+  "why_it_matters": "It is a lightweight inference engine from Alibaba for running models on devices.",
+  "when_to_use": "When you deploy models on phones or other edge devices."
+ },
+ "raga-ai-hub/ragaai-catalyst": {
+  "why_it_matters": "It is a Python SDK for observability, monitoring and evaluation of AI agents.",
+  "when_to_use": "When you need to track and evaluate agent behaviour in production."
+ },
+ "xpzouying/xiaohongshu-mcp": {
+  "why_it_matters": "It is an MCP server for Xiaohongshu (RedNote).",
+  "when_to_use": "When you want an agent to work with Xiaohongshu content."
+ },
+ "arindam200/awesome-ai-apps": {
+  "why_it_matters": "It is a collection of example projects for RAG, agents and workflows.",
+  "when_to_use": "When you want working examples of AI applications."
+ },
+ "alibaba/zvec": {
+  "why_it_matters": "It is a lightweight, in-process vector database.",
+  "when_to_use": "When you want vector search inside your app with no server."
+ },
+ "wasp-lang/open-saas": {
+  "why_it_matters": "It is a free, full-featured SaaS starter in React, Node and Prisma, with auth and billing.",
+  "when_to_use": "When you start a SaaS product and want a ready template."
+ },
+ "tracel-ai/burn": {
+  "why_it_matters": "It is a deep learning framework in Rust, designed for speed and portability.",
+  "when_to_use": "When you want deep learning in Rust."
+ },
+ "vibrantlabsai/ragas": {
+  "why_it_matters": "It evaluates LLM applications, including RAG pipelines.",
+  "when_to_use": "When you need metrics for LLM and RAG quality."
+ },
+ "glips/figma-context-mcp": {
+  "why_it_matters": "It is an MCP server that gives AI coding agents Figma layout information.",
+  "when_to_use": "When you want an agent to build UI from a Figma design."
+ },
+ "budtmo/docker-android": {
+  "why_it_matters": "It runs Android in Docker, with noVNC, video recording and an MCP server.",
+  "when_to_use": "When you test Android apps in a container."
+ },
+ "camenduru/stable-diffusion-webui-colab": {
+  "why_it_matters": "It runs the Stable Diffusion web UI on Google Colab.",
+  "when_to_use": "When you want Stable Diffusion without a local GPU."
+ },
+ "treeverse/dvc": {
+  "why_it_matters": "It is a tool for data versioning and ML experiments.",
+  "when_to_use": "When you need to version datasets and models alongside code."
+ },
+ "dottxt-ai/outlines": {
+  "why_it_matters": "It generates structured outputs from language models.",
+  "when_to_use": "When you need JSON or other strict output formats from a model."
+ },
+ "kubeflow/kubeflow": {
+  "why_it_matters": "It is a cloud-native platform for machine learning workflows on Kubernetes.",
+  "when_to_use": "When you run ML pipelines on Kubernetes."
+ },
+ "coderamp-labs/gitingest": {
+  "why_it_matters": "It turns a GitHub repository into a prompt-friendly text extract.",
+  "when_to_use": "When you want to paste a codebase into an LLM."
+ },
+ "oxford-cs-deepnlp-2017/lectures": {
+  "why_it_matters": "It has the lecture materials for the Oxford Deep NLP 2017 course.",
+  "when_to_use": "When you want course material on deep NLP."
+ },
+ "greydgl/pentestgpt": {
+  "why_it_matters": "It is an agentic framework for automated penetration testing with LLMs.",
+  "when_to_use": "When you want LLM-assisted pentest workflows, used with authorisation."
+ },
+ "modelscope/ms-swift": {
+  "why_it_matters": "It fine-tunes and trains 600+ LLMs using PEFT or full-parameter methods.",
+  "when_to_use": "When you fine-tune or align LLMs across many model families."
+ },
+ "geeeekexplorer/nano-vllm": {
+  "why_it_matters": "It is a small implementation of vLLM for LLM inference.",
+  "when_to_use": "When you want to read or experiment with a minimal inference engine."
+ },
+ "plandex-ai/plandex": {
+  "why_it_matters": "It is an open-source AI coding agent designed for large projects.",
+  "when_to_use": "When a coding task spans many files and needs planning."
+ },
+ "stability-ai/stablelm": {
+  "why_it_matters": "It is Stability AI's family of language models.",
+  "when_to_use": "When you want an open language model from Stability AI."
+ },
+ "yishentu/claudian": {
+  "why_it_matters": "It is an Obsidian plugin that embeds Claude Code or Codex as an AI collaborator in your vault.",
+  "when_to_use": "When you work in Obsidian and want an agent on your notes."
+ },
+ "unstructured-io/unstructured": {
+  "why_it_matters": "It converts documents into structured data for LLM and RAG pipelines.",
+  "when_to_use": "When you need to parse PDFs and other files before indexing."
+ },
+ "zai-org/chatglm2-6b": {
+  "why_it_matters": "It is ChatGLM2-6B, an open bilingual Chinese and English chat model.",
+  "when_to_use": "When you want a bilingual open chat model that runs locally."
+ },
+ "ggml-org/ggml": {
+  "why_it_matters": "It is a tensor library for machine learning in C.",
+  "when_to_use": "When you build or run models through a minimal C library."
  }
 }

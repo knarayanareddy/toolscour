@@ -507,5 +507,85 @@
  "earthtojake/text-to-cad": {
   "artifact": "Application / Service",
   "reason": "Description: gives an agent CAD capabilities; the repo is a tool, not a skill pack."
+ },
+ "cft0808/edict": {
+  "artifact": "Framework",
+  "reason": "Description: a multi-agent orchestration system."
+ },
+ "cvat-ai/cvat": {
+  "artifact": "Application / Service",
+  "reason": "Description: a data annotation platform."
+ },
+ "datawhalechina/leedl-tutorial": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "hbai-ltd/toonflow-app": {
+  "artifact": "Application / Service",
+  "reason": "Description: an AI creation platform app."
+ },
+ "memvid/memvid": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a memory layer library."
+ },
+ "piskvorky/gensim": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a topic modelling library."
+ },
+ "huggingface/transformers.js": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a JavaScript library."
+ },
+ "tianxingchen/embodied-ai-guide": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a technical guide."
+ },
+ "ddbourgin/numpy-ml": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an ML library in NumPy."
+ },
+ "instillai/tensorflow-course": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "vibrantlabsai/ragas": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an evaluation library."
+ },
+ "budtmo/docker-android": {
+  "artifact": "Application / Service",
+  "reason": "Description: an Android container solution."
+ },
+ "treeverse/dvc": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a data versioning tool."
+ },
+ "dottxt-ai/outlines": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library for structured outputs."
+ },
+ "oxford-cs-deepnlp-2017/lectures": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: lecture materials."
+ },
+ "greydgl/pentestgpt": {
+  "artifact": "Application / Service",
+  "reason": "Description: an agentic penetration testing framework."
+ },
+ "modelscope/ms-swift": {
+  "artifact": "Framework",
+  "reason": "Description: a training framework."
+ },
+ "geeeekexplorer/nano-vllm": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference engine."
+ },
+ "unstructured-io/unstructured": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an ETL library for documents."
+ },
+ "eigent-ai/eigent": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop application."
  }
 }

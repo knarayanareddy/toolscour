@@ -94,3 +94,10 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 - Each entry is written from the repo's own description and README. Skipped repos are listed in `pipeline/intel_skip.txt` with reasons.
 - Checks after batch 8: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip (budget 1.8 MB), web build passes.
 - Open: about 1,320 of the top 2,000 still lack hand-written text. Some top-tier `what_it_does` values are broken.
+
+### Hand-written top-2,000 text: batch 9
+
+- 62 entries and 20 artifact fixes. Hand-written text now covers 577 records.
+- Skipped with reasons in `pipeline/intel_skip.txt`: 5 repos that are not AI tools, have a wrong label with no verifiable description, or have only a pointer as description.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+- Note: after a sandbox reset, the local branch was restored from `origin/arena/885993aa-toolscour` (fast-forward to `7925b0b`). No work was lost.

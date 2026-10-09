@@ -124,3 +124,10 @@ teambit/bit                           # build system, not an AI tool
 larksuite/cli                         # Lark CLI, not an AI tool
 gztchan/awesome-design                # design resource list, not an AI tool
 apache/apisix                         # API gateway, not an AI tool
+
+# Top-2000 batch 9 skips
+xx025/carrot                 # AI tool navigation site list; not a tool
+kubesphere/kubesphere        # container platform, not an AI tool; label Agent Skill Pack was wrong
+citrolabs/ego-lite           # browser marketing text only; artifact label Agent Skill Pack unverified
+alam00000/bentopdf           # PDF toolkit, not an AI tool
+kaldi-asr/kaldi              # description is a pointer only
