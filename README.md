@@ -112,7 +112,7 @@ npm run dev        # dev server on :5173
 npm run build      # production bundle -> web/dist
 ```
 
-The corpus (9,481 tools, 649 verified skill packs, 45 with hand-written intel) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow runs daily at 02:00 UTC: it harvests, refreshes every record against GitHub (archived and deleted repos are dropped), applies the quality gate, and commits the refreshed catalog back to the branch.
+The corpus (9,473 tools, 650 verified skill packs, 345 with hand-written intel) is committed (`web/public/`), so the frontend runs without re-harvesting. The GitHub Actions workflow runs daily at 02:00 UTC: it harvests, refreshes every record against GitHub (archived and deleted repos are dropped), applies the quality gate, and commits the refreshed catalog back to the branch.
 
 ---
 

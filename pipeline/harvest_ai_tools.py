@@ -1053,17 +1053,76 @@ def run_intel_text(output: str) -> None:
     with open(output, "r", encoding="utf-8") as f:
         records = json.load(f)
     applied = 0
+    fixes = load_artifact_fixes()
+    fixed = 0
     for r in records:
-        entry = text.get(f"{r.get('owner', '')}/{r.get('name', '')}".lower())
-        if not entry or not isinstance(r.get("beginner_intel"), dict):
-            continue
-        for field in ("why_it_matters", "when_to_use"):
-            if entry.get(field):
-                r["beginner_intel"][field] = entry[field]
-        applied += 1
+        key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+        entry = text.get(key)
+        if entry and isinstance(r.get("beginner_intel"), dict):
+            for field in ("why_it_matters", "when_to_use"):
+                if entry.get(field):
+                    r["beginner_intel"][field] = entry[field]
+            applied += 1
+        fix = fixes.get(key)
+        if fix and r.get("artifact") != fix:
+            r["artifact"] = fix
+            fixed += 1
     with open(output, "w", encoding="utf-8") as f:
         json.dump(records, f, separators=(",", ":"))
-    print(f"✍️  Intel text: applied why/when to {applied} records ({len(text)} entries in file) -> {output}")
+    print(f"✍️  Intel text: applied why/when to {applied} records ({len(text)} entries in file); "
+          f"artifact labels corrected on {fixed} records -> {output}")
+
+
+ARTIFACT_CLASSES = {
+    "Application / Service", "Model / Weights", "Runtime / Serving Engine", "Agent Skill Pack",
+    "Framework", "UI / Application", "Curated List / Docs", "Developer Tool / CLI", "Library / SDK",
+    "Template / Starter",
+}
+ARTIFACT_FIXES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "artifact_fixes.json")
+
+
+def load_artifact_fixes() -> Dict[str, str]:
+    """Corrected artifact labels, keyed by lower-cased owner/name. Each entry must carry a reason. Labels must be a known class."""
+    if not os.path.exists(ARTIFACT_FIXES_FILE):
+        return {}
+    with open(ARTIFACT_FIXES_FILE, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    out = {}
+    for k, v in raw.items():
+        if k.startswith("_"):
+            continue
+        if v.get("artifact") not in ARTIFACT_CLASSES:
+            raise SystemExit(f"artifact_fixes.json: unknown artifact class for {k}: {v.get('artifact')}")
+        if not v.get("reason"):
+            raise SystemExit(f"artifact_fixes.json: missing reason for {k}")
+        out[k.lower()] = v["artifact"]
+    return out
+
+
+def run_dedupe(output: str, log: str) -> None:
+    """
+    Removes a second copy of the same repo. When a GitHub record and a Hugging Face record share owner/name,
+    the Hugging Face copy is removed and listed in `log`. Records with no duplicate are untouched.
+    """
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    github_keys = {f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+                   for r in records if r.get("source") != "huggingface"}
+    removed = []
+    kept = []
+    for r in records:
+        key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+        if r.get("source") == "huggingface" and key in github_keys:
+            removed.append(r)
+        else:
+            kept.append(r)
+    with open(log, "w", encoding="utf-8") as f:
+        f.write("id\tfull_name\tstars\tsource\tkept_github_record\n")
+        for r in removed:
+            f.write(f"{r.get('id')}\t{r.get('full_name')}\t{r.get('stars')}\t{r.get('source')}\tyes\n")
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(kept, f, separators=(",", ":"))
+    print(f"🧹 Dedupe: removed {len(removed)} Hugging Face duplicates of GitHub records ({len(kept)} kept) -> {output}; log {log}")
 
 
 INTEL_TOP_CUTOFF = 2000  # records ranked by stars beyond this keep generated text
@@ -1231,6 +1290,8 @@ def main():
                         help="apply hand-written intel from pipeline/curated_intel.json")
     parser.add_argument("--readme-intel", action="store_true",
                         help="maintenance: replace generated what_it_does with the repo's first README paragraph")
+    parser.add_argument("--dedupe", action="store_true",
+                        help="maintenance: remove Hugging Face copies of repos that also exist as GitHub records")
     parser.add_argument("--repair-readme", action="store_true",
                         help="maintenance: replace README what_it_does that fails the prose check with the GitHub description (no network)")
     parser.add_argument("--alternatives", action="store_true",
@@ -1253,6 +1314,9 @@ def main():
         return
     if args.repair_readme:
         repair_readme_text(args.output)
+        return
+    if args.dedupe:
+        run_dedupe(args.output, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "docs", "deduplicated_records.tsv"))
         return
     if args.readme_intel:
         run_readme_intel(args.output, token)

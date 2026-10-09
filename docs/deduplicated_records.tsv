@@ -1,0 +1,9 @@
+id	full_name	stars	source	kept_github_record
+hf-deepseek-ai--DeepSeek-R1	deepseek-ai/DeepSeek-R1	14328	huggingface	yes
+hf-lllyasviel--ControlNet	lllyasviel/ControlNet	3867	huggingface	yes
+hf-deepseek-ai--DeepSeek-OCR	deepseek-ai/DeepSeek-OCR	3391	huggingface	yes
+hf-zai-org--chatglm-6b	zai-org/chatglm-6b	2915	huggingface	yes
+hf-Lightricks--LTX-Video	Lightricks/LTX-Video	2329	huggingface	yes
+hf-zai-org--GLM-OCR	zai-org/GLM-OCR	2128	huggingface	yes
+hf-zai-org--GLM-5	zai-org/GLM-5	2122	huggingface	yes
+hf-zai-org--GLM-4.5	zai-org/GLM-4.5	1411	huggingface	yes

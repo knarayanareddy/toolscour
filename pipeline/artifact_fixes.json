@@ -1,0 +1,171 @@
+{
+ "deepseek-ai/deepseek-r1": {
+  "artifact": "Model / Weights",
+  "reason": "The repo is the DeepSeek-R1 model release; the duplicate record was the one labelled as a service."
+ },
+ "microsoft/qlib": {
+  "artifact": "Framework",
+  "reason": "Description: an AI-oriented quant investment platform."
+ },
+ "ray-project/ray": {
+  "artifact": "Framework",
+  "reason": "Description: a distributed runtime plus a set of AI libraries."
+ },
+ "hpcaitech/colossalai": {
+  "artifact": "Framework",
+  "reason": "A system for training and serving large AI models."
+ },
+ "deepspeedai/deepspeed": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a deep learning optimization library."
+ },
+ "ultralytics/ultralytics": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library for YOLO models covering several vision tasks."
+ },
+ "gradio-app/gradio": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Python library for building ML apps."
+ },
+ "coqui-ai/tts": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a deep learning toolkit for text-to-speech."
+ },
+ "openai/openai-python": {
+  "artifact": "Library / SDK",
+  "reason": "Description: the official Python library for the OpenAI API."
+ },
+ "google-ai-edge/mediapipe": {
+  "artifact": "Library / SDK",
+  "reason": "Description: cross-platform ML solutions, used as a library."
+ },
+ "fishaudio/fish-speech": {
+  "artifact": "Model / Weights",
+  "reason": "Description: an open-source TTS system; the repo ships models."
+ },
+ "microsoft/bitnet": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: the official inference framework for 1-bit LLMs."
+ },
+ "ggml-org/llama.cpp": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: LLM inference in C/C++; the README describes a runtime."
+ },
+ "ggml-org/whisper.cpp": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a C/C++ port of Whisper for high-performance inference."
+ },
+ "mudler/localai": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an open-source AI engine that runs models on your hardware."
+ },
+ "quantumnous/new-api": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a model hub that aggregates and distributes LLM APIs (gateway)."
+ },
+ "diegosouzapw/omniroute": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an AI gateway with one endpoint for many providers."
+ },
+ "router-for-me/cliproxyapi": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: wraps tools as OpenAI/Gemini/Claude-compatible API services."
+ },
+ "zylon-ai/private-gpt": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an API layer for private AI applications on local models."
+ },
+ "milvus-io/milvus": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a high-performance vector database."
+ },
+ "deusdata/codebase-memory-mcp": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a high-performance MCP server."
+ },
+ "codewhale-hq/codewhale": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an open-source Rust agent engine and terminal client."
+ },
+ "zhayujie/cowagent": {
+  "artifact": "Framework",
+  "reason": "Description: an agent harness that plans tasks and runs tools and skills."
+ },
+ "hkuds/nanobot": {
+  "artifact": "Framework",
+  "reason": "Description: a self-hosted personal AI agent framework."
+ },
+ "mem0ai/mem0": {
+  "artifact": "Library / SDK",
+  "reason": "Description: memory infrastructure for AI agents and apps, used as a library."
+ },
+ "librechat-ai/librechat": {
+  "artifact": "UI / Application",
+  "reason": "Description: an enhanced ChatGPT-style chat interface."
+ },
+ "chatgptnextweb/nextchat": {
+  "artifact": "UI / Application",
+  "reason": "Description: an AI chat assistant application."
+ },
+ "openinterpreter/openinterpreter": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a coding agent for open models, used from the terminal."
+ },
+ "lobehub/lobehub": {
+  "artifact": "Application / Service",
+  "reason": "Description: an agent operator platform for end users."
+ },
+ "shareai-lab/learn-claude-code": {
+  "artifact": "Application / Service",
+  "reason": "Description: a nano Claude Code-style agent harness, built as a learning project."
+ },
+ "github/spec-kit": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a toolkit for spec-driven development; the repo ships a CLI."
+ },
+ "fission-ai/openspec": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: spec-driven development for AI coding assistants."
+ },
+ "paperclipai/paperclip": {
+  "artifact": "Application / Service",
+  "reason": "Description: an app for managing agents at work."
+ },
+ "f/prompts.chat": {
+  "artifact": "Application / Service",
+  "reason": "Description: a site to share, discover and collect prompts."
+ },
+ "bojieli/ai-agent-book": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: the repository of a book, with text, PDF and chapter code."
+ },
+ "microsoft/ml-for-beginners": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a 12-week, 26-lesson curriculum."
+ },
+ "gokumohandas/made-with-ml": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a course on developing and deploying ML applications."
+ },
+ "docling-project/docling": {
+  "artifact": "Library / SDK",
+  "reason": "Description: document processing for generative AI, used as a library."
+ },
+ "jingyaogong/minimind": {
+  "artifact": "Model / Weights",
+  "reason": "Description: trains a 64M-parameter LLM from scratch; the repo ships a model."
+ },
+ "lightricks/ltx-video": {
+  "artifact": "Model / Weights",
+  "reason": "Description: the LTX-Video model release."
+ },
+ "zai-org/chatglm-6b": {
+  "artifact": "Model / Weights",
+  "reason": "Description: an open bilingual dialogue language model."
+ },
+ "fighting41love/funnlp": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a collection of Chinese NLP dictionaries and word lists for code use."
+ },
+ "_comment": "Corrected artifact labels, keyed by lower-cased owner/name. Each entry needs a reason taken from the repo's own description or README. Applied by --intel-text."
+}

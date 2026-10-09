@@ -8,7 +8,7 @@ Scope: catalog entries (`web/public/repos.json`) and the pipeline that produces 
 
 | | Before (`8307c25`) | After | Notes |
 | --- | --- | --- | --- |
-| Catalog records | 11,965 | **9,481** | 8,768 kept from the base; 713 added since (see §3) |
+| Catalog records | 11,965 | **9,473** | 8,768 kept from the base; 713 added since (see §3). 8 Hugging Face duplicates of GitHub records removed (`docs/deduplicated_records.tsv`) |
 | Hugging Face records | 304 | 304 | Not re-harvested (sandbox cannot reach huggingface.co) |
 | Agent Skill Packs | 614 (none checked against the repo) | **649**, every one confirmed to ship a `SKILL.md` ≥ 200 bytes | 95 new; 42 candidates rejected (41 stubs under 200 bytes, plus 1 unreadable) |
 | Validator errors | 1,520 | **0** | `validate_corpus.py` |

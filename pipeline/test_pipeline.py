@@ -392,3 +392,31 @@ class ReadmeProseCheckTests(unittest.TestCase):
         ]
         for text in good:
             self.assertTrue(harvest.is_clean_prose(text), text)
+
+
+class ArtifactFixAndDedupeTests(unittest.TestCase):
+    def test_artifact_fixes_use_known_classes_and_have_reasons(self):
+        fixes = harvest.load_artifact_fixes()
+        self.assertTrue(fixes)
+        self.assertTrue(set(fixes.values()) <= harvest.ARTIFACT_CLASSES)
+        raw = __import__("json").load(open(harvest.ARTIFACT_FIXES_FILE, encoding="utf-8"))
+        for k, v in raw.items():
+            if not k.startswith("_"):
+                self.assertTrue(v.get("reason"), k)
+
+    def test_dedupe_removes_only_hugging_face_copies(self):
+        import tempfile
+        recs = [
+            {"id": "gh-1", "owner": "a", "name": "Repo", "full_name": "a/Repo", "source": None, "stars": 5},
+            {"id": "hf-1", "owner": "a", "name": "repo", "full_name": "a/repo", "source": "huggingface", "stars": 4},
+            {"id": "hf-2", "owner": "b", "name": "Only", "full_name": "b/Only", "source": "huggingface", "stars": 3},
+        ]
+        with tempfile.TemporaryDirectory() as d:
+            out = os.path.join(d, "repos.json")
+            log = os.path.join(d, "dedupe.tsv")
+            with open(out, "w", encoding="utf-8") as f:
+                __import__("json").dump(recs, f)
+            harvest.run_dedupe(out, log)
+            kept = __import__("json").load(open(out, encoding="utf-8"))
+            self.assertEqual([r["id"] for r in kept], ["gh-1", "hf-2"])
+            self.assertIn("hf-1", open(log, encoding="utf-8").read())
