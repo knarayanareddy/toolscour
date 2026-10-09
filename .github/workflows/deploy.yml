@@ -38,6 +38,8 @@ jobs:
           # New Agent Skill Packs: each must ship a SKILL.md of at least 200 bytes
           python3 -u pipeline/harvest_ai_tools.py --skills --pages 3
           # Existing records: current metadata, archived/deleted removal, fuller topics
+          # Curated named repos that search can miss (renamed or untagged); same star floor and archive check
+          python3 -u pipeline/harvest_ai_tools.py --seeds pipeline/seed_repos.txt
           python3 -u pipeline/harvest_ai_tools.py --refresh
           python3 -u pipeline/harvest_ai_tools.py --fill-descriptions
           python3 -u pipeline/harvest_ai_tools.py --prune-non-ai --report "$RUNNER_TEMP/pruned.tsv"

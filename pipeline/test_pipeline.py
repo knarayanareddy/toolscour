@@ -314,5 +314,17 @@ class ValidatorTests(unittest.TestCase):
         self.assertFalse(any("placeholder" in m for _, _, m in findings))
 
 
+class SeedListTests(unittest.TestCase):
+    def test_seed_file_is_owner_name_and_unique(self):
+        path = os.path.join(os.path.dirname(__file__), "seed_repos.txt")
+        entries = [l.strip() for l in open(path, encoding="utf-8") if l.strip() and not l.startswith("#")]
+        self.assertGreater(len(entries), 100)
+        for e in entries:
+            self.assertEqual(e.count("/"), 1, e)
+            self.assertNotIn(" ", e, e)
+        lowered = [e.lower() for e in entries]
+        self.assertEqual(len(lowered), len(set(lowered)), "duplicate seed entries")
+
+
 if __name__ == "__main__":
     unittest.main()

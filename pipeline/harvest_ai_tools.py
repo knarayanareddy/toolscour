@@ -426,17 +426,30 @@ def run_refresh(output: str, token: Optional[str]) -> None:
     print(f"✅ Refresh complete: {len(refreshed)} records -> {output}")
 
 
+SEED_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "seed_repos.txt")
+
+
+def load_seed_keys() -> set:
+    """Lower-cased owner/name of curated seeds; the prune never removes these."""
+    if not os.path.exists(SEED_FILE):
+        return set()
+    with open(SEED_FILE, "r", encoding="utf-8") as f:
+        return {l.strip().lower() for l in f if l.strip() and not l.startswith("#") and "/" in l}
+
+
 def run_prune_non_ai(output: str, report_path: str) -> None:
     """
     Maintenance: applies the same AI-relevance gate used for new additions to the existing
-    corpus. Hub records are AI by construction and are kept. Removed repos are listed in
+    corpus. Hub records are AI by construction and curated seeds are kept. Removed repos are listed in
     report_path so the cut can be reviewed; the previous corpus stays in git history.
     """
     with open(output, "r", encoding="utf-8") as f:
         records = json.load(f)
+    curated = load_seed_keys()
     kept, removed = [], []
     for r in records:
-        if r.get("source") == "huggingface" or passes_new_record_gate(r):
+        key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+        if r.get("source") == "huggingface" or key in curated or passes_new_record_gate(r):
             kept.append(r)
         else:
             removed.append(r)
@@ -646,6 +659,69 @@ def merge_with_existing(fresh: List[Dict[str, Any]], index_file: str) -> List[Di
     return sorted(merged.values(), key=lambda x: x.get("stars", 0), reverse=True)
 
 
+def run_seeds(output: str, seeds_path: str, token: Optional[str]) -> None:
+    """
+    Targeted add of known AI repos listed one per line as owner/name. Search only finds
+    repos that carry a queried topic or fall in a star window, so a well-known project
+    can be missed (renamed, untagged). Each seed goes through the same checks as a search
+    hit except the AI-relevance gate (the list is curated): exists on GitHub, >= MIN_STARS,
+    not archived, enrichment.
+    Repos already catalogued are skipped; use --refresh to update those.
+    """
+    if not token:
+        raise SystemExit("GITHUB_TOKEN / GH_TOKEN required for --seeds.")
+    with open(seeds_path, "r", encoding="utf-8") as f:
+        pairs = []
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "/" in line:
+                owner, name = line.split("/", 1)
+                pairs.append((owner.strip(), name.strip()))
+    with open(output, "r", encoding="utf-8") as f:
+        existing = json.load(f)
+    known = {str(r["id"]) for r in existing}
+    print(f"🌱 Seeds: {len(pairs)} named repos from {seeds_path}")
+    added, skipped = [], {"known": 0, "not_found": 0, "unreadable": 0, "archived": 0,
+                          "below_floor": 0}
+    for i in range(0, len(pairs), 50):
+        batch = pairs[i:i + 50]
+        nodes = refresh_batch(batch, token)
+        for pair in batch:
+            node = nodes.get(pair)
+            if node is UNKNOWN:
+                skipped["unreadable"] += 1
+                continue
+            if not node:
+                skipped["not_found"] += 1
+                continue
+            if node.get("isArchived"):
+                skipped["archived"] += 1
+                continue
+            rec = parse_node(node)
+            if rec is None:
+                skipped["not_found"] += 1
+                continue
+            if str(rec["id"]) in known:
+                skipped["known"] += 1
+                continue
+            if rec.get("stars", 0) < MIN_STARS:
+                skipped["below_floor"] += 1
+                continue
+            # The seed list is curated by hand, so the search-oriented AI gate is not applied.
+            # Entries with no GitHub description take their first README sentence instead.
+            if not (rec.get("description") or "").strip():
+                rec["description"] = readme_summary(rec["owner"], rec["name"], token) or ""
+            added.append(ensure_enriched(rec))
+            known.add(str(rec["id"]))
+    merged = sorted(existing + added, key=lambda x: x.get("stars", 0), reverse=True)
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(merged, f, separators=(",", ":"))
+    print(f"📋 Seed outcomes: added {len(added)}, skipped {skipped}")
+    for r in added:
+        print(f"   + {r.get('stars', 0):>6}  {r.get('owner')}/{r.get('name')}")
+    print(f"✅ Seeds complete: {len(merged)} records -> {output}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="AI ToolScour multi-source harvester")
     parser.add_argument("--pages", type=int, default=3, help="pages per GraphQL query")
@@ -665,12 +741,17 @@ def main():
                         help="maintenance: remove existing repos that fail the AI-relevance gate")
     parser.add_argument("--report", type=str, default="docs/pruned_non_ai_repos.tsv",
                         help="where --prune-non-ai writes the removed list")
+    parser.add_argument("--seeds", type=str, default="",
+                        help="targeted add: owner/name per line from this file (named AI repos search missed)")
     parser.add_argument("--output", type=str, default="web/public/repos.json")
     args = parser.parse_args()
 
     token = get_token()
     if args.prune_non_ai:
         run_prune_non_ai(args.output, args.report)
+        return
+    if args.seeds:
+        run_seeds(args.output, args.seeds, token)
         return
     if args.refresh:
         run_refresh(args.output, token)
