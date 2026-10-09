@@ -234,3 +234,18 @@ yaoapp/yao                              # description is a list of features only
 stranslate/stranslate                   # translation and OCR app; AI role not stated
 deeplethe/utopia                        # unverified 'world model' claim in description; not written up
 vaexio/vaex                             # DataFrame library, not an AI tool
+
+# Top-2000 batch 18 skips
+carterperez-dev/cybersecurity-projects   # general cybersecurity project list, not an AI tool
+webiny/webiny-js                          # CMS platform, not an AI tool
+alirezamika/autoscraper                   # web scraper, not an AI tool
+falkordb/falkordb                         # graph database, not an AI tool
+greyhatguy007/machine-learning-specialization-coursera  # course solutions; academic-integrity risk
+cartographer-project/cartographer         # SLAM system, not AI-specific
+coroot/coroot                             # observability tool; AI is a feature, not its purpose
+recastnavigation/recastnavigation        # game navmesh toolset, not an AI tool
+datahaven-xyz/datahaven                   # blockchain, not an AI tool
+superplanehq/superplane                   # description is a slogan only
+cporter202/api-mega-list                  # API list, not AI-specific
+xiangsx/gpt4free-ts                       # free access to GPT-4 by reverse engineering; terms and security risk
+smacke/ffsubsync                          # subtitle sync tool; AI role not stated

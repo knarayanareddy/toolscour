@@ -1683,5 +1683,185 @@
  "hatchet-dev/hatchet": {
   "artifact": "Framework",
   "reason": "Description: an orchestration engine."
+ },
+ "woooodyy/llm-agent-paper-list": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a paper list."
+ },
+ "rapidai/rapidocr": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an OCR toolkit."
+ },
+ "rikkahub/rikkahub": {
+  "artifact": "Application / Service",
+  "reason": "Description: an Android app."
+ },
+ "soulmachine/machine-learning-cheat-sheet": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a cheat sheet."
+ },
+ "osaurus-ai/osaurus": {
+  "artifact": "Application / Service",
+  "reason": "Description: a macOS app."
+ },
+ "sciphi-ai/r2r": {
+  "artifact": "Framework",
+  "reason": "Description: a retrieval system framework."
+ },
+ "opencoworkai/open-codesign": {
+  "artifact": "Application / Service",
+  "reason": "Description: a design app."
+ },
+ "lanpa/tensorboardx": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "evidentlyai/evidently": {
+  "artifact": "Framework",
+  "reason": "Description: an observability framework."
+ },
+ "mochidiffusion/mochidiffusion": {
+  "artifact": "Application / Service",
+  "reason": "Description: a Mac app."
+ },
+ "lightningpixel/modly": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop app."
+ },
+ "upsonic/upsonic": {
+  "artifact": "Framework",
+  "reason": "Description: an agent framework."
+ },
+ "open-mmlab/mmpose": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a toolbox."
+ },
+ "brightmart/text_classification": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library of models."
+ },
+ "adithya-s-k/omniparse": {
+  "artifact": "Application / Service",
+  "reason": "Description: a parsing tool."
+ },
+ "anse-app/chatgpt-demo": {
+  "artifact": "Application / Service",
+  "reason": "Description: a web UI."
+ },
+ "thelastben/fast-stable-diffusion": {
+  "artifact": "Application / Service",
+  "reason": "Description: a web setup."
+ },
+ "stanfordnlp/stanza": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an NLP library."
+ },
+ "jaywalnut310/vits": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a TTS model."
+ },
+ "nirdiamant/prompt_engineering": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials with notebooks."
+ },
+ "mrdbourke/machine-learning-roadmap": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a roadmap."
+ },
+ "maartengr/bertopic": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a topic modelling library."
+ },
+ "zho-zho-zho/comfyui-workflows-zho": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a workflow collection."
+ },
+ "sygil-dev/sygil-webui": {
+  "artifact": "Application / Service",
+  "reason": "Description: a web UI."
+ },
+ "jwyang/faster-rcnn.pytorch": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a detection model implementation."
+ },
+ "lucidrains/palm-rlhf-pytorch": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an implementation library."
+ },
+ "deeplearning-ai/machine-learning-yearning-cn": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a book."
+ },
+ "wang-xinyu/tensorrtx": {
+  "artifact": "Library / SDK",
+  "reason": "Description: implementations of networks."
+ },
+ "arvinlovegood/go-stock": {
+  "artifact": "Application / Service",
+  "reason": "Description: a stock analysis tool."
+ },
+ "2fastlabs/agent-squad": {
+  "artifact": "Framework",
+  "reason": "Description: a framework."
+ },
+ "azure-samples/azure-search-openai-demo": {
+  "artifact": "Template / Starter",
+  "reason": "Description: a sample app."
+ },
+ "ericlbuehler/mistral.rs": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference engine."
+ },
+ "thewh1teagle/vibe": {
+  "artifact": "Application / Service",
+  "reason": "Description: a transcription app."
+ },
+ "mufeedvh/code2prompt": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a CLI tool."
+ },
+ "yzfly/awesome-mcp-zh": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a curated list."
+ },
+ "antixk/pytorch-vae": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a collection of implementations."
+ },
+ "visualize-ml/book3_elements-of-mathematics": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a book."
+ },
+ "myshell-ai/melotts": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a TTS library."
+ },
+ "flyteorg/flyte": {
+  "artifact": "Framework",
+  "reason": "Description: an orchestration platform."
+ },
+ "tailcallhq/forgecode": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a coding assistant."
+ },
+ "valuecell-ai/clawx": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop app."
+ },
+ "gentleman-programming/gentle-ai": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a configuration tool for coding agents."
+ },
+ "henryndubuaku/maths-cs-ai-compendium": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a textbook."
+ },
+ "android/skills": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: a skill repository."
+ },
+ "anbeime/skill": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: a store of skill packages."
  }
 }
