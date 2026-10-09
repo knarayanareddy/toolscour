@@ -3007,5 +3007,245 @@
  "ludwig-ai/ludwig": {
   "why_it_matters": "It is a low-code framework for building custom LLMs and neural networks.",
   "when_to_use": "When you want to train a model from configuration rather than code."
+ },
+ "dataelement/bisheng": {
+  "why_it_matters": "It is an open LLM DevOps platform for building enterprise AI applications.",
+  "when_to_use": "When you need an enterprise platform to build and run LLM apps."
+ },
+ "fareedkhan-dev/train-llm-from-scratch": {
+  "why_it_matters": "It walks through training an LLM from scratch, from downloading data to generating text.",
+  "when_to_use": "When you want to see the full path of training a small LLM."
+ },
+ "tonybeltramelli/pix2code": {
+  "why_it_matters": "It generates code from a screenshot of a graphical user interface.",
+  "when_to_use": "When you want a first draft of UI code from a screenshot."
+ },
+ "memtensor/memos": {
+  "why_it_matters": "It is a self-evolving memory operating system for LLMs and agents, with persistent memory and hybrid retrieval.",
+  "when_to_use": "When agents need long-term memory that improves over time."
+ },
+ "arize-ai/phoenix": {
+  "why_it_matters": "It is an open-source tool for AI observability and evaluation.",
+  "when_to_use": "When you trace and evaluate LLM app behaviour."
+ },
+ "qubvel-org/segmentation_models.pytorch": {
+  "why_it_matters": "It provides semantic segmentation models with 500+ pretrained backbones, in PyTorch.",
+  "when_to_use": "When you need a segmentation model without building the architecture yourself."
+ },
+ "nielsrogge/transformers-tutorials": {
+  "why_it_matters": "It has demos of the Hugging Face Transformers library.",
+  "when_to_use": "When you want working examples of Transformers models."
+ },
+ "embraceagi/awesome-chatgpt-zh": {
+  "why_it_matters": "It is a Chinese guide to ChatGPT, with prompt tutorials and a curated resource list.",
+  "when_to_use": "When you want Chinese-language ChatGPT guidance."
+ },
+ "milesial/pytorch-unet": {
+  "why_it_matters": "It is a PyTorch implementation of U-Net for image segmentation.",
+  "when_to_use": "When you need a known segmentation baseline in PyTorch."
+ },
+ "cleanlab/cleanlab": {
+  "why_it_matters": "It is a data-centric AI library for finding and fixing data quality issues.",
+  "when_to_use": "When you suspect label or data errors in your training set."
+ },
+ "humanlayer/humanlayer": {
+  "why_it_matters": "It helps AI coding agents solve hard problems in complex codebases, with human oversight.",
+  "when_to_use": "When agents work on large codebases and need human control."
+ },
+ "cocoindex-io/cocoindex": {
+  "why_it_matters": "It is an incremental engine for long-running agents and data pipelines.",
+  "when_to_use": "When data changes often and you want only the changed parts reprocessed."
+ },
+ "yizhiyanhua-ai/fireworks-tech-graph": {
+  "why_it_matters": "It generates technical diagrams in SVG and PNG from natural language, in 7 styles.",
+  "when_to_use": "When you need an architecture or flow diagram from a description."
+ },
+ "lancedb/lancedb": {
+  "why_it_matters": "It is an embedded retrieval library for multimodal AI.",
+  "when_to_use": "When you want vector search inside an app without a server."
+ },
+ "rerun-io/rerun": {
+  "why_it_matters": "It visualises, queries and streams multimodal robotics data.",
+  "when_to_use": "When you debug or inspect robot sensor and training data."
+ },
+ "holaboss-ai/holaos": {
+  "why_it_matters": "It is an open-source agentic workspace that connects the systems a business already uses.",
+  "when_to_use": "When a team wants its own agent workspace over existing tools."
+ },
+ "cobusgreyling/loop-engineering": {
+  "why_it_matters": "It collects practical patterns, starters and CLI tools for loop engineering with AI coding agents.",
+  "when_to_use": "When you set up repeated agent loops for coding tasks."
+ },
+ "wangrongding/wechat-bot": {
+  "why_it_matters": "It is a multi-platform AI agent for Telegram, WhatsApp, Lark and WeChat.",
+  "when_to_use": "When you want one bot that answers on several chat platforms."
+ },
+ "kornia/kornia": {
+  "why_it_matters": "It is a geometric computer vision library for PyTorch.",
+  "when_to_use": "When you need differentiable geometry or image operations in PyTorch."
+ },
+ "hoya012/deep_learning_object_detection": {
+  "why_it_matters": "It is a paper list on object detection with deep learning.",
+  "when_to_use": "When you want to survey object detection papers."
+ },
+ "getagentseal/codeburn": {
+  "why_it_matters": "It is a free, local tool that tracks AI coding token use and cost across many agents.",
+  "when_to_use": "When you want to see what your coding agents cost."
+ },
+ "ekkolearnai/ekko-studio": {
+  "why_it_matters": "It is a local-first AI workspace for multi-agent chat, coding and visual workflows.",
+  "when_to_use": "When you want a local workspace for agents and chat."
+ },
+ "lucidrains/dalle2-pytorch": {
+  "why_it_matters": "It is a PyTorch implementation of DALL-E 2.",
+  "when_to_use": "When you want to study or train a DALL-E 2 style model."
+ },
+ "openchamber/openchamber": {
+  "why_it_matters": "It is an agentic development environment built on the OpenCode agent.",
+  "when_to_use": "When you want a dev environment for OpenCode agents."
+ },
+ "wandb/wandb": {
+  "why_it_matters": "It is an AI developer platform for tracking training runs and managing models.",
+  "when_to_use": "When you need experiment tracking and model management."
+ },
+ "microsoft/promptflow": {
+  "why_it_matters": "It is a toolkit for building LLM apps, from prototype and testing to deployment and monitoring.",
+  "when_to_use": "When you need to test and evaluate prompts before production."
+ },
+ "data-privacy-stack/presidio": {
+  "why_it_matters": "It is a framework for detecting, redacting and anonymising sensitive data.",
+  "when_to_use": "When you need to remove personal data from text before use."
+ },
+ "the-pocket/pocketflow": {
+  "why_it_matters": "It is a 100-line LLM framework for building agents.",
+  "when_to_use": "When you want a very small framework you can read in full."
+ },
+ "doriandarko/claude-engineer": {
+  "why_it_matters": "It is an interactive command-line interface that uses Claude to work on coding tasks.",
+  "when_to_use": "When you want Claude to work in your terminal on a project."
+ },
+ "openai/openai-node": {
+  "why_it_matters": "It is the official JavaScript and TypeScript library for the OpenAI API.",
+  "when_to_use": "When you call OpenAI models from a Node or TypeScript app."
+ },
+ "tambo-ai/tambo": {
+  "why_it_matters": "It is a generative UI SDK for React.",
+  "when_to_use": "When you want an AI interface built with React components."
+ },
+ "rushter/mlalgorithms": {
+  "why_it_matters": "It has small, clean implementations of machine learning algorithms.",
+  "when_to_use": "When you want to read how an algorithm is implemented."
+ },
+ "huggingface/tokenizers": {
+  "why_it_matters": "It is a fast, research- and production-ready tokenizer library.",
+  "when_to_use": "When you need quick, consistent text tokenisation."
+ },
+ "voxel51/fiftyone": {
+  "why_it_matters": "It helps you refine high-quality datasets and visual AI models.",
+  "when_to_use": "When you inspect and fix a computer vision dataset."
+ },
+ "google/artemis": {
+  "why_it_matters": "It turns natural-language instructions into Android automation.",
+  "when_to_use": "When you want to automate Android app tasks from plain instructions."
+ },
+ "quentinfuxa/whisperlivekit": {
+  "why_it_matters": "It is real-time, local speech-to-text with streaming, speaker diarisation and translation.",
+  "when_to_use": "When you need live transcription that stays on your machine."
+ },
+ "moonshotai/kimi-k2": {
+  "why_it_matters": "It is a large language model series from Moonshot AI.",
+  "when_to_use": "When you want an open large model from Moonshot."
+ },
+ "vipstone/faceai": {
+  "why_it_matters": "It is a beginner project for face, video and text detection and recognition.",
+  "when_to_use": "When you learn face detection with simple code."
+ },
+ "aden-hive/hive": {
+  "why_it_matters": "It is a multi-agent harness for running AI agents in production.",
+  "when_to_use": "When you run several agents with shared control."
+ },
+ "blinkospace/blinko": {
+  "why_it_matters": "It is a self-hosted, privacy-focused AI note app.",
+  "when_to_use": "When you want AI-assisted notes that you host yourself."
+ },
+ "triton-inference-server/server": {
+  "why_it_matters": "It is an optimised inference server for cloud and edge.",
+  "when_to_use": "When you serve models at scale on GPUs or edge devices."
+ },
+ "lightricks/ltx-video": {
+  "why_it_matters": "It is the official repository for LTX-Video.",
+  "when_to_use": "When you want an open video generation model."
+ },
+ "kangarooking/cangjie-skill": {
+  "why_it_matters": "It distils books, long videos and podcasts into executable agent skills.",
+  "when_to_use": "When you want to turn long-form content into reusable agent skills."
+ },
+ "modelcontextprotocol/inspector": {
+  "why_it_matters": "It is a visual testing tool for MCP servers.",
+  "when_to_use": "When you debug an MCP server before connecting an agent."
+ },
+ "artidoro/qlora": {
+  "why_it_matters": "It is an efficient finetuning method for quantised LLMs.",
+  "when_to_use": "When you fine-tune a large model on limited GPU memory."
+ },
+ "openai/codex-security": {
+  "why_it_matters": "It is a CLI and SDK for finding, validating and fixing security issues, from OpenAI.",
+  "when_to_use": "When you want automated security review of code."
+ },
+ "valuecell-ai/valuecell": {
+  "why_it_matters": "It is a community multi-agent platform for financial applications.",
+  "when_to_use": "When you build agent apps for finance; not investment advice."
+ },
+ "thu-ml/tianshou": {
+  "why_it_matters": "It is a PyTorch library for deep reinforcement learning.",
+  "when_to_use": "When you need flexible RL algorithms in PyTorch."
+ },
+ "aws/amazon-sagemaker-examples": {
+  "why_it_matters": "It has Jupyter notebook examples for building, training and deploying ML on AWS.",
+  "when_to_use": "When you learn SageMaker from working notebooks."
+ },
+ "multimodal-art-projection/yue": {
+  "why_it_matters": "It is a music generation model with symbolic planning and zero-shot covers.",
+  "when_to_use": "When you want AI-generated music with structure."
+ },
+ "alibaba/spring-ai-alibaba": {
+  "why_it_matters": "It is an agentic AI framework for Java developers.",
+  "when_to_use": "When your application is in Java and uses agents."
+ },
+ "huggingface/chat-ui": {
+  "why_it_matters": "It is the open-source codebase behind HuggingChat.",
+  "when_to_use": "When you want to run your own chat interface over Hugging Face models."
+ },
+ "zubair-trabzada/geo-seo-claude": {
+  "why_it_matters": "It is a generative-engine SEO skill for Claude Code, for AI search optimisation.",
+  "when_to_use": "When you want a site optimised for AI search tools."
+ },
+ "openvinotoolkit/openvino": {
+  "why_it_matters": "It is an open-source toolkit for optimising and deploying AI inference.",
+  "when_to_use": "When you run models efficiently on Intel and other hardware."
+ },
+ "lengstrom/fast-style-transfer": {
+  "why_it_matters": "It is a TensorFlow CNN for fast style transfer.",
+  "when_to_use": "When you want a quick artistic filter for images."
+ },
+ "getumbrel/llama-gpt": {
+  "why_it_matters": "It is a self-hosted, offline ChatGPT-style chatbot based on Llama 2.",
+  "when_to_use": "When you want a private chatbot on your own hardware."
+ },
+ "kalyanks-nlp/llm-engineer-toolkit": {
+  "why_it_matters": "It is a curated list of 120+ LLM libraries by category.",
+  "when_to_use": "When you pick a library for a specific LLM task."
+ },
+ "vincentwei1021/video-shotcraft": {
+  "why_it_matters": "It is a video skill for Claude Code and Codex, for cinematic product videos with Remotion.",
+  "when_to_use": "When you want a product video generated from a script."
+ },
+ "tyktechnologies/tyk": {
+  "why_it_matters": "It is an open-source API and AI gateway, supporting REST, GraphQL, gRPC and MCP.",
+  "when_to_use": "When you need one gateway for APIs and model traffic."
+ },
+ "langchain-ai/open-swe": {
+  "why_it_matters": "It is an open-source asynchronous coding agent.",
+  "when_to_use": "When you want a background agent to make code changes."
  }
 }

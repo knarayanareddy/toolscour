@@ -168,3 +168,13 @@ vesoft-inc/nebula                     # graph database, not an AI tool
 kubeshark/kubeshark                   # network observability, not an AI tool
 manticoresoftware/manticoresearch     # search database, not an AI tool
 jack-cherish/pythonpark               # general Python learning site, not AI-specific
+
+# Top-2000 batch 13 skips
+fechin/reference                           # cheat-sheet sharing, not an AI tool
+go-vgo/robotgo                             # desktop RPA library, not an AI tool
+pymupdf/pymupdf                            # PDF library, not an AI tool
+x-hw/amazing-qr                            # QR code generator, not an AI tool
+0xjacky/nginx-ui                           # nginx web UI, not an AI tool
+kedro-org/kedro                            # data science pipeline toolkit; not AI-specific
+spinabot/brigade                           # description is a slogan only
+nopechallc/nopecha-extension          # CAPTCHA-solving extension for browser automation; not written up

@@ -157,7 +157,7 @@
  },
  "lightricks/ltx-video": {
   "artifact": "Model / Weights",
-  "reason": "Description: the LTX-Video model release."
+  "reason": "Description: a video model."
  },
  "zai-org/chatglm-6b": {
   "artifact": "Model / Weights",
@@ -947,5 +947,153 @@
  "jujumilk3/leaked-system-prompts": {
   "artifact": "Curated List / Docs",
   "reason": "README: a collection of leaked system prompts, not an app. Kept by user decision; no hand-written text."
+ },
+ "dataelement/bisheng": {
+  "artifact": "Application / Service",
+  "reason": "Description: a platform app."
+ },
+ "memtensor/memos": {
+  "artifact": "Framework",
+  "reason": "Description: a memory OS framework for agents."
+ },
+ "arize-ai/phoenix": {
+  "artifact": "Application / Service",
+  "reason": "Description: an observability app."
+ },
+ "qubvel-org/segmentation_models.pytorch": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a segmentation library."
+ },
+ "nielsrogge/transformers-tutorials": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: demos and tutorials."
+ },
+ "holaboss-ai/holaos": {
+  "artifact": "Application / Service",
+  "reason": "Description: an agent workspace app."
+ },
+ "cobusgreyling/loop-engineering": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: starters and CLI tools."
+ },
+ "wangrongding/wechat-bot": {
+  "artifact": "Application / Service",
+  "reason": "Description: a multi-platform bot app."
+ },
+ "hoya012/deep_learning_object_detection": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a paper list."
+ },
+ "getagentseal/codeburn": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a local CLI tool."
+ },
+ "ekkolearnai/ekko-studio": {
+  "artifact": "Application / Service",
+  "reason": "Description: a workspace app."
+ },
+ "lucidrains/dalle2-pytorch": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an implementation library."
+ },
+ "openchamber/openchamber": {
+  "artifact": "Application / Service",
+  "reason": "Description: a development environment."
+ },
+ "wandb/wandb": {
+  "artifact": "Application / Service",
+  "reason": "Description: a developer platform."
+ },
+ "microsoft/promptflow": {
+  "artifact": "Framework",
+  "reason": "Description: a toolkit for building LLM apps."
+ },
+ "the-pocket/pocketflow": {
+  "artifact": "Framework",
+  "reason": "Description: an LLM framework."
+ },
+ "doriandarko/claude-engineer": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a command-line interface."
+ },
+ "rushter/mlalgorithms": {
+  "artifact": "Library / SDK",
+  "reason": "Description: implementations of algorithms."
+ },
+ "huggingface/tokenizers": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a tokenizer library."
+ },
+ "voxel51/fiftyone": {
+  "artifact": "Application / Service",
+  "reason": "Description: a dataset tool."
+ },
+ "aden-hive/hive": {
+  "artifact": "Framework",
+  "reason": "Description: a multi-agent harness."
+ },
+ "blinkospace/blinko": {
+  "artifact": "Application / Service",
+  "reason": "Description: a note app."
+ },
+ "triton-inference-server/server": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference server."
+ },
+ "modelcontextprotocol/inspector": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a testing tool."
+ },
+ "artidoro/qlora": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a finetuning method and library."
+ },
+ "thu-ml/tianshou": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "aws/amazon-sagemaker-examples": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: example notebooks."
+ },
+ "alibaba/spring-ai-alibaba": {
+  "artifact": "Framework",
+  "reason": "Description: an agentic AI framework."
+ },
+ "huggingface/chat-ui": {
+  "artifact": "Application / Service",
+  "reason": "Description: a chat application codebase."
+ },
+ "openvinotoolkit/openvino": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an inference toolkit."
+ },
+ "kalyanks-nlp/llm-engineer-toolkit": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a curated list."
+ },
+ "tyktechnologies/tyk": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an API and AI gateway."
+ },
+ "langchain-ai/open-swe": {
+  "artifact": "Application / Service",
+  "reason": "Description: a coding agent app."
+ },
+ "google/artemis": {
+  "artifact": "Application / Service",
+  "reason": "Description: an Android automation app."
+ },
+ "vincentwei1021/video-shotcraft": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: a skill for Claude Code and Codex."
+ },
+ "multimodal-art-projection/yue": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a music model."
+ },
+ "lengstrom/fast-style-transfer": {
+  "artifact": "Application / Service",
+  "reason": "Description: a style transfer app."
  }
 }

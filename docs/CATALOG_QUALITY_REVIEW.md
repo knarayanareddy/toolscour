@@ -128,3 +128,9 @@ Checked against README and repo contents:
 - `usestrix/strix`: Application / Service is correct. No change.
 - `x1xhlol/system-prompts-and-models-of-ai-tools`: Model was wrong. Set to Curated List / Docs. The repo is a collection of extracted system prompts, the same class as the leaked-prompt collections skipped in batches 10 and 12. **Removal is not decided and needs a user decision.**
 - **Decision (user):** keep both leaked-prompt collections (`x1xhlol/...` and `jujumilk3/leaked-system-prompts`) as Curated List / Docs. Neither gets hand-written text.
+
+### Hand-written top-2,000 text: batch 13
+
+- 60 entries and 38 artifact fixes (30 labels changed on apply). Hand-written text now covers 812 records.
+- 9 skipped with reasons in `pipeline/intel_skip.txt`: a CAPTCHA-solving extension for automation, non-AI tools (QR generator, PDF library, RPA library, nginx UI, cheat-sheet list, Kedro), and a slogan-only description.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
