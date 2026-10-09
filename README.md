@@ -88,6 +88,8 @@ python3 pipeline/harvest_ai_tools.py --seeds pipeline/seed_repos.txt  # add cura
 python3 pipeline/harvest_ai_tools.py --awesome pipeline/awesome_sources.txt  # discover repos linked from curated awesome lists
 python3 pipeline/harvest_ai_tools.py --readme-intel     # what_it_does from each repo's first README paragraph (~20 min)
 python3 pipeline/harvest_ai_tools.py --curated-intel    # apply hand-written intel from pipeline/curated_intel.json
+python3 pipeline/harvest_ai_tools.py --intel-text       # apply hand-written why/when text from pipeline/intel_text.json
+python3 pipeline/harvest_ai_tools.py --intel-todo 60    # list the next repos still waiting for hand-written why/when
 python3 pipeline/harvest_ai_tools.py --alternatives      # replace template 'alternatives' with similar catalog tools
 python3 pipeline/harvest_ai_tools.py --refresh           # re-read every record from GitHub; drop archived/deleted/sub-500★
 python3 pipeline/harvest_ai_tools.py --fill-descriptions # README first sentence for repos with no GitHub description

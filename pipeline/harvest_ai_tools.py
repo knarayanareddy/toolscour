@@ -999,6 +999,60 @@ def load_curated_intel() -> Dict[str, Dict[str, Any]]:
         return {k.lower(): v for k, v in json.load(f).items() if not k.startswith("_")}
 
 
+INTEL_TEXT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "intel_text.json")
+
+
+def load_intel_text() -> Dict[str, Dict[str, str]]:
+    """Hand-written why_it_matters / when_to_use text, keyed by lower-cased owner/name."""
+    if not os.path.exists(INTEL_TEXT_FILE):
+        return {}
+    with open(INTEL_TEXT_FILE, "r", encoding="utf-8") as f:
+        return {k.lower(): v for k, v in json.load(f).items() if not k.startswith("_")}
+
+
+def run_intel_text(output: str) -> None:
+    """Applies why_it_matters / when_to_use from pipeline/intel_text.json. Does not change intel_source."""
+    text = load_intel_text()
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    applied = 0
+    for r in records:
+        entry = text.get(f"{r.get('owner', '')}/{r.get('name', '')}".lower())
+        if not entry or not isinstance(r.get("beginner_intel"), dict):
+            continue
+        for field in ("why_it_matters", "when_to_use"):
+            if entry.get(field):
+                r["beginner_intel"][field] = entry[field]
+        applied += 1
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(records, f, separators=(",", ":"))
+    print(f"✍️  Intel text: applied why/when to {applied} records ({len(text)} entries in file) -> {output}")
+
+
+def run_intel_todo(output: str, count: int) -> None:
+    """
+    Lists the next records (most-starred first) that still have templated why/when text and no
+    hand-written entry. Prints a compact JSON array for writing the next batch.
+    """
+    text = load_intel_text()
+    curated = load_curated_intel()
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    todo = []
+    for r in sorted(records, key=lambda x: -x.get("stars", 0)):
+        key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+        if key in text or key in curated or r.get("source") == "huggingface":
+            continue
+        intel = r.get("beginner_intel") or {}
+        todo.append({"repo": f"{r.get('owner')}/{r.get('name')}", "stars": r.get("stars", 0),
+                     "artifact": r.get("artifact"), "subsystem": r.get("subsystem"),
+                     "description": (r.get("description") or "")[:160],
+                     "what_it_does": (intel.get("what_it_does") or "")[:220]})
+        if len(todo) == count:
+            break
+    print(json.dumps(todo, ensure_ascii=False))
+
+
 def run_curated_intel(output: str) -> None:
     """Applies hand-written intel to matching records and marks them intel_source == 'curated'."""
     curated = load_curated_intel()
@@ -1091,6 +1145,10 @@ def main():
                         help="targeted add: owner/name per line from this file (named AI repos search missed)")
     parser.add_argument("--awesome", type=str, default="",
                         help="discovery: GitHub repos linked from the awesome lists in this file (owner/name per line)")
+    parser.add_argument("--intel-text", action="store_true",
+                        help="apply why_it_matters / when_to_use from pipeline/intel_text.json")
+    parser.add_argument("--intel-todo", type=int, default=0,
+                        help="print the next N most-starred repos still lacking hand-written why/when text")
     parser.add_argument("--curated-intel", action="store_true",
                         help="apply hand-written intel from pipeline/curated_intel.json")
     parser.add_argument("--readme-intel", action="store_true",
@@ -1118,6 +1176,12 @@ def main():
         return
     if args.curated_intel:
         run_curated_intel(args.output)
+        return
+    if args.intel_text:
+        run_intel_text(args.output)
+        return
+    if args.intel_todo:
+        run_intel_todo(args.output, args.intel_todo)
         return
     if args.refresh:
         run_refresh(args.output, token)

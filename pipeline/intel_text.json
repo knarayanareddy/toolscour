@@ -1,0 +1,207 @@
+{
+  "_comment": "Hand-written why_it_matters and when_to_use, keyed by lower-cased owner/name. Written from each repo README and catalog fields; no claims beyond them.",
+  "openclaw/openclaw": {
+    "why_it_matters": "It is a popular open-source personal AI assistant that runs on your own computer and reaches you through the chat apps you already use.",
+    "when_to_use": "When you want a self-hosted assistant that works through messaging channels and can act on your machine."
+  },
+  "obra/superpowers": {
+    "why_it_matters": "It packages a software development methodology as composable skills, so a coding agent follows a consistent process such as planning and testing instead of improvising.",
+    "when_to_use": "When you want your coding agent to follow a structured workflow across projects."
+  },
+  "mattpocock/skills": {
+    "why_it_matters": "It is a personal collection of agent skills for everyday engineering work, shared as a reference set you can adapt.",
+    "when_to_use": "When you want practical, engineering-focused skills to start from."
+  },
+  "affaan-m/ecc": {
+    "why_it_matters": "It bundles skills, memory and security practices into one agent harness, aimed at making coding agents faster and safer.",
+    "when_to_use": "When you want a ready agent configuration rather than assembling skills and memory yourself."
+  },
+  "nousresearch/hermes-agent": {
+    "why_it_matters": "It is an agent that turns its own experience into reusable skills and refines them during use.",
+    "when_to_use": "When you want a long-running agent that adapts to your work over time."
+  },
+  "multica-ai/andrej-karpathy-skills": {
+    "why_it_matters": "It gives Claude Code a short set of behavioural rules aimed at common LLM coding mistakes, in one file.",
+    "when_to_use": "When you want to tighten how Claude Code writes code without adding tooling."
+  },
+  "anomalyco/opencode": {
+    "why_it_matters": "It is an open-source coding agent for the terminal that you can point at different model providers.",
+    "when_to_use": "When you want a coding agent you can inspect and switch between models."
+  },
+  "anthropics/skills": {
+    "why_it_matters": "It is Anthropic's public set of example Agent Skills, showing the format and what good skills look like.",
+    "when_to_use": "When you want reference skills to copy from, or want to learn the Agent Skills format."
+  },
+  "f/prompts.chat": {
+    "why_it_matters": "It is a community library where people share and collect prompts, so good prompts can be found and reused.",
+    "when_to_use": "When you need a starting prompt for a common task, or want to share your own."
+  },
+  "msitarzewski/agency-agents": {
+    "why_it_matters": "It provides a large set of ready-made specialist agent personas, each with defined processes, so you can assemble a team quickly.",
+    "when_to_use": "When you want role-based agents for a project and are willing to adapt the personas."
+  },
+  "farion1231/cc-switch": {
+    "why_it_matters": "It centralises configuration for several coding-agent tools, so switching API providers does not mean editing config files by hand.",
+    "when_to_use": "When you use more than one provider or agent CLI and want one place to switch."
+  },
+  "shubhamsaboo/awesome-llm-apps": {
+    "why_it_matters": "It is a large collection of runnable example agents and RAG apps to learn from or start with.",
+    "when_to_use": "When you want working examples of agent or RAG apps to adapt."
+  },
+  "github/spec-kit": {
+    "why_it_matters": "It gives coding agents a structured, spec-first workflow with templates, so requirements are written down before code is generated.",
+    "when_to_use": "When you want more predictable agent output on larger features."
+  },
+  "nextlevelbuilder/ui-ux-pro-max-skill": {
+    "why_it_matters": "It adds design guidance as a skill, so an agent makes more consistent UI and UX decisions.",
+    "when_to_use": "When your agent builds frontend work and needs stronger design direction."
+  },
+  "harry0703/moneyprinterturbo": {
+    "why_it_matters": "It automates the chain from a topic or keyword to a finished short video using AI generation and an automated workflow.",
+    "when_to_use": "When you want to produce short videos at volume from a list of topics."
+  },
+  "graphify-labs/graphify": {
+    "why_it_matters": "It turns a codebase and its documents into a graph an agent can query, so it can follow relationships instead of searching files.",
+    "when_to_use": "When an agent needs to understand a large or unfamiliar codebase."
+  },
+  "voltagent/awesome-design-md": {
+    "why_it_matters": "It collects DESIGN.md files from well-known brands, giving an agent a concrete reference for a design system.",
+    "when_to_use": "When you want an agent to match an existing visual style."
+  },
+  "earendil-works/pi": {
+    "why_it_matters": "It combines a unified LLM API, an agent loop, a terminal UI and a coding-agent CLI in one toolkit.",
+    "when_to_use": "When you want a small, hackable base for building or running your own agent."
+  },
+  "juliusbrussee/caveman": {
+    "why_it_matters": "It targets token cost by making the agent's output terser, which lowers spend on long coding sessions.",
+    "when_to_use": "When token cost matters more than verbose explanations."
+  },
+  "addyosmani/agent-skills": {
+    "why_it_matters": "It is a set of engineering skills for coding agents, aimed at production-quality work rather than quick prototypes.",
+    "when_to_use": "When you want review- and quality-focused skills for an agent."
+  },
+  "nexu-io/open-design": {
+    "why_it_matters": "It runs design work locally through a coding agent, generating prototypes and pages on your own machine.",
+    "when_to_use": "When you want an open alternative for design prototyping with an agent."
+  },
+  "paperclipai/paperclip": {
+    "why_it_matters": "It gives one app to organise and oversee several agents as a team.",
+    "when_to_use": "When you run multiple agents and need one place to manage them."
+  },
+  "thedotmack/claude-mem": {
+    "why_it_matters": "It keeps a record of what a coding agent did in past sessions, compresses it, and feeds the relevant parts back into later sessions.",
+    "when_to_use": "When you return to the same project repeatedly and lose context between sessions."
+  },
+  "karpathy/autoresearch": {
+    "why_it_matters": "It lets an agent run a research loop on a small single-GPU training setup, so experiments run without manual iteration.",
+    "when_to_use": "When you want to see whether an agent can drive ML experiments on modest hardware."
+  },
+  "hacksider/deep-live-cam": {
+    "why_it_matters": "It performs real-time face swapping from a single image, a powerful and sensitive capability.",
+    "when_to_use": "For research or creative work where everyone shown has consented. It can be misused for deepfakes."
+  },
+  "ruvnet/ruview": {
+    "why_it_matters": "It uses WiFi signals instead of cameras to sense presence and movement, which suits privacy-sensitive monitoring.",
+    "when_to_use": "When you want room sensing without cameras, and you can test its accuracy in your own setup."
+  },
+  "panniantong/agent-reach": {
+    "why_it_matters": "It lets an agent read and search several social and video platforms through one command-line tool.",
+    "when_to_use": "When research needs content from platforms that have no convenient API for your agent."
+  },
+  "leonxlnx/taste-skill": {
+    "why_it_matters": "It is a skill that nudges an agent away from generic design and writing output.",
+    "when_to_use": "When outputs look templated and you want more distinctive results."
+  },
+  "odysseus-dev/odysseus": {
+    "why_it_matters": "It bundles chat, agents, documents and personal tools into one self-hosted workspace.",
+    "when_to_use": "When you want a private, all-in-one workspace on your own server."
+  },
+  "chatgptnextweb/nextchat": {
+    "why_it_matters": "It is a lightweight chat client for web and desktop that connects to many model providers.",
+    "when_to_use": "When you want a simple multi-provider chat interface for daily use."
+  },
+  "koala73/worldmonitor": {
+    "why_it_matters": "It aggregates news and infrastructure signals into one situational-awareness dashboard.",
+    "when_to_use": "When you need a single view of world events for monitoring."
+  },
+  "stablyai/orca": {
+    "why_it_matters": "It runs several coding agents in parallel, each in its own git worktree, so their changes do not clash.",
+    "when_to_use": "When you want to compare agents or split a task across them."
+  },
+  "d4vinci/scrapling": {
+    "why_it_matters": "It is a scraping framework built to adapt when pages change, which reduces breakage in data pipelines.",
+    "when_to_use": "When you collect data from sites that change often."
+  },
+  "egonex-ai/understand-anything": {
+    "why_it_matters": "It maps a codebase into an explorable knowledge graph, so someone new to the code can see how the parts connect.",
+    "when_to_use": "When onboarding to a large codebase you did not write."
+  },
+  "bytedance/deer-flow": {
+    "why_it_matters": "It runs long, multi-step agent tasks with sandboxes, memory and sub-agents, so work can span much more than one chat session.",
+    "when_to_use": "When a task is too long or too branched for a single chat session."
+  },
+  "lobehub/lobehub": {
+    "why_it_matters": "It manages a team of agents with scheduling and reporting in one interface.",
+    "when_to_use": "When you run several recurring agent tasks and want oversight of them."
+  },
+  "rtk-ai/rtk": {
+    "why_it_matters": "It filters and compresses command output before it reaches the model, cutting the tokens that shell output costs an agent.",
+    "when_to_use": "When an agent runs many commands and its context fills up quickly."
+  },
+  "datawhalechina/hello-agents": {
+    "why_it_matters": "It is a structured Chinese-language tutorial that combines agent theory with practice.",
+    "when_to_use": "When you want a Chinese-language, theory-plus-practice course on agents."
+  },
+  "d2l-ai/d2l-zh": {
+    "why_it_matters": "It is a runnable, Chinese-language deep learning textbook that its description says is used by more than 500 universities.",
+    "when_to_use": "When you want a Chinese-language, code-backed deep learning textbook."
+  },
+  "netdata/netdata": {
+    "why_it_matters": "It monitors servers and services in real time and adds AI-assisted analysis on top of the metrics.",
+    "when_to_use": "When you need live monitoring with little setup."
+  },
+  "shareai-lab/learn-claude-code": {
+    "why_it_matters": "It rebuilds a minimal coding-agent harness step by step, which makes the architecture easy to follow.",
+    "when_to_use": "When you want to understand how a coding agent works internally."
+  },
+  "666ghj/mirofish": {
+    "why_it_matters": "It simulates many interacting agents to explore likely outcomes, a research-style approach to prediction.",
+    "when_to_use": "For experiments with multi-agent simulation, where its predictions are exploratory."
+  },
+  "composiohq/awesome-claude-skills": {
+    "why_it_matters": "It is an index of Claude skills and plugins, so you can find an existing skill before writing your own.",
+    "when_to_use": "When you are looking for a ready skill for a task."
+  },
+  "headroomlabs-ai/headroom": {
+    "why_it_matters": "It cuts the tokens an agent spends on tool output and retrieved text, lowering cost on long sessions.",
+    "when_to_use": "When agent sessions are expensive because of large tool outputs."
+  },
+  "ruvnet/ruflo": {
+    "why_it_matters": "It coordinates several agents with shared memory, for workflows that need more than one agent.",
+    "when_to_use": "When you want multi-agent coordination and can evaluate how mature it is for your use."
+  },
+  "openbq-org/openbb": {
+    "why_it_matters": "It connects many financial and economic data sources behind one toolset, so analysts and agents share the same data layer.",
+    "when_to_use": "When you need market or economic data for research or agent tooling."
+  },
+  "career-ops-hq/career-ops": {
+    "why_it_matters": "It automates the repetitive parts of a job search: scoring each listing against your CV and tailoring documents.",
+    "when_to_use": "When you are actively job hunting and want to triage many listings."
+  },
+  "compvis/stable-diffusion": {
+    "why_it_matters": "It is the original Stable Diffusion research code that many later image tools build on.",
+    "when_to_use": "When you want the reference implementation for study or research."
+  },
+  "binary-husky/gpt_academic": {
+    "why_it_matters": "It gives one interface for several LLMs, with tools aimed at reading and translating academic papers.",
+    "when_to_use": "When you read or translate papers and want to compare several models."
+  },
+  "fission-ai/openspec": {
+    "why_it_matters": "It makes coding assistants write a spec before code, so changes are reviewed against written requirements.",
+    "when_to_use": "When you want more predictable changes from AI coding assistants."
+  },
+  "microsoft/ml-for-beginners": {
+    "why_it_matters": "It is a structured, beginner-friendly classic machine-learning course with quizzes.",
+    "when_to_use": "When you are starting machine learning and want a guided path."
+  }
+}
