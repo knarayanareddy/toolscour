@@ -45,7 +45,7 @@ novuhq/novu                           # notification infrastructure, not an AI t
 # Batch 4 skips
 photoprism/photoprism                 # description is a slogan only
 zhaoxuya520/reverse-skill             # security-tooling router; purpose not verifiable as an AI tool from description
-google/google-research                # monorepo index; description is a name only
+google-research/google-research                # monorepo index; description is a name only
 google-research/google-research       # monorepo index; description is a name only
 pbatard/rufus                         # USB formatting utility, not an AI tool
 dokploy/dokploy                       # PaaS, not an AI tool
@@ -61,9 +61,30 @@ ashishpatel26/500-ai-machine-learning-deep-learning-computer-vision-nlp-projects
 tqdm/tqdm                             # progress bar library, not an AI tool
 xitu/gold-miner                       # translation community, not an AI tool
 signoz/signoz                         # observability platform, not an AI tool
-fincept-corporation/fincepterminal    # finance app, not an AI tool
+fincept-corporation/finceptterminal    # finance app, not an AI tool
 nandhakishorm/laya                    # description not understandable enough to state a purpose
 p-e-w/heretic                         # purpose is removing safety alignment from models; not written up
 cloakhq/cloakbrowser                  # purpose is bot-detection evasion; not written up
 feder-cr/invisible_dots               # purpose is anti-bot evasion; not written up
 pythagora-io/gpt-pilot                # README opens with an incident report; purpose not verifiable
+
+# Top-2000 batch 5a skips
+decolua/9router                       # makes unverifiable 'unlimited free' claims about subscription services
+facefusion/facefusion                 # description is a slogan only; face-manipulation tool
+anywhere-labs/dsh-desktop                # client for DeepSeek Harness; parent purpose not verifiable
+gitleaks/gitleaks                     # secret scanner, not an AI tool
+kestra-io/kestra                      # orchestration platform, not an AI tool
+nrwl/nx                               # build tool, not an AI tool
+ossrs/srs                         # media server, not an AI tool
+systemdesign42/system-design-academy  # newsletter promotion, not a tool description
+ebazhanov/linkedin-skill-assessments-quizzes  # answer key for assessments; not written up
+graphiteeditor/graphite               # graphics editor, not an AI tool
+go-kratos/kratos                      # Go microservices framework, not an AI tool
+enescingoz/awesome-n8n-templates      # automation templates, not an AI tool
+t8y2/dbx                              # database client, not an AI tool
+flipped-aurora/gin-vue-admin          # admin platform; AI is secondary
+
+# Top-2000 batch 5b skips
+charmbracelet/crush                   # description is a slogan only
+pppscn/smsforwarder                   # SMS forwarder for Android, not an AI tool
+ottermind/chat2db                     # database client, not an AI tool

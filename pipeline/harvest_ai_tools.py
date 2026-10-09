@@ -1066,6 +1066,9 @@ def run_intel_text(output: str) -> None:
     print(f"✍️  Intel text: applied why/when to {applied} records ({len(text)} entries in file) -> {output}")
 
 
+INTEL_TOP_CUTOFF = 2000  # records ranked by stars beyond this keep generated text
+
+
 def run_intel_todo(output: str, count: int) -> None:
     """
     Lists the next records (most-starred first) that still have templated why/when text and no
@@ -1077,7 +1080,10 @@ def run_intel_todo(output: str, count: int) -> None:
     with open(output, "r", encoding="utf-8") as f:
         records = json.load(f)
     todo = []
-    for r in sorted(records, key=lambda x: -x.get("stars", 0)):
+    ranked = sorted(records, key=lambda x: -x.get("stars", 0))
+    if INTEL_TOP_CUTOFF:
+        ranked = ranked[:INTEL_TOP_CUTOFF]  # hand-written text is in scope for the top N by stars only
+    for r in ranked:
         key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
         if key in text or key in curated or key in skip or r.get("source") == "huggingface":
             continue
@@ -1219,6 +1225,8 @@ def main():
                         help="apply why_it_matters / when_to_use from pipeline/intel_text.json")
     parser.add_argument("--intel-todo", type=int, default=0,
                         help="print the next N most-starred repos still lacking hand-written why/when text")
+    parser.add_argument("--intel-top", type=int, default=2000,
+                        help="cutoff for --intel-todo: only the top N records by stars are in scope (default 2000)")
     parser.add_argument("--curated-intel", action="store_true",
                         help="apply hand-written intel from pipeline/curated_intel.json")
     parser.add_argument("--readme-intel", action="store_true",
@@ -1256,6 +1264,8 @@ def main():
         run_intel_text(args.output)
         return
     if args.intel_todo:
+        global INTEL_TOP_CUTOFF
+        INTEL_TOP_CUTOFF = args.intel_top
         run_intel_todo(args.output, args.intel_todo)
         return
     if args.refresh:
