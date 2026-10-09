@@ -101,3 +101,9 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 - Skipped with reasons in `pipeline/intel_skip.txt`: 5 repos that are not AI tools, have a wrong label with no verifiable description, or have only a pointer as description.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
 - Note: after a sandbox reset, the local branch was restored from `origin/arena/885993aa-toolscour` (fast-forward to `7925b0b`). No work was lost.
+
+### Hand-written top-2,000 text: batch 10
+
+- 52 entries and 21 artifact fixes. Hand-written text now covers 629 records.
+- 18 skipped with reasons in `pipeline/intel_skip.txt`: databases, auth, deployment and terminal tools that are not AI tools, a leaked-prompt collection (same class as the jailbreak collections), and slogan-only descriptions.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.

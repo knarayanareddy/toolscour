@@ -131,3 +131,22 @@ kubesphere/kubesphere        # container platform, not an AI tool; label Agent S
 citrolabs/ego-lite           # browser marketing text only; artifact label Agent Skill Pack unverified
 alam00000/bentopdf           # PDF toolkit, not an AI tool
 kaldi-asr/kaldi              # description is a pointer only
+
+# Top-2000 batch 10 skips
+apache/doris                 # database, not an AI tool
+theonedev/onedev             # development platform, not an AI tool
+electerm/electerm           # terminal client, not an AI tool
+ty4z2008/qix                 # notes list, not a tool
+gvergnaud/ts-pattern         # pattern matching library, not an AI tool
+virgili0/virgilio            # e-learning mentor, description only
+t8rin/imagetoolbox           # image editor; AI role not stated
+tisfeng/easydict             # dictionary app; AI role not stated
+bulletphysics/bullet3        # physics SDK, not an AI tool
+shengqiangzhang/examples-of-web-crawlers  # web crawler examples, not an AI tool
+jujumilk3/leaked-system-prompts  # leaked prompt collection; same class as jailbreak collections
+mindfold-ai/trellis          # description is a slogan only
+open-metadata/openmetadata   # data catalog, not an AI tool
+logto-io/logto               # auth infrastructure, not an AI tool
+oblien/openship              # deployment platform, not an AI tool
+bytebase/bytebase            # database governance, not an AI tool
+casdoor/casdoor              # IAM, not an AI tool

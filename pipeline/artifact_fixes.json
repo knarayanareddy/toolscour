@@ -587,5 +587,89 @@
  "eigent-ai/eigent": {
   "artifact": "Application / Service",
   "reason": "Description: a desktop application."
+ },
+ "kailashahirwar/cheatsheets-ai": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: cheat sheets."
+ },
+ "graykode/nlp-tutorial": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "shangtongzhang/reinforcement-learning-an-introduction": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an implementation of a textbook."
+ },
+ "llamachinese/llama-chinese": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a community resource hub."
+ },
+ "datawhalechina/easy-rl": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "hindupuravinash/the-gan-zoo": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a list."
+ },
+ "datatalksclub/machine-learning-zoomcamp": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a course."
+ },
+ "aleju/imgaug": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an image augmentation library."
+ },
+ "nltk/nltk": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Python toolkit."
+ },
+ "brainjs/brain.js": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a neural network library."
+ },
+ "coplaydev/unity-mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: a bridge to the Unity Editor."
+ },
+ "llmware-ai/llmware": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for building RAG pipelines."
+ },
+ "microsoft/rd-agent": {
+  "artifact": "Framework",
+  "reason": "Description: an R&D agent framework."
+ },
+ "nanmicoder/cc-haha": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop workspace app."
+ },
+ "nvidia/tensorrt-llm": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an LLM inference API."
+ },
+ "gunthercox/chatterbot": {
+  "artifact": "Framework",
+  "reason": "Description: a conversational dialogue engine."
+ },
+ "carla-simulator/carla": {
+  "artifact": "Application / Service",
+  "reason": "Description: a simulator."
+ },
+ "nevamind-ai/memu": {
+  "artifact": "Framework",
+  "reason": "Description: a memory layer for agents; not a skill pack."
+ },
+ "yusufkaraaslan/skill_seekers": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a converter that generates skills from docs."
+ },
+ "superset-sh/superset": {
+  "artifact": "Application / Service",
+  "reason": "Description: an agentic IDE app."
+ },
+ "botpress/botpress": {
+  "artifact": "Framework",
+  "reason": "Description: an agent-building platform."
  }
 }
