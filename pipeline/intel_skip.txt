@@ -178,3 +178,16 @@ x-hw/amazing-qr                            # QR code generator, not an AI tool
 kedro-org/kedro                            # data science pipeline toolkit; not AI-specific
 spinabot/brigade                           # description is a slogan only
 nopechallc/nopecha-extension          # CAPTCHA-solving extension for browser automation; not written up
+
+# Top-2000 batch 14 skips
+tsayen/dom-to-image                    # DOM-to-image library, not an AI tool
+simonlin1212/a-stock-data              # stock data toolkit, not clearly an AI tool
+openframeworks/openframeworks          # creative coding toolkit, not an AI tool
+electric-sql/electric                  # sync platform; description is a slogan only
+sfyc23/everydaywechat                  # WeChat scheduled-message assistant; AI role not stated
+kuberwastaken/claurst                  # description is a slogan only
+open-gsd/gsd-core                      # description is a slogan only
+oceanbase/oceanbase                    # database, not an AI tool
+astrid-runtime/astrid                  # operating system; description is a slogan only
+opencv/opencv_contrib                  # computer vision modules, not AI-specific
+louisshark/chatgpt_system_prompt        # collection of GPT system prompts; same class as leaked-prompt collections; label only, no text

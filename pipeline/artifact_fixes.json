@@ -1095,5 +1095,177 @@
  "lengstrom/fast-style-transfer": {
   "artifact": "Application / Service",
   "reason": "Description: a style transfer app."
+ },
+ "joyceql/magic-resume": {
+  "artifact": "Application / Service",
+  "reason": "Description: an online resume editor app."
+ },
+ "sashabaranov/go-openai": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Go client library."
+ },
+ "openpipe/art": {
+  "artifact": "Framework",
+  "reason": "Description: a trainer for agents."
+ },
+ "autogluon/autogluon": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an AutoML library."
+ },
+ "voltagent/voltagent": {
+  "artifact": "Framework",
+  "reason": "Description: an agent framework."
+ },
+ "xinnan-tech/xiaozhi-esp32-server": {
+  "artifact": "Application / Service",
+  "reason": "Description: a server application."
+ },
+ "yorko/mlcourse.ai": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a course."
+ },
+ "mcp-use/mcp-use": {
+  "artifact": "Framework",
+  "reason": "Description: an MCP framework."
+ },
+ "lucidrains/denoising-diffusion-pytorch": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an implementation library."
+ },
+ "baiyuetribe/paper2gui": {
+  "artifact": "Application / Service",
+  "reason": "Description: a GUI app."
+ },
+ "chiphuyen/machine-learning-systems-design": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a booklet."
+ },
+ "acly/krita-ai-diffusion": {
+  "artifact": "Application / Service",
+  "reason": "Description: a Krita plugin app."
+ },
+ "idea-research/groundingdino": {
+  "artifact": "Model / Weights",
+  "reason": "Description: the official implementation of a detection model."
+ },
+ "megvii-basedetection/yolox": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a detector."
+ },
+ "pyannote/pyannote-audio": {
+  "artifact": "Library / SDK",
+  "reason": "Description: building blocks as a library."
+ },
+ "cvhub520/x-anylabeling": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop app."
+ },
+ "bigscience-workshop/petals": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a distributed inference and fine-tuning system."
+ },
+ "oramasearch/orama": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a search library."
+ },
+ "adongwanai/agentguide": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a guide."
+ },
+ "vwxyzjn/cleanrl": {
+  "artifact": "Library / SDK",
+  "reason": "Description: implementations as a library."
+ },
+ "niedev/rtranslator": {
+  "artifact": "Application / Service",
+  "reason": "Description: an Android app."
+ },
+ "easydiffusion/easydiffusion": {
+  "artifact": "Application / Service",
+  "reason": "Description: an app."
+ },
+ "lexfridman/mit-deep-learning": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: course materials."
+ },
+ "google/adk-recipes": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: recipes and patterns."
+ },
+ "snakers4/silero-vad": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a detector library."
+ },
+ "runanywhereai/runanywhere-sdks": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a toolkit for running models on devices."
+ },
+ "netflix/metaflow": {
+  "artifact": "Framework",
+  "reason": "Description: a framework."
+ },
+ "othersideai/self-operating-computer": {
+  "artifact": "Framework",
+  "reason": "Description: a framework."
+ },
+ "advimman/lama": {
+  "artifact": "Model / Weights",
+  "reason": "Description: an inpainting model."
+ },
+ "satellite-image-deep-learning/techniques": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a guide."
+ },
+ "thesysdev/openui": {
+  "artifact": "Framework",
+  "reason": "Description: an open standard and framework."
+ },
+ "ymcui/chinese-bert-wwm": {
+  "artifact": "Model / Weights",
+  "reason": "Description: pretrained models."
+ },
+ "startrail-org/pixelrag": {
+  "artifact": "Framework",
+  "reason": "Description: a research system for retrieval."
+ },
+ "mooler0410/llmspracticalguide": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a list of resources."
+ },
+ "ykdojo/claude-code-tips": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a list of tips."
+ },
+ "mozilla/tts": {
+  "artifact": "Framework",
+  "reason": "Description: a deep learning toolkit."
+ },
+ "stanfordnlp/corenlp": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Java NLP suite."
+ },
+ "koljab/realtimestt": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "louisshark/chatgpt_system_prompt": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a collection of GPT system prompts and prompt-injection notes. Same class as the leaked-prompt collections; kept by user decision; no hand-written text."
+ },
+ "opengvlab/internvl": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a model family."
+ },
+ "microsoft/magentic-ui": {
+  "artifact": "Application / Service",
+  "reason": "Description: an experimental agent app."
+ },
+ "zyddnys/manga-image-translator": {
+  "artifact": "Application / Service",
+  "reason": "Description: an image translation app."
+ },
+ "apify/apify-mcp-server": {
+  "artifact": "Application / Service",
+  "reason": "Description: an MCP server."
  }
 }

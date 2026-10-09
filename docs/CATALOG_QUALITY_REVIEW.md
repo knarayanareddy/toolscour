@@ -134,3 +134,9 @@ Checked against README and repo contents:
 - 60 entries and 38 artifact fixes (30 labels changed on apply). Hand-written text now covers 812 records.
 - 9 skipped with reasons in `pipeline/intel_skip.txt`: a CAPTCHA-solving extension for automation, non-AI tools (QR generator, PDF library, RPA library, nginx UI, cheat-sheet list, Kedro), and a slogan-only description.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 14
+
+- 60 entries and 43 artifact fixes. Hand-written text now covers 872 records. (The file has one metadata key, so it shows 873.)
+- 11 skipped with reasons in `pipeline/intel_skip.txt`: non-AI tools (DOM-to-image, OpenFrameworks, OpenCV contrib, a WeChat scheduler, OceanBase), slogan-only descriptions (Electric, claurst, gsd-core, Astrid), and a stock data toolkit with no clear AI role. `chatgpt_system_prompt` is labelled only, with no text, under the same user decision as the other prompt collections.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
