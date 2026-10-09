@@ -158,3 +158,13 @@ corsairdev/corsair                    # description is one line; purpose unclear
 halfrost/halfrost-field               # source-code blog, not an AI tool
 zoicware/removewindowsai              # removes Copilot and Recall; not an AI tool
 wong2/chatgpt-google-extension        # deprecated upstream; points elsewhere
+
+# Top-2000 batch 12 skips
+piebald-ai/claude-code-system-prompts  # extracted system prompts; same class as leaked-prompt collections
+0xk1h0/chatgpt_dan                    # jailbreak prompt collection
+wei-shaw/claude-relay-service         # subscription-sharing relay; terms-of-service risk, not written up
+axolotl-ai-cloud/axolotl              # description is a sentence fragment only
+vesoft-inc/nebula                     # graph database, not an AI tool
+kubeshark/kubeshark                   # network observability, not an AI tool
+manticoresoftware/manticoresearch     # search database, not an AI tool
+jack-cherish/pythonpark               # general Python learning site, not AI-specific

@@ -795,5 +795,133 @@
  "tangyudi/ai-learn": {
   "artifact": "Curated List / Docs",
   "reason": "Description: a learning roadmap."
+ },
+ "krillinai/opencreator": {
+  "artifact": "Application / Service",
+  "reason": "Description: an AI workspace app."
+ },
+ "langgptai/langgpt": {
+  "artifact": "Framework",
+  "reason": "Description: a structured prompt framework."
+ },
+ "simonw/llm": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a command-line tool."
+ },
+ "ther1d/shell_gpt": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a command-line tool."
+ },
+ "bentoml/openllm": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a model serving endpoint."
+ },
+ "paddlepaddle/paddlespeech": {
+  "artifact": "Framework",
+  "reason": "Description: a speech toolkit."
+ },
+ "the-pocket/pocketflow-tutorial-codebase-knowledge": {
+  "artifact": "Application / Service",
+  "reason": "Description: a tool that generates tutorials."
+ },
+ "mrexodia/ida-pro-mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: an MCP bridge app."
+ },
+ "elie222/inbox-zero": {
+  "artifact": "Application / Service",
+  "reason": "Description: an email assistant app."
+ },
+ "getomni-ai/zerox": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an OCR library."
+ },
+ "embedding/chinese-word-vectors": {
+  "artifact": "Model / Weights",
+  "reason": "Description: pretrained vectors."
+ },
+ "flagopen/flagembedding": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a retrieval library."
+ },
+ "rucaibox/llmsurvey": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a survey."
+ },
+ "rany2/edge-tts": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Python library."
+ },
+ "xmu-xiaoma666/external-attention-pytorch": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an implementation library."
+ },
+ "spencermountain/compromise": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an NLP library."
+ },
+ "nerfstudio-project/nerfstudio": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for NeRFs."
+ },
+ "datawhalechina/all-in-rag": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a guide."
+ },
+ "tadata-org/fastapi_mcp": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "lmcache/lmcache": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a KV cache layer."
+ },
+ "altic-dev/fluidvoice": {
+  "artifact": "Application / Service",
+  "reason": "Description: a macOS app."
+ },
+ "zaidmukaddam/scira": {
+  "artifact": "Application / Service",
+  "reason": "Description: a search app."
+ },
+ "speechbrain/speechbrain": {
+  "artifact": "Framework",
+  "reason": "Description: a speech toolkit."
+ },
+ "ludwig-ai/ludwig": {
+  "artifact": "Framework",
+  "reason": "Description: a low-code framework."
+ },
+ "farama-foundation/gymnasium": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a standard API library."
+ },
+ "ritchieng/the-incredible-pytorch": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a curated list."
+ },
+ "rasbt/python-machine-learning-book": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a book's code and resources."
+ },
+ "chenyuntc/pytorch-book": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "khangich/machine-learning-interview": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: interview material."
+ },
+ "tencentcloud/cubesandbox": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a sandbox runtime."
+ },
+ "jina-ai/clip-as-service": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an embedding service."
+ },
+ "zalandoresearch/fashion-mnist": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a dataset."
  }
 }

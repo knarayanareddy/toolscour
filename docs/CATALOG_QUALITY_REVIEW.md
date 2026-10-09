@@ -113,3 +113,9 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 - 64 entries and 31 artifact fixes (30 applied; one fix duplicated an existing label). Hand-written text now covers 693 records.
 - 6 skipped with reasons in `pipeline/intel_skip.txt`: a copyrighted book PDF mirror, a bridge that depends on a ChatGPT web session (terms risk), a one-line description, a source-code blog, a Windows debloat tool, and a deprecated project.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 12
+
+- 59 entries and 32 artifact fixes. Hand-written text now covers 752 records.
+- 8 skipped with reasons in `pipeline/intel_skip.txt`: extracted system prompts and a jailbreak collection (both in the leaked-prompt class), a subscription-sharing relay (terms risk), a sentence-fragment description, and four non-AI databases or sites.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
