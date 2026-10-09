@@ -150,3 +150,11 @@ logto-io/logto               # auth infrastructure, not an AI tool
 oblien/openship              # deployment platform, not an AI tool
 bytebase/bytebase            # database governance, not an AI tool
 casdoor/casdoor              # IAM, not an AI tool
+
+# Top-2000 batch 11 skips
+janishar/mit-deep-learning-book-pdf   # copyrighted book PDF mirror; same class as free-mirror lists
+miuuyy/codex-chatgpt-web              # bridges a ChatGPT web session into Codex; terms-of-service risk, not written up
+corsairdev/corsair                    # description is one line; purpose unclear
+halfrost/halfrost-field               # source-code blog, not an AI tool
+zoicware/removewindowsai              # removes Copilot and Recall; not an AI tool
+wong2/chatgpt-google-extension        # deprecated upstream; points elsewhere

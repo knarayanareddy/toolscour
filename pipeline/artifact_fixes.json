@@ -671,5 +671,129 @@
  "botpress/botpress": {
   "artifact": "Framework",
   "reason": "Description: an agent-building platform."
+ },
+ "waooai/waoowaoo": {
+  "artifact": "Application / Service",
+  "reason": "Description: a production platform app."
+ },
+ "flashml-org/freetoken": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop model-serving app."
+ },
+ "deeplearning4j/deeplearning4j": {
+  "artifact": "Framework",
+  "reason": "Description: a suite of training and deployment tools."
+ },
+ "e2b-dev/e2b": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a secure sandbox environment for agents."
+ },
+ "mlfoundations/open_clip": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an implementation of CLIP as a library."
+ },
+ "eleutherai/lm-evaluation-harness": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an evaluation framework library."
+ },
+ "siteboon/claudecodeui": {
+  "artifact": "Application / Service",
+  "reason": "Description: a web and mobile UI."
+ },
+ "microsoft/lora": {
+  "artifact": "Library / SDK",
+  "reason": "Description: loralib code library."
+ },
+ "semantica-agi/semantica": {
+  "artifact": "Framework",
+  "reason": "Description: infrastructure for context in AI systems."
+ },
+ "lightning-ai/litgpt": {
+  "artifact": "Framework",
+  "reason": "Description: recipes and tooling for LLM training."
+ },
+ "hillya51/lunatranslator": {
+  "artifact": "Application / Service",
+  "reason": "Description: a translator app for visual novels."
+ },
+ "xiaomimimo/mimo-code": {
+  "artifact": "Application / Service",
+  "reason": "Description: a coding product."
+ },
+ "divamgupta/diffusionbee-stable-diffusion-ui": {
+  "artifact": "Application / Service",
+  "reason": "Description: a desktop app."
+ },
+ "modelcontextprotocol/typescript-sdk": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an SDK."
+ },
+ "huggingface/speech-to-speech": {
+  "artifact": "Framework",
+  "reason": "Description: a framework for building voice agents."
+ },
+ "nvidia/tensorrt": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an SDK."
+ },
+ "evermind-ai/everos": {
+  "artifact": "Framework",
+  "reason": "Description: a memory layer for agents."
+ },
+ "dair-ai/ai-papers-of-the-week": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a digest."
+ },
+ "dragen1860/deep-learning-with-tensorflow-book": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an open book."
+ },
+ "portkey-ai/gateway": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an AI gateway."
+ },
+ "morvanzhou/tutorials": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "shishirpatil/gorilla": {
+  "artifact": "Framework",
+  "reason": "Description: training and evaluation for LLM tool use."
+ },
+ "jacobgil/pytorch-grad-cam": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an explainability library."
+ },
+ "paddlepaddle/paddlenlp": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an NLP library."
+ },
+ "kmario23/deep-learning-drizzle": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a resource list."
+ },
+ "paddlepaddle/paddledetection": {
+  "artifact": "Framework",
+  "reason": "Description: a detection toolkit."
+ },
+ "567-labs/instructor": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "dlr-rm/stable-baselines3": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library of RL algorithms."
+ },
+ "zai-org/chatglm3": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a model series."
+ },
+ "lexmount/moli": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a headless browser for agents."
+ },
+ "tangyudi/ai-learn": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a learning roadmap."
  }
 }
