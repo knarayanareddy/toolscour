@@ -403,5 +403,169 @@
  "mempalace/mempalace": {
   "why_it_matters": "It is a local-first AI memory system that stores content verbatim behind a pluggable backend. The README reports 96.6% R@5 on LongMemEval and says it makes zero API calls.",
   "when_to_use": "When you want agent memory that runs locally without API calls."
+ },
+ "imbad0202/academic-research-skills": {
+  "why_it_matters": "It is a set of Claude Code skills covering the academic workflow from research through writing, review, revision and finalization.",
+  "when_to_use": "When you are preparing an academic paper with Claude Code."
+ },
+ "upscayl/upscayl": {
+  "why_it_matters": "It is a free, open-source AI image upscaler that enlarges low-resolution images for Linux, macOS and Windows.",
+  "when_to_use": "When you need a larger version of a low-resolution image."
+ },
+ "gokumohandas/made-with-ml": {
+  "why_it_matters": "It is a course on developing, deploying and iterating on production-grade ML applications.",
+  "when_to_use": "When you want to learn how to take machine learning models into production."
+ },
+ "mudler/localai": {
+  "why_it_matters": "It is an open-source AI engine that runs LLM, vision, voice, image and video models on your own hardware, and the README says no GPU is required.",
+  "when_to_use": "When you want to run models locally without a GPU."
+ },
+ "quantumnous/new-api": {
+  "why_it_matters": "It is a unified model hub that aggregates many LLMs and converts them to OpenAI-compatible and Claude-compatible formats.",
+  "when_to_use": "When you need one API front for several model providers."
+ },
+ "aider-ai/aider": {
+  "why_it_matters": "It lets you pair-program with an AI in your terminal.",
+  "when_to_use": "When you want an AI assistant editing code from the terminal."
+ },
+ "kepano/obsidian-skills": {
+  "why_it_matters": "It is a set of agent skills that teach an agent to use the Obsidian CLI and open formats such as Markdown, Bases and JSON Canvas.",
+  "when_to_use": "When your agent needs to read or write Obsidian notes."
+ },
+ "microsoft/qlib": {
+  "why_it_matters": "It is an AI-oriented quantitative investment platform that applies AI methods across quant research, from exploring ideas to implementing them.",
+  "when_to_use": "When you do quantitative investment research with machine learning."
+ },
+ "hkuds/nanobot": {
+  "why_it_matters": "It is an ultra-lightweight, self-hosted personal AI agent framework written in Python.",
+  "when_to_use": "When you want a small, self-hosted personal agent framework in Python."
+ },
+ "k-dense-ai/scientific-agent-skills": {
+  "why_it_matters": "It is a collection of 177 scientific and research skills for AI agents, covering areas such as biology, chemistry and medicine.",
+  "when_to_use": "When an agent needs domain skills for scientific research."
+ },
+ "sickn33/agentic-awesome-skills": {
+  "why_it_matters": "It is a library of 2,671+ installable SKILL.md playbooks, with a local tool that helps Codex or Claude search the catalog and pick skills.",
+  "when_to_use": "When you need to find and install agent skills for a specific task."
+ },
+ "zhayujie/cowagent": {
+  "why_it_matters": "It is an open-source personal AI assistant and agent harness that plans tasks, runs tools and skills, and keeps memory and knowledge.",
+  "when_to_use": "When you want a self-hosted personal assistant that carries out tasks with tools."
+ },
+ "vectorize-io/hindsight": {
+  "why_it_matters": "It is agent memory that the description says learns over time.",
+  "when_to_use": "When an agent should keep and reuse what it has learned."
+ },
+ "siyuan-note/siyuan": {
+  "why_it_matters": "It is a privacy-first, self-hosted knowledge workspace where people and AI agents work together, with block-level references and Markdown editing.",
+  "when_to_use": "When you want a private, self-hosted knowledge base that agents can also use."
+ },
+ "milvus-io/milvus": {
+  "why_it_matters": "It is a high-performance, cloud-native vector database for scalable approximate nearest-neighbour search.",
+  "when_to_use": "When your AI application needs vector search at scale."
+ },
+ "deusdata/codebase-memory-mcp": {
+  "why_it_matters": "It is an MCP server that indexes codebases into a persistent knowledge graph, so coding agents can query code structure.",
+  "when_to_use": "When a coding agent needs to navigate a large repository."
+ },
+ "coqui-ai/tts": {
+  "why_it_matters": "It is a deep learning toolkit for text-to-speech, used in research and production.",
+  "when_to_use": "When you want to train or run TTS models for research or production."
+ },
+ "cathrynlavery/diagram-design": {
+  "why_it_matters": "It is a skill that produces editorial diagrams in 42 types as self-contained HTML and SVG, for several coding agents.",
+  "when_to_use": "When you want an agent to produce a diagram as a standalone HTML or SVG file."
+ },
+ "librechat-ai/librechat": {
+  "why_it_matters": "It is an open-source, ChatGPT-style interface with agents, MCP and support for many model providers.",
+  "when_to_use": "When you want a self-hosted chat app that works with several LLM providers."
+ },
+ "madslorentzen/ai-job-search": {
+  "why_it_matters": "It is a job-application framework built on Claude Code that evaluates postings, tailors CVs and drafts applications.",
+  "when_to_use": "When you are applying for jobs and want an agent to help with tailoring and drafting."
+ },
+ "janhq/jan": {
+  "why_it_matters": "It is an open-source alternative to ChatGPT that runs offline on your computer.",
+  "when_to_use": "When you want to run models locally with no cloud dependency."
+ },
+ "alibaba/open-code-review": {
+  "why_it_matters": "It is a hybrid code review tool that combines deterministic pipelines with LLM agents.",
+  "when_to_use": "When you want automated review of code changes."
+ },
+ "danielmiessler/fabric": {
+  "why_it_matters": "It is a modular framework for solving specific problems with AI, built from reusable patterns.",
+  "when_to_use": "When you want reusable prompt patterns for a recurring task."
+ },
+ "ray-project/ray": {
+  "why_it_matters": "It is a distributed runtime plus a set of AI libraries for accelerating ML workloads.",
+  "when_to_use": "When ML training or serving needs to scale across many machines."
+ },
+ "aymericdamien/tensorflow-examples": {
+  "why_it_matters": "It is a tutorial with examples for learning TensorFlow, supporting TF v1 and v2, with notebooks and scripts.",
+  "when_to_use": "When you are learning TensorFlow from examples."
+ },
+ "gradio-app/gradio": {
+  "why_it_matters": "It is a Python library for building and sharing machine learning apps.",
+  "when_to_use": "When you want a quick web interface for a model."
+ },
+ "deepspeedai/deepspeed": {
+  "why_it_matters": "It is a deep learning optimization library that makes distributed training and inference easier and more efficient.",
+  "when_to_use": "When large-model training or inference needs memory and speed optimization across multiple devices."
+ },
+ "langchain-ai/langgraph": {
+  "why_it_matters": "It is a low-level orchestration framework for building agents, and the README lists companies such as Klarna, Replit and Elastic among its users.",
+  "when_to_use": "When you need fine control over agent workflows."
+ },
+ "agno-agi/agno": {
+  "why_it_matters": "It is a platform for building, running and managing agents.",
+  "when_to_use": "When you want one framework for building agent applications."
+ },
+ "apachecn/ailearning": {
+  "why_it_matters": "It is a Chinese-language learning resource covering data analysis, machine learning practice, linear algebra, PyTorch, NLTK and TF2.",
+  "when_to_use": "When you want practical Chinese tutorials on those topics."
+ },
+ "666ghj/bettafish": {
+  "why_it_matters": "It is a multi-agent public-opinion analysis assistant that aims to reconstruct the picture of opinion and forecast where it is heading. The description says it was built from scratch without relying on any framework.",
+  "when_to_use": "When you want opinion analysis built without a framework."
+ },
+ "luongnv89/claude-howto": {
+  "why_it_matters": "It is a visual, example-driven guide to Claude Code, from basic concepts to advanced agents, with copy-paste templates.",
+  "when_to_use": "When you are learning Claude Code and want working examples."
+ },
+ "tinyhumansai/openhuman": {
+  "why_it_matters": "It is an open-source agent harness written in Rust, positioned as fast and efficient.",
+  "when_to_use": "When you want a Rust-based agent harness."
+ },
+ "astrbotdevs/astrbot": {
+  "why_it_matters": "It is an open-source agent chatbot platform that integrates with mainstream instant messaging apps, LLMs and plugins.",
+  "when_to_use": "When you want an AI assistant inside your chat apps."
+ },
+ "hpcaitech/colossalai": {
+  "why_it_matters": "It is a system for making large AI models cheaper, faster and more accessible.",
+  "when_to_use": "When large model work costs too much on your current hardware."
+ },
+ "facebookresearch/faiss": {
+  "why_it_matters": "It is a library for efficient similarity search and clustering of dense vectors.",
+  "when_to_use": "When you need nearest-neighbour search over embeddings."
+ },
+ "zai-org/chatglm-6b": {
+  "why_it_matters": "It is an open bilingual (Chinese and English) dialogue language model.",
+  "when_to_use": "When you want an open Chinese-English chat model to run or study."
+ },
+ "microsoft/bitnet": {
+  "why_it_matters": "It is the official inference framework for 1-bit LLMs.",
+  "when_to_use": "When you want to run 1-bit quantized LLMs."
+ },
+ "datalab-to/marker": {
+  "why_it_matters": "It converts documents, including PDFs, to markdown, JSON, chunks and HTML quickly and accurately.",
+  "when_to_use": "When you need clean text from PDFs for an LLM or RAG pipeline."
+ },
+ "codewhale-hq/codewhale": {
+  "why_it_matters": "It is an open-source Rust agent engine and terminal client, with provider choice, tools, approvals and receipts.",
+  "when_to_use": "When you want a terminal agent with approval steps and a choice of providers."
+ },
+ "ggml-org/llama.cpp": {
+  "why_it_matters": "It is the C/C++ runtime that runs Llama-class and most open-weight LLMs on your own hardware, using the GGUF quantized format.",
+  "when_to_use": "When you want to run open-weight LLMs locally, from small devices to multi-GPU servers."
  }
 }

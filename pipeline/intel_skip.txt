@@ -1,0 +1,43 @@
+# Repos left out of --intel-todo. Purpose cannot be verified from the description or README,
+# or the content is not an AI tool. Remove a line to bring the repo back into the queue.
+deepseek-ai/deepseek-harness        # description says only "Everything is a Plugin."; no README purpose
+ultraworkers/claw-code              # description is not a product description
+dietrichgebert/ponytail             # joke or persona text, not a product description
+x1xhlol/system-prompts-and-models-of-ai-tools  # collection of leaked system prompts
+garrytan/gstack                     # README is a personal essay, not a product description
+asgeirtj/system_prompts_leaks       # collection of leaked system prompts
+elder-plinius/cl4r1t4s              # collection of leaked system prompts
+xtekky/gpt4free                     # description is a list of model names; no clear purpose statement
+rohitg00/ai-engineering-from-scratch  # description is a slogan only
+code-yeongyu/oh-my-openagent        # description is a keyword trick, no product statement
+shanraisshan/claude-code-best-practice  # tagline only; no README purpose verified
+dbeaver/dbeaver                     # SQL client, not an AI tool
+deepfakes/faceswap                  # description is a slogan only
+appwrite/appwrite                   # backend platform, not an AI tool
+tw93/pake                           # desktop wrapper for webpages, not an AI tool
+lllyasviel/fooocus                  # description is a slogan only
+
+# Batch 3 skips
+clickhouse/clickhouse                 # analytics database, not an AI tool
+simplifyjobs/summer2027-internships   # internship listings, not an AI tool
+githubdaily/githubdaily               # link list, not an AI tool
+hiroi-sora/umi-ocr                    # OCR app; description does not say it is AI
+reactive-resume/reactive-resume             # resume builder, not an AI tool
+lc044/wechatmsg                       # description and repo purpose do not match
+chatboxai/chatbox                     # description is a slogan; no purpose stated
+jeecgboot/jeecgboot                   # low-code platform; AI is a feature, not the purpose
+chatanywhere/gpt_api_free             # free API resale service; purpose cannot be verified from README
+wei-shaw/sub2api                      # subscription relay service; not endorsed as an AI tool
+tooljet/tooljet                         # internal-tool builder, not an AI tool
+kong/kong                             # API gateway, not an AI tool
+pingcap/tidb                          # SQL database, not an AI tool
+paperless-ngx/paperless-ngx           # document archive, not an AI tool
+herdrdev/herdr                        # description is a slogan only
+exo-explore/exo                       # description is a slogan only
+meta-llama/llama                      # README is a repo-consolidation notice
+avik-jain/100-days-of-ml-code         # description only; no purpose verified
+roboflow/supervision                  # description is a slogan only
+hkuds/deeptutor                       # description is a slogan only
+sharex/sharex                         # screenshot tool, not an AI tool
+drawdb-io/drawdb                      # database diagram editor, not an AI tool
+novuhq/novu                           # notification infrastructure, not an AI tool

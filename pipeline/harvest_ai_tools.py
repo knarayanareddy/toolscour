@@ -1028,6 +1028,17 @@ def load_curated_intel() -> Dict[str, Dict[str, Any]]:
 INTEL_TEXT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "intel_text.json")
 
 
+INTEL_SKIP_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "intel_skip.txt")
+
+
+def load_intel_skip() -> set:
+    """Repos to leave out of --intel-todo (purpose unverifiable, or not an AI tool). One owner/name per line; '#' starts a comment."""
+    if not os.path.exists(INTEL_SKIP_FILE):
+        return set()
+    with open(INTEL_SKIP_FILE, "r", encoding="utf-8") as f:
+        return {ln.split("#")[0].strip().lower() for ln in f if ln.split("#")[0].strip()}
+
+
 def load_intel_text() -> Dict[str, Dict[str, str]]:
     """Hand-written why_it_matters / when_to_use text, keyed by lower-cased owner/name."""
     if not os.path.exists(INTEL_TEXT_FILE):
@@ -1062,12 +1073,13 @@ def run_intel_todo(output: str, count: int) -> None:
     """
     text = load_intel_text()
     curated = load_curated_intel()
+    skip = load_intel_skip()
     with open(output, "r", encoding="utf-8") as f:
         records = json.load(f)
     todo = []
     for r in sorted(records, key=lambda x: -x.get("stars", 0)):
         key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
-        if key in text or key in curated or r.get("source") == "huggingface":
+        if key in text or key in curated or key in skip or r.get("source") == "huggingface":
             continue
         intel = r.get("beginner_intel") or {}
         todo.append({"repo": f"{r.get('owner')}/{r.get('name')}", "stars": r.get("stars", 0),
