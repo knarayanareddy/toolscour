@@ -370,3 +370,25 @@ class CuratedFilesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ReadmeProseCheckTests(unittest.TestCase):
+    """README paragraphs that are menus, CSS, flag lists or URLs must not become what_it_does."""
+
+    def test_rejects_navigation_and_markup(self):
+        bad = [
+            "MENU: WHO WE ARE | KEY FEATURES | GETTING STARTED | HOW IT WORKS | FAQ | DOCS | COMMUNITY",
+            "box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);",
+            "https://github.com/user-attachments/assets/78570807-ba1d-4737-953f-55504a378a87",
+            "🇺🇸 English | 🇨🇳 简体中文 | 🇯🇵 日本語 | 🇰🇷 한국어 | 🇩🇪 Deutsch | 🇫🇷 Français",
+        ]
+        for text in bad:
+            self.assertFalse(harvest.is_clean_prose(text), text)
+
+    def test_accepts_sentences_and_cjk_prose(self):
+        good = [
+            "Turn any codebase, with its docs, SQL schemas and configs, into a queryable knowledge graph.",
+            "如果说2024年是百模大战的元年，那么2025年无疑开启了Agent元年。技术的焦点正从训练更大的基础模型，转向构建更聪明的智能体应用。",
+        ]
+        for text in good:
+            self.assertTrue(harvest.is_clean_prose(text), text)

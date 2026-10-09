@@ -918,6 +918,32 @@ def run_alternatives(output: str) -> None:
 _README_FILES = ["README.md", "readme.md", "Readme.md", "README.rst", "README"]
 
 
+def is_clean_prose(text: str) -> bool:
+    """
+    True only for text that reads as a sentence from the README: no table pipes, braces, URLs,
+    CSS, flag lists, or all-caps menus. Used to reject README paragraphs that are navigation or markup.
+    """
+    if not text or len(text) < 60:
+        return False
+    if any(tok in text for tok in ("|", "{", "}", "http", "box-shadow", "::", "->")):
+        return False
+    if re.search(r"(^|\s)--?[A-Za-z][\w-]*", text):  # command-line flags like --foo or -v
+        return False
+    cjk = len(re.findall(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]", text))
+    if cjk >= 20:  # Chinese, Japanese or Korean prose: no ASCII word-case test applies
+        return True
+    words = re.findall(r"[A-Za-z][A-Za-z'-]*", text)
+    if len(words) < 8:
+        return False
+    lower = sum(1 for w in words if w.islower())
+    caps = sum(1 for w in words if len(w) > 1 and w.isupper())
+    if lower / len(words) < 0.5 or caps / len(words) > 0.2:
+        return False
+    if re.search(r"\b(?:[A-Z][a-z]+\s){2,}[A-Z][a-z]+\s*\|", text):
+        return False
+    return True
+
+
 def first_prose_paragraph(markdown: str, min_len: int = 60, limit: int = 320) -> Optional[str]:
     """
     First real prose paragraph of a README: skips headings, badges, HTML, tables, code, lists,
@@ -1111,7 +1137,7 @@ def run_readme_intel(output: str, token: Optional[str]) -> None:
     for r in targets:
         intel = r["beginner_intel"]
         para = first_prose_paragraph(texts.get((r["owner"], r["name"])) or "")
-        if para:
+        if para and is_clean_prose(para):
             intel["what_it_does"] = para
             intel["intel_source"] = "readme"
             replaced += 1
@@ -1120,6 +1146,38 @@ def run_readme_intel(output: str, token: Optional[str]) -> None:
     with open(output, "w", encoding="utf-8") as f:
         json.dump(records, f, separators=(",", ":"))
     print(f"📖 README intel: {replaced} of {len(targets)} what_it_does replaced from the README -> {output}")
+
+
+def repair_readme_text(output: str) -> None:
+    """
+    Maintenance: for records whose what_it_does came from the README but fails is_clean_prose,
+    use the repo's own GitHub description (intel_source 'description'). Makes no network calls.
+    Curated and landmark records are never touched.
+    """
+    from taxonomy_ai import LANDMARK_INTEL
+    with open(output, "r", encoding="utf-8") as f:
+        records = json.load(f)
+    fixed = kept = 0
+    for r in records:
+        intel = r.get("beginner_intel")
+        if not isinstance(intel, dict) or intel.get("intel_source") != "readme":
+            continue
+        key = f"{r.get('owner', '')}/{r.get('name', '')}".lower()
+        if key in LANDMARK_INTEL or key in load_curated_intel():
+            continue
+        if is_clean_prose(intel.get("what_it_does") or ""):
+            kept += 1
+            continue
+        desc = (r.get("description") or "").strip()
+        if desc:
+            intel["what_it_does"] = desc[:220]
+            intel["intel_source"] = "description"
+        else:
+            intel["intel_source"] = "generated"
+        fixed += 1
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(records, f, separators=(",", ":"))
+    print(f"🔧 README repair: {fixed} README texts replaced by description, {kept} kept -> {output}")
 
 
 def main():
@@ -1153,6 +1211,8 @@ def main():
                         help="apply hand-written intel from pipeline/curated_intel.json")
     parser.add_argument("--readme-intel", action="store_true",
                         help="maintenance: replace generated what_it_does with the repo's first README paragraph")
+    parser.add_argument("--repair-readme", action="store_true",
+                        help="maintenance: replace README what_it_does that fails the prose check with the GitHub description (no network)")
     parser.add_argument("--alternatives", action="store_true",
                         help="maintenance: replace generic 'alternatives' with the most similar catalog repos")
     parser.add_argument("--output", type=str, default="web/public/repos.json")
@@ -1170,6 +1230,9 @@ def main():
         return
     if args.alternatives:
         run_alternatives(args.output)
+        return
+    if args.repair_readme:
+        repair_readme_text(args.output)
         return
     if args.readme_intel:
         run_readme_intel(args.output, token)
