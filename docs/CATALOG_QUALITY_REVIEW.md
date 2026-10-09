@@ -75,7 +75,14 @@ Status key: ✅ fixed · ⚠️ partly fixed · ❌ open
 3. **Recall is unmeasured beyond the probe.** The 38-name probe found 6 misses, all now fixed by seeds. Discovery only reaches repos that appear in the 12 lists in `awesome_sources.txt`. Add lists or names to close gaps.
 4. **Similar-tool lists are topic-based.** A few neighbours are weak (for example generic repos that share one common topic). They are a catalog similarity, not a hand-written comparison.
 5. **Skill-pack quality.** Verification confirms a `SKILL.md` exists with at least 200 bytes. It does not judge quality. Reviewers may still want to prune weak packs.
-6. **Generated why/when text.** `why_it_matters` and `when_to_use` are hand-written for 347 records in `pipeline/intel_text.json` (batches 1 to 5b). Scope: the top 2,000 records by stars (`--intel-top`, default 2000); the rest keep generated text. Batches continue until the top 2,000 are covered; most-starred first; `pipeline/intel_skip.txt` lists repos left out). The rest are still generated, about 9,400 records. `--intel-todo N` lists the next batch. Each batch is written from the repo's description and README, not from outside knowledge.
+6. **Generated why/when text.** `why_it_matters` and `when_to_use` are hand-written for 403 records in `pipeline/intel_text.json` (batches 1 to 6). Scope: the top 2,000 records by stars (`--intel-top`, default 2000); the rest keep generated text. Batches continue until the top 2,000 are covered; most-starred first; `pipeline/intel_skip.txt` lists repos left out). The rest are still generated, about 9,400 records. `--intel-todo N` lists the next batch. Each batch is written from the repo's description and README, not from outside knowledge.
 7. **README `what_it_does` quality.** The README pass can return badge rows, language menus, CSS and nav bars (for example `funNLP`, `ML-For-Beginners`, `netdata`, `archify`). These need a filter or a fallback to the description.
 8. **Top-tier intel coverage.** 41 hand-written entries cover about 40 of the top 100. The rest keep README text, because I could not describe them accurately without reading them. `mattpocock/skills` class is open (finding 27).
 9. **Maintainer tooling.** `pipeline/test_pipeline.py` and `pipeline/validate_corpus.py` are maintainer tools. They can be removed if unwanted; the deploy workflow depends on them.
+
+
+## Artifact labels (added with the dedupe pass)
+
+- `pipeline/artifact_fixes.json` holds corrected `artifact` labels, each with a reason. It is applied by `--intel-text`.
+- Known bug, not yet fixed globally: `taxonomy_ai.classify_artifact` matches short keywords as substrings (for example `ui` in "build" and `cli` in "client"). A word-boundary version changes 3,007 labels across the corpus, and the changes are not uniformly better (for example Stable Diffusion would move from Model / Weights to Application / Service). Fixing it needs a reviewed rule set, not a bulk swap.
+- Records outside the top 2,000 keep their keyword-derived labels, and some of them are likely wrong.

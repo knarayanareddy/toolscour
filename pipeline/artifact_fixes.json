@@ -167,5 +167,113 @@
   "artifact": "Library / SDK",
   "reason": "Description: a collection of Chinese NLP dictionaries and word lists for code use."
  },
- "_comment": "Corrected artifact labels, keyed by lower-cased owner/name. Each entry needs a reason taken from the repo's own description or README. Applied by --intel-text."
+ "_comment": "Corrected artifact labels, keyed by lower-cased owner/name. Each entry needs a reason taken from the repo's own description or README. Applied by --intel-text.",
+ "modelcontextprotocol/python-sdk": {
+  "artifact": "Library / SDK",
+  "reason": "Description: the official Python SDK for MCP servers and clients."
+ },
+ "slopus/happy": {
+  "artifact": "Application / Service",
+  "reason": "Description: an open-source desktop app."
+ },
+ "prefecthq/prefect": {
+  "artifact": "Framework",
+  "reason": "Description: a workflow orchestration framework."
+ },
+ "tencent/ncnn": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference framework for running networks on devices."
+ },
+ "mlc-ai/mlc-llm": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a universal LLM deployment engine."
+ },
+ "coleam00/archon": {
+  "artifact": "Framework",
+  "reason": "Description: a harness builder for AI coding."
+ },
+ "1panel-dev/maxkb": {
+  "artifact": "Framework",
+  "reason": "Description: a platform for building agents."
+ },
+ "comet-ml/opik": {
+  "artifact": "Application / Service",
+  "reason": "Description: a tool to debug, evaluate and monitor LLM apps."
+ },
+ "winfunc/opcode": {
+  "artifact": "UI / Application",
+  "reason": "Description: a GUI app for Claude Code."
+ },
+ "airbytehq/airbyte": {
+  "artifact": "Application / Service",
+  "reason": "Description: a data movement platform for pipelines."
+ },
+ "k4yt3x/video2x": {
+  "artifact": "Application / Service",
+  "reason": "Description: a video super-resolution tool."
+ },
+ "huggingface/datasets": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library for datasets."
+ },
+ "recommenders-team/recommenders": {
+  "artifact": "Library / SDK",
+  "reason": "Description: best practices and examples in a library."
+ },
+ "datawhalechina/llm-cookbook": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a Chinese course-based tutorial collection."
+ },
+ "liguodongiot/llm-action": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: shared technical notes and practice."
+ },
+ "nextai-translator/nextai-translator": {
+  "artifact": "Application / Service",
+  "reason": "Description: a browser extension and desktop translation app."
+ },
+ "nirdiamant/genai_agents": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: 50+ tutorials and implementations."
+ },
+ "spmallick/learnopencv": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: code for articles and tutorials."
+ },
+ "pascalorg/editor": {
+  "artifact": "Application / Service",
+  "reason": "Description: a 3D architectural editor app; not a skill pack."
+ },
+ "sebastianruder/nlp-progress": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tracker of NLP progress across tasks."
+ },
+ "lukasmasuch/best-of-ml-python": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a ranked list of ML Python libraries."
+ },
+ "aihubcn/awesome-chinese-llm": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a curated list of Chinese LLMs."
+ },
+ "hkuds/rag-anything": {
+  "artifact": "Framework",
+  "reason": "Description: an all-in-one RAG framework."
+ },
+ "qwenaudio/cosyvoice": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a large voice generation model."
+ },
+ "index-tts/index-tts": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a zero-shot TTS system released with models."
+ },
+ "accumulatemore/cv": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: study notes."
+ },
+ "promtengineer/localgpt": {
+  "artifact": "Application / Service",
+  "reason": "Description: a document chat application that runs locally."
+ }
 }

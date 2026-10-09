@@ -88,3 +88,14 @@ flipped-aurora/gin-vue-admin          # admin platform; AI is secondary
 charmbracelet/crush                   # description is a slogan only
 pppscn/smsforwarder                   # SMS forwarder for Android, not an AI tool
 ottermind/chat2db                     # database client, not an AI tool
+
+# Top-2000 batch 6 skips
+dolthub/dolt                          # SQL database, not an AI tool
+conwnet/github1s                      # VS Code in the browser for GitHub, not an AI tool
+thealgorithms/c                       # algorithms collection, not an AI tool
+mikeroyal/self-hosting-guide          # self-hosting guide, not an AI tool
+every-app/open-seo                    # SEO tool, not an AI tool
+bendlang/bend                         # description is a claim with no verifiable purpose
+fosrl/pangolin                        # networking platform, not an AI tool
+guillaumemeyer/watermarks-remover     # purpose is removing AI provenance marks; not written up
+docmost/docmost                       # wiki software, not an AI tool
