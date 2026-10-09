@@ -146,3 +146,9 @@ Checked against README and repo contents:
 - 55 entries and 35 artifact fixes. Hand-written text now covers 927 records (the file has one metadata key).
 - 15 skipped with reasons in `pipeline/intel_skip.txt`: non-AI tools (WhatsApp API, Web3 wallet, data integration, shell, programming language, project management, database, a macOS audio app, a programming game), a list of free API keys, a list of free GPTs (free-mirror class), a marketing-only description, and two apps where the AI role is not stated.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 16
+
+- 58 entries and 37 artifact fixes. Hand-written text now covers 985 records (the file has one metadata key).
+- 11 skipped with reasons in `pipeline/intel_skip.txt`: marketplace automation and a proxy that reuses consumer AI accounts (terms risk), an unverified performance claim, slogan-only or jargon-only descriptions, non-AI tools (status page, data pipelines, Postgres, check-in scripts, a programming study site).
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.

@@ -1407,5 +1407,157 @@
  "nasiko-labs/nasiko": {
   "artifact": "Runtime / Serving Engine",
   "reason": "Description: an agent runtime."
+ },
+ "oumi-ai/oumi": {
+  "artifact": "Framework",
+  "reason": "Description: a fine-tuning and serving framework."
+ },
+ "xberg-io/xberg": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a document library."
+ },
+ "boundaryml/baml": {
+  "artifact": "Framework",
+  "reason": "Description: a language for agents."
+ },
+ "voicepaw/so-vits-svc-fork": {
+  "artifact": "Application / Service",
+  "reason": "Description: a voice conversion app."
+ },
+ "coaidev/coai": {
+  "artifact": "Application / Service",
+  "reason": "Description: a multi-tenant platform app."
+ },
+ "x-plug/mobileagent": {
+  "artifact": "Framework",
+  "reason": "Description: an agent family."
+ },
+ "hvass-labs/tensorflow-tutorials": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: tutorials."
+ },
+ "activeloopai/deeplake": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a data runtime."
+ },
+ "eriklindernoren/keras-gan": {
+  "artifact": "Library / SDK",
+  "reason": "Description: implementations as a library."
+ },
+ "learningcircuit/local-deep-research": {
+  "artifact": "Application / Service",
+  "reason": "Description: a research app."
+ },
+ "modelscope/modelscope": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a model serving platform."
+ },
+ "miurla/morphic": {
+  "artifact": "Application / Service",
+  "reason": "Description: a search app."
+ },
+ "openwhispr/openwhispr": {
+  "artifact": "Application / Service",
+  "reason": "Description: a dictation app."
+ },
+ "revfactory/harness": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: a meta-skill for designing agent teams."
+ },
+ "liaokongvfx/langchain-chinese-getting-started-guide": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a tutorial."
+ },
+ "pyro-ppl/pyro": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a probabilistic programming library."
+ },
+ "bytedance/dolphin": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a document parsing model."
+ },
+ "dusty-nv/jetson-inference": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a deployment guide and library."
+ },
+ "wangrongsheng/awesome-llm-resources": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a resource summary."
+ },
+ "ml-explore/mlx-examples": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: examples."
+ },
+ "uberi/speech_recognition": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Python module."
+ },
+ "genspark-ai/genoffice": {
+  "artifact": "Application / Service",
+  "reason": "Description: an office suite app."
+ },
+ "lazyprogrammer/machine_learning_examples": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: examples."
+ },
+ "amusi/deep-learning-interview-book": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an interview guide."
+ },
+ "lykosai/stabilitymatrix": {
+  "artifact": "Application / Service",
+  "reason": "Description: a package manager app."
+ },
+ "bentoml/bentoml": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: a serving framework."
+ },
+ "iflytek/astron-agent": {
+  "artifact": "Framework",
+  "reason": "Description: an agent workflow platform."
+ },
+ "ashawkey/stable-dreamfusion": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a 3D generation method."
+ },
+ "mitdeeplearning/introtodeeplearning": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: lab materials."
+ },
+ "poloclub/transformer-explainer": {
+  "artifact": "Application / Service",
+  "reason": "Description: an interactive visual explainer."
+ },
+ "0xplaygrounds/rig": {
+  "artifact": "Framework",
+  "reason": "Description: a framework."
+ },
+ "rockbenben/chatgpt-shortcut": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a prompt library."
+ },
+ "mobile-next/mobile-mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: an MCP server for mobile automation."
+ },
+ "strands-agents/harness-sdk": {
+  "artifact": "Framework",
+  "reason": "Description: an SDK for agents."
+ },
+ "foundationvision/var": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a visual generation model."
+ },
+ "project-monai/monai": {
+  "artifact": "Framework",
+  "reason": "Description: a toolkit."
+ },
+ "vowpalwabbit/vowpal_wabbit": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a machine learning system library."
+ },
+ "openspg/kag": {
+  "artifact": "Framework",
+  "reason": "Description: a reasoning and retrieval framework."
  }
 }
