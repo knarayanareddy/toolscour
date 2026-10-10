@@ -166,3 +166,10 @@ Checked against README and repo contents:
 - 13 skipped with reasons in `pipeline/intel_skip.txt`: a general cybersecurity project list, a CMS, a scraper, a graph database, course solutions (academic-integrity risk), a SLAM system, observability and blockchain tools, a slogan-only description, an API list, a GPT-4 reverse-engineering proxy (terms and security risk), and a subtitle tool with no stated AI role.
 - Correction to batch 17: `LianjiaTech/BELLE` and `WooooDyy/LLM-Agent-Paper-List` were **not** written in batch 17 (the keys did not match, and the earlier "re-key" step was a no-op). Both are written now, along with the paper list's label fix.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.5 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 19
+
+- 58 entries and 41 artifact fixes. Hand-written text now covers 1,154 records.
+- 11 skipped with reasons in `pipeline/intel_skip.txt`: a skill aggregator that scrapes third-party skills (licensing unclear), a WhatsApp API, a decision assistant that reads private chats, a networking stack, a Next.js boilerplate, observability tools where AI is a feature, a slogan-only description, a release with no stated purpose, a screenshot utility with no stated AI role, a repo description only, and continuous screen capture (same class as screenpipe).
+- Process: the writer now refuses to write if any key is unknown. The first attempt caught two wrong owner names (`traceloop/openllmetry`, `MuiseDestiny/zotero-gpt`) and wrote nothing.
+- Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.6 KB gzip, web build passes.

@@ -1863,5 +1863,169 @@
  "anbeime/skill": {
   "artifact": "Agent Skill Pack",
   "reason": "Description: a store of skill packages."
+ },
+ "morizeyao/gpt2-chinese": {
+  "artifact": "Library / SDK",
+  "reason": "Description: training code."
+ },
+ "firecrawl/firecrawl-mcp-server": {
+  "artifact": "Application / Service",
+  "reason": "Description: an MCP server."
+ },
+ "leejet/stable-diffusion.cpp": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference engine."
+ },
+ "cloneofsimo/lora": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a fine-tuning method implementation."
+ },
+ "di-sukharev/opencommit": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a git tool."
+ },
+ "hips/autograd": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "plastic-labs/honcho": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a memory library."
+ },
+ "refly-ai/refly": {
+  "artifact": "Application / Service",
+  "reason": "Description: a skill builder platform."
+ },
+ "openlm-research/open_llama": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a model."
+ },
+ "h2oai/h2o-3": {
+  "artifact": "Framework",
+  "reason": "Description: a platform."
+ },
+ "hybridgroup/gocv": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a Go package."
+ },
+ "algorithmicsuperintelligence/openevolve": {
+  "artifact": "Framework",
+  "reason": "Description: an evolution framework."
+ },
+ "guardrails-ai/guardrails": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "open-compass/opencompass": {
+  "artifact": "Application / Service",
+  "reason": "Description: an evaluation platform."
+ },
+ "wiseodd/generative-models": {
+  "artifact": "Library / SDK",
+  "reason": "Description: implementations."
+ },
+ "zai-org/glm-ocr": {
+  "artifact": "Model / Weights",
+  "reason": "Description: an OCR model."
+ },
+ "firmai/industry-machine-learning": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a curated list."
+ },
+ "traceloop/openllmetry": {
+  "artifact": "Library / SDK",
+  "reason": "Description: an observability library."
+ },
+ "open-mmlab/mmagic": {
+  "artifact": "Framework",
+  "reason": "Description: a toolbox."
+ },
+ "eleutherai/gpt-neox": {
+  "artifact": "Framework",
+  "reason": "Description: a training library."
+ },
+ "trailofbits/skills": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: Claude Code skills."
+ },
+ "wenyuchiou/awesome-agentic-ai-zh": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a learning roadmap."
+ },
+ "luhengshiwo/llmforeverybody": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: an explainer."
+ },
+ "op7418/guizang-social-card-skill": {
+  "artifact": "Agent Skill Pack",
+  "reason": "Description: a Claude Code skill."
+ },
+ "arcee-ai/mergekit": {
+  "artifact": "Library / SDK",
+  "reason": "Description: tools for merging models."
+ },
+ "tensorlayer/tensorlayer": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "vladmandic/sdnext": {
+  "artifact": "Application / Service",
+  "reason": "Description: a web UI."
+ },
+ "eutropicai/final2x": {
+  "artifact": "Application / Service",
+  "reason": "Description: an image tool."
+ },
+ "agentdeskai/browser-tools-mcp": {
+  "artifact": "Application / Service",
+  "reason": "Description: a browser tool for IDEs."
+ },
+ "feast-dev/feast": {
+  "artifact": "Framework",
+  "reason": "Description: a feature store."
+ },
+ "abdbarho/stable-diffusion-webui-docker": {
+  "artifact": "Developer Tool / CLI",
+  "reason": "Description: a Docker setup."
+ },
+ "abdullahalfaraj/auto-photoshop-stablediffusion-plugin": {
+  "artifact": "Application / Service",
+  "reason": "Description: a Photoshop plug-in."
+ },
+ "paddlepaddle/paddle-lite": {
+  "artifact": "Runtime / Serving Engine",
+  "reason": "Description: an inference engine."
+ },
+ "zipstack/unstract": {
+  "artifact": "Framework",
+  "reason": "Description: a platform."
+ },
+ "nvidia-nemo/guardrails": {
+  "artifact": "Framework",
+  "reason": "Description: a toolkit."
+ },
+ "ml-explore/mlx-lm": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a library."
+ },
+ "deepseek-ai/deepseek-llm": {
+  "artifact": "Model / Weights",
+  "reason": "Description: a model release."
+ },
+ "minedojo/voyager": {
+  "artifact": "Framework",
+  "reason": "Description: an agent."
+ },
+ "tensorflow/tensorboard": {
+  "artifact": "Library / SDK",
+  "reason": "Description: a visualisation toolkit."
+ },
+ "rasbt/python-machine-learning-book-2nd-edition": {
+  "artifact": "Curated List / Docs",
+  "reason": "Description: a book's code."
+ },
+ "xerrors/yuxi": {
+  "artifact": "Framework",
+  "reason": "Description: an agent platform."
  }
 }

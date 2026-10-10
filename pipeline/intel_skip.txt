@@ -249,3 +249,16 @@ superplanehq/superplane                   # description is a slogan only
 cporter202/api-mega-list                  # API list, not AI-specific
 xiangsx/gpt4free-ts                       # free access to GPT-4 by reverse engineering; terms and security risk
 smacke/ffsubsync                          # subtitle sync tool; AI role not stated
+
+# Top-2000 batch 19 skips
+anbeime/skill                            # aggregates third-party skills by scraping; licensing unclear
+devlikeapro/waha                         # WhatsApp HTTP API, not an AI tool
+human-agent-society/reef                 # description is a slogan only
+markqvist/reticulum                      # networking stack, not an AI tool
+jev-chat/jev-chat-jarvis                 # decision assistant that reads private chats; not written up
+blazity/next-enterprise                  # Next.js boilerplate, not an AI tool
+apache/hertzbeat                         # observability system; AI is a feature
+zai-org/glm-5                            # description does not say what the release is
+xushengfeng/esearch                      # screenshot and OCR utility; AI role not stated
+civitai/civitai                          # repository description only; not written up
+jerryzliu/dayflow                        # continuous screen capture; not written up (same class as screenpipe)

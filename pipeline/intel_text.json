@@ -4383,5 +4383,237 @@
  "henryndubuaku/maths-cs-ai-compendium": {
   "why_it_matters": "It is a textbook on the maths and CS behind AI and ML.",
   "when_to_use": "When you want the theory behind AI, in one book."
+ },
+ "crownpku/awesome-chinese-nlp": {
+  "why_it_matters": "It is a curated list of resources for Chinese NLP.",
+  "when_to_use": "When you look for Chinese NLP datasets, tools or papers."
+ },
+ "morizeyao/gpt2-chinese": {
+  "why_it_matters": "It is training code for Chinese GPT-2, using the BERT tokenizer.",
+  "when_to_use": "When you train a Chinese GPT-2 style model."
+ },
+ "firecrawl/firecrawl-mcp-server": {
+  "why_it_matters": "It is the official MCP server that adds web scraping and search to Cursor, Claude and other tools.",
+  "when_to_use": "When an agent needs clean web content through MCP."
+ },
+ "leejet/stable-diffusion.cpp": {
+  "why_it_matters": "It runs diffusion models such as SD, Flux and Qwen Image in pure C and C++.",
+  "when_to_use": "When you run image generation without Python."
+ },
+ "mnfst/llm-gateway": {
+  "why_it_matters": "It connects your agents and harnesses to any model provider.",
+  "when_to_use": "When one agent should reach several providers through one gateway."
+ },
+ "jakubkrehel/skills": {
+  "why_it_matters": "It is a collection of agent skills for building interfaces.",
+  "when_to_use": "When you want an agent to follow UI design guidance."
+ },
+ "cloneofsimo/lora": {
+  "why_it_matters": "It uses low-rank adaptation to fine-tune diffusion models quickly.",
+  "when_to_use": "When you want to teach a diffusion model a style or subject cheaply."
+ },
+ "linzaer/ultra-light-fast-generic-face-detector-1mb": {
+  "why_it_matters": "It is a face detection model of about 1 MB, for lightweight use.",
+  "when_to_use": "When face detection must run on a small device."
+ },
+ "di-sukharev/opencommit": {
+  "why_it_matters": "It generates git commit messages with an LLM, from your staged changes.",
+  "when_to_use": "When you want a draft commit message from your diff."
+ },
+ "1adrianb/face-alignment": {
+  "why_it_matters": "It is a 2D and 3D face alignment library built on PyTorch.",
+  "when_to_use": "When you need facial landmarks."
+ },
+ "hips/autograd": {
+  "why_it_matters": "It computes derivatives of NumPy code automatically.",
+  "when_to_use": "When you need gradients of NumPy functions without a deep learning framework."
+ },
+ "plastic-labs/honcho": {
+  "why_it_matters": "It is a memory library for building agents that keep state across sessions.",
+  "when_to_use": "When an agent must remember a user over time."
+ },
+ "refly-ai/refly": {
+  "why_it_matters": "It is an open-source builder where you define agent skills through workflows and run them.",
+  "when_to_use": "When you want to build and run skills without writing them by hand."
+ },
+ "openlm-research/open_llama": {
+  "why_it_matters": "It is OpenLLaMA, a permissively licensed reproduction of LLaMA 7B.",
+  "when_to_use": "When you need a LLaMA-style model with a permissive licence."
+ },
+ "amusi/awesome-object-detection": {
+  "why_it_matters": "It is a curated list of object detection papers and resources.",
+  "when_to_use": "When you survey object detection research."
+ },
+ "h2oai/h2o-3": {
+  "why_it_matters": "It is an open-source, distributed machine learning platform.",
+  "when_to_use": "When you need scalable ML on large tabular data."
+ },
+ "hybridgroup/gocv": {
+  "why_it_matters": "It is a Go package for computer vision using OpenCV 4.",
+  "when_to_use": "When your backend is in Go and needs image processing."
+ },
+ "algorithmicsuperintelligence/openevolve": {
+  "why_it_matters": "It is an open-source implementation of AlphaEvolve for evolving code with LLMs.",
+  "when_to_use": "When you want an LLM to search for better code by iterating."
+ },
+ "guardrails-ai/guardrails": {
+  "why_it_matters": "It adds guardrails to LLM outputs, checking and correcting them.",
+  "when_to_use": "When model output must meet rules before it reaches users."
+ },
+ "open-compass/opencompass": {
+  "why_it_matters": "It is an LLM evaluation platform that supports many models.",
+  "when_to_use": "When you compare models on a common set of benchmarks."
+ },
+ "wiseodd/generative-models": {
+  "why_it_matters": "It is a collection of generative models such as GANs and VAEs, in PyTorch and TensorFlow.",
+  "when_to_use": "When you want compact reference code for generative models."
+ },
+ "zai-org/glm-ocr": {
+  "why_it_matters": "It is an OCR model for accurate and fast text recognition.",
+  "when_to_use": "When you need text from documents with good accuracy."
+ },
+ "firmai/industry-machine-learning": {
+  "why_it_matters": "It is a curated list of applied ML and data science notebooks and libraries, by industry.",
+  "when_to_use": "When you look for applied ML examples in a specific industry."
+ },
+ "traceloop/openllmetry": {
+  "why_it_matters": "It is open-source observability for GenAI and LLM apps, based on OpenTelemetry.",
+  "when_to_use": "When you trace LLM calls in production."
+ },
+ "open-mmlab/mmagic": {
+  "why_it_matters": "It is a toolbox for multimodal, generative and creative AI.",
+  "when_to_use": "When you need several generative models in one framework."
+ },
+ "eleutherai/gpt-neox": {
+  "why_it_matters": "It is a library for training large autoregressive transformers in parallel across GPUs.",
+  "when_to_use": "When you train very large transformers on GPU clusters."
+ },
+ "muisedestiny/zotero-gpt": {
+  "why_it_matters": "It connects GPT models to the Zotero reference manager.",
+  "when_to_use": "When you want AI help on your Zotero library."
+ },
+ "trailofbits/skills": {
+  "why_it_matters": "It is a set of Claude Code skills for security research, vulnerability detection and audits.",
+  "when_to_use": "When you do authorised security reviews with an agent."
+ },
+ "wenyuchiou/awesome-agentic-ai-zh": {
+  "why_it_matters": "It is a trilingual learning roadmap for agentic AI, from LLM basics onwards.",
+  "when_to_use": "When you learn agentic AI in Chinese, Traditional Chinese or English."
+ },
+ "largeworldmodel/lwm": {
+  "why_it_matters": "It models text and video with a context of millions of tokens.",
+  "when_to_use": "When you need very long context across text and video."
+ },
+ "luhengshiwo/llmforeverybody": {
+  "why_it_matters": "It is a Chinese explainer on large models, aimed at interview preparation.",
+  "when_to_use": "When you prepare for LLM interviews in Chinese."
+ },
+ "op7418/guizang-social-card-skill": {
+  "why_it_matters": "It is a Claude Code and Codex skill that makes Xiaohongshu carousels and WeChat cover images.",
+  "when_to_use": "When you produce social cards and covers with an agent."
+ },
+ "arcee-ai/mergekit": {
+  "why_it_matters": "It is a toolkit for merging pretrained language models.",
+  "when_to_use": "When you combine two or more models into one."
+ },
+ "google-deepmind/lab": {
+  "why_it_matters": "It is a customisable 3D platform for agent-based AI research.",
+  "when_to_use": "When you run agent research in a 3D environment."
+ },
+ "tensorlayer/tensorlayer": {
+  "why_it_matters": "It is a deep learning and reinforcement learning library for scientists and engineers.",
+  "when_to_use": "When you prototype models with a higher-level API."
+ },
+ "zenstory-ai/oh-story-claudecode": {
+  "why_it_matters": "It is a set of agent skills for writing Chinese web novels.",
+  "when_to_use": "When you draft web fiction in Chinese with agent help."
+ },
+ "snailsploit/claude-red": {
+  "why_it_matters": "It is a curated library of offensive security skills for Claude.",
+  "when_to_use": "When you do authorised offensive security testing."
+ },
+ "vladmandic/sdnext": {
+  "why_it_matters": "It is an all-in-one web UI for generating and captioning images and video with AI.",
+  "when_to_use": "When you want a full-featured Stable Diffusion interface."
+ },
+ "imgly/background-removal-js": {
+  "why_it_matters": "It removes backgrounds from images in the browser, without uploading them.",
+  "when_to_use": "When you want background removal that runs on the user's device."
+ },
+ "repowise-dev/repowise": {
+  "why_it_matters": "It provides codebase intelligence: health scores, generated docs and git analysis.",
+  "when_to_use": "When you want an overview of a codebase's health and history."
+ },
+ "eutropicai/final2x": {
+  "why_it_matters": "It is a cross-platform image super-resolution tool.",
+  "when_to_use": "When you want to upscale images."
+ },
+ "master-cai/research-paper-writing-skills": {
+  "why_it_matters": "It is a skill package for writing ML, CV and NLP papers.",
+  "when_to_use": "When you draft a research paper with agent help."
+ },
+ "agentdeskai/browser-tools-mcp": {
+  "why_it_matters": "It lets MCP-compatible IDEs read browser logs directly.",
+  "when_to_use": "When you debug a web page and want the agent to see the console output."
+ },
+ "feast-dev/feast": {
+  "why_it_matters": "It is an open-source feature store for AI and ML.",
+  "when_to_use": "When training and serving need the same features."
+ },
+ "xerrors/yuxi": {
+  "why_it_matters": "It is a privately deployable multi-tenant agent platform, combining RAG, knowledge graphs and multi-agent tools.",
+  "when_to_use": "When a team needs a self-hosted knowledge agent with access control."
+ },
+ "abdbarho/stable-diffusion-webui-docker": {
+  "why_it_matters": "It is a Docker setup for Stable Diffusion with a web UI.",
+  "when_to_use": "When you want Stable Diffusion running in a container."
+ },
+ "abdullahalfaraj/auto-photoshop-stablediffusion-plugin": {
+  "why_it_matters": "It is a Photoshop plug-in that generates Stable Diffusion images inside the editor.",
+  "when_to_use": "When you want generated images inside Photoshop."
+ },
+ "paddlepaddle/paddle-lite": {
+  "why_it_matters": "It is a high-performance inference engine for mobile and edge devices.",
+  "when_to_use": "When you run models on phones or embedded hardware."
+ },
+ "internlm/internlm": {
+  "why_it_matters": "It is the official release of the InternLM model series.",
+  "when_to_use": "When you want an open model from the InternLM family."
+ },
+ "zipstack/unstract": {
+  "why_it_matters": "It extracts structured data from unstructured documents with LLMs, for APIs and ETL pipelines.",
+  "when_to_use": "When you turn documents into structured records."
+ },
+ "nvidia-nemo/guardrails": {
+  "why_it_matters": "It is a toolkit for adding programmable guardrails to LLM applications.",
+  "when_to_use": "When you need rules for what an LLM app may say or do."
+ },
+ "ml-explore/mlx-lm": {
+  "why_it_matters": "It runs LLMs with Apple's MLX framework.",
+  "when_to_use": "When you run language models on a Mac."
+ },
+ "deepseek-ai/deepseek-llm": {
+  "why_it_matters": "It is the DeepSeek LLM model release.",
+  "when_to_use": "When you want an open DeepSeek language model."
+ },
+ "minedojo/voyager": {
+  "why_it_matters": "It is an open-ended embodied agent that learns skills with LLMs, in Minecraft.",
+  "when_to_use": "When you study lifelong learning agents in a game world."
+ },
+ "kyegomez/swarms": {
+  "why_it_matters": "It is a multi-agent orchestration framework for enterprises.",
+  "when_to_use": "When many agents must work together on one task."
+ },
+ "tensorflow/tensorboard": {
+  "why_it_matters": "It is TensorFlow's visualisation toolkit for training runs.",
+  "when_to_use": "When you inspect metrics, graphs or embeddings from training."
+ },
+ "rasbt/python-machine-learning-book-2nd-edition": {
+  "why_it_matters": "It has the code and resources for the second edition of Python Machine Learning.",
+  "when_to_use": "When you follow that book's examples."
+ },
+ "deanpeters/product-manager-skills": {
+  "why_it_matters": "It is a set of product management skills, built on established methods, for Claude Code.",
+  "when_to_use": "When you want an agent to help with product work."
  }
 }
