@@ -2063,5 +2063,41 @@
  "mylxsw/aidea": {
   "artifact": "Application / Service",
   "reason": "It is a mobile app, not model weights."
+ },
+ "htmlstreamofficial/preline": {
+  "artifact": "Library / SDK",
+  "reason": "It is a UI component library, not an agent skill pack."
+ },
+ "josstorer/rwkv-runner": {
+  "artifact": "Application / Service",
+  "reason": "It is a management tool, not model weights."
+ },
+ "getsentry/mobilebuildmcp": {
+  "artifact": "Application / Service",
+  "reason": "It is an MCP server, not model weights."
+ },
+ "skalskip/courses": {
+  "artifact": "Curated List / Docs",
+  "reason": "It is a curated list of links, not model weights."
+ },
+ "lavague-ai/lavague": {
+  "artifact": "Framework",
+  "reason": "It is a framework for building agents, not model weights."
+ },
+ "argosopentech/argos-translate": {
+  "artifact": "Library / SDK",
+  "reason": "It is a translation library, not model weights."
+ },
+ "blockrunai/clawrouter": {
+  "artifact": "Application / Service",
+  "reason": "It is a routing service for agents, not model weights."
+ },
+ "yetone/magpie": {
+  "artifact": "Application / Service",
+  "reason": "It is a desktop app that routes agents to models, not model weights."
+ },
+ "flashinfer-ai/flashinfer": {
+  "artifact": "Library / SDK",
+  "reason": "It is a kernel library, not model weights."
  }
 }

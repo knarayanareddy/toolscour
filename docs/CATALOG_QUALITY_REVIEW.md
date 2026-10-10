@@ -179,3 +179,9 @@ Checked against README and repo contents:
 - 65 entries and 9 artifact fixes (for example, a web chat suite that was labelled as model weights). Hand-written text now covers 1,219 records.
 - 4 skipped: a personal learning log, an opaque install note, a title-only description, and two non-AI repos.
 - Checks: 43 tests OK, validator passed, web build passes. Top-2,000 todo is now 489.
+
+### Hand-written top-2,000 text: batch 21
+
+- 68 entries and 9 artifact fixes (for example, a UI component library that was labelled as an agent skill pack, and a routing service that was labelled as model weights). Hand-written text now covers 1,287 records.
+- 1 skipped: a barcode library that is not an AI tool.
+- Checks: 43 tests OK, validator passed, web build passes. Tier-1 packed index is about 0.68 MB gzip. Top-2,000 todo is now 420.

@@ -268,3 +268,6 @@ amitness/learning                        # personal log of learning topics; no p
 yjh051108/dsh-routing-suite              # description is an opaque install note; not written up
 MLEveryday/practicalAI-cn                # description is only a title
 sandstorm-io/sandstorm                   # not an AI tool; web app package manager
+
+# Top-2000 batch 21 skips
+sz3/libcimbar                            # barcode library; not an AI tool
