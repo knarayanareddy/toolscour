@@ -2099,5 +2099,45 @@
  "flashinfer-ai/flashinfer": {
   "artifact": "Library / SDK",
   "reason": "It is a kernel library, not model weights."
+ },
+ "prest/prest": {
+  "artifact": "Application / Service",
+  "reason": "It is a REST server for Postgres, not model weights."
+ },
+ "tencentcloudadp/youtu-agent": {
+  "artifact": "Framework",
+  "reason": "It is an agent framework, not model weights."
+ },
+ "modelcontextprotocol/csharp-sdk": {
+  "artifact": "Library / SDK",
+  "reason": "It is an SDK, not model weights."
+ },
+ "ruvnet/ruvector": {
+  "artifact": "Application / Service",
+  "reason": "It is a database and memory system, not model weights."
+ },
+ "ibm/mcp-context-forge": {
+  "artifact": "Application / Service",
+  "reason": "It is a gateway service, not model weights."
+ },
+ "kyegomez/tree-of-thoughts": {
+  "artifact": "Library / SDK",
+  "reason": "It is a code library, not model weights."
+ },
+ "crmne/ruby_llm": {
+  "artifact": "Library / SDK",
+  "reason": "It is a library, not model weights."
+ },
+ "markuspfundstein/mcp-obsidian": {
+  "artifact": "Application / Service",
+  "reason": "It is an MCP server, not a serving engine."
+ },
+ "llmbook-zh/llmbook-zh.github.io": {
+  "artifact": "Curated List / Docs",
+  "reason": "It is a companion website for a book."
+ },
+ "ssrajadh/sentrysearch": {
+  "artifact": "Application / Service",
+  "reason": "It is a search application, not a serving engine."
  }
 }

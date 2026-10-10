@@ -185,3 +185,10 @@ Checked against README and repo contents:
 - 68 entries and 9 artifact fixes (for example, a UI component library that was labelled as an agent skill pack, and a routing service that was labelled as model weights). Hand-written text now covers 1,287 records.
 - 1 skipped: a barcode library that is not an AI tool.
 - Checks: 43 tests OK, validator passed, web build passes. Tier-1 packed index is about 0.68 MB gzip. Top-2,000 todo is now 420.
+
+### Recall beyond the top 2,000: batch 22
+
+- First batch below the top-2,000 cutoff (ranks 2,001 onward, 4,432★ to 4,5xx★ in this batch). 65 new entries and 10 artifact fixes, all written from each repo's own description. Hand-written text now covers 1,352 records.
+- Skipped: an interview-cheating tool; three repos whose descriptions were a slogan or a single phrase (typedb/typedb, Robbyant/lingbot-world, BuilderIO/skills).
+- Remaining: 7,554 repos at 500★ or above still lack hand-written text. 420 of them are inside the top 2,000.
+- Checks: 43 tests OK, validator passed, web build passes; Tier-1 packed index about 0.7 MB gzip.

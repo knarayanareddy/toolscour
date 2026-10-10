@@ -271,3 +271,9 @@ sandstorm-io/sandstorm                   # not an AI tool; web app package manag
 
 # Top-2000 batch 21 skips
 sz3/libcimbar                            # barcode library; not an AI tool
+
+# Beyond top-2000 batch 22
+ibttf/interview-coder                    # tool to help candidates cheat in technical interviews
+typedb/typedb                           # description is a slogan only
+Robbyant/lingbot-world                  # description is one line; not enough to write up
+BuilderIO/skills                         # description is 'Skills for agents'; not enough to write up
