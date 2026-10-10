@@ -173,3 +173,9 @@ Checked against README and repo contents:
 - 11 skipped with reasons in `pipeline/intel_skip.txt`: a skill aggregator that scrapes third-party skills (licensing unclear), a WhatsApp API, a decision assistant that reads private chats, a networking stack, a Next.js boilerplate, observability tools where AI is a feature, a slogan-only description, a release with no stated purpose, a screenshot utility with no stated AI role, a repo description only, and continuous screen capture (same class as screenpipe).
 - Process: the writer now refuses to write if any key is unknown. The first attempt caught two wrong owner names (`traceloop/openllmetry`, `MuiseDestiny/zotero-gpt`) and wrote nothing.
 - Checks: 43 tests OK, validator 0 errors, Tier-1 index 677.6 KB gzip, web build passes.
+
+### Hand-written top-2,000 text: batch 20
+
+- 65 entries and 9 artifact fixes (for example, a web chat suite that was labelled as model weights). Hand-written text now covers 1,219 records.
+- 4 skipped: a personal learning log, an opaque install note, a title-only description, and two non-AI repos.
+- Checks: 43 tests OK, validator passed, web build passes. Top-2,000 todo is now 489.

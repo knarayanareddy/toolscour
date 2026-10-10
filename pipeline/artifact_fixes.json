@@ -2027,5 +2027,41 @@
  "xerrors/yuxi": {
   "artifact": "Framework",
   "reason": "Description: an agent platform."
+ },
+ "enricoros/big-agi": {
+  "artifact": "UI / Application",
+  "reason": "It is a web chat suite, not model weights; the Model / Weights label was wrong."
+ },
+ "browsermcp/mcp": {
+  "artifact": "Application / Service",
+  "reason": "It is an MCP server that runs as a service, not model weights."
+ },
+ "tw93/waza": {
+  "artifact": "Agent Skill Pack",
+  "reason": "It is a set of skills for coding agents, so it belongs with the skill packs."
+ },
+ "tokenrhythm/opensquilla": {
+  "artifact": "Application / Service",
+  "reason": "It is an AI agent application, not model weights."
+ },
+ "osmantic/ods": {
+  "artifact": "Application / Service",
+  "reason": "It is a private AI server application, not a serving engine library."
+ },
+ "afshinea/stanford-cs-230-deep-learning": {
+  "artifact": "Curated List / Docs",
+  "reason": "It is a set of course cheatsheets, so it is documentation."
+ },
+ "amusi/daily-paper-computer-vision": {
+  "artifact": "Curated List / Docs",
+  "reason": "It is a curated log of papers."
+ },
+ "devin-axis/ipollowork": {
+  "artifact": "Application / Service",
+  "reason": "It is an application workbench for teams."
+ },
+ "mylxsw/aidea": {
+  "artifact": "Application / Service",
+  "reason": "It is a mobile app, not model weights."
  }
 }

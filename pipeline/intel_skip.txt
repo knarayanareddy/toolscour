@@ -262,3 +262,9 @@ zai-org/glm-5                            # description does not say what the rel
 xushengfeng/esearch                      # screenshot and OCR utility; AI role not stated
 civitai/civitai                          # repository description only; not written up
 jerryzliu/dayflow                        # continuous screen capture; not written up (same class as screenpipe)
+
+# Top-2000 batch 20 skips
+amitness/learning                        # personal log of learning topics; no product described
+yjh051108/dsh-routing-suite              # description is an opaque install note; not written up
+MLEveryday/practicalAI-cn                # description is only a title
+sandstorm-io/sandstorm                   # not an AI tool; web app package manager
